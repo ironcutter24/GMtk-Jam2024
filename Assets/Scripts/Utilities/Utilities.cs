@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Util
@@ -44,73 +42,100 @@ namespace Util
     [Serializable]
     public struct Range
     {
-        public float min, max;
+        [field: SerializeField] public float Min { get; private set; }
+        [field: SerializeField] public float Max { get; private set; }
 
         public Range(float min, float max)
         {
-            this.min = min;
-            this.max = max;
+            Min = min;
+            Max = max;
         }
 
         public float GetRandom()
         {
-            return UnityEngine.Random.Range(min, max);
+            return UnityEngine.Random.Range(Min, Max);
         }
     }
 
     public static class Extensions
     {
-        public static Vector3 OverrideX(this Vector3 v, float x)
+        #region Vector2 Extensions
+
+        public static Vector2 WithX(this Vector2 v, float x)
         {
-            v.x = x;
+            return new Vector2(x, v.y);
+        }
+
+        public static Vector2 WithY(this Vector2 v, float y)
+        {
+            return new Vector2(v.x, y);
+        }
+
+        public static Vector2 SnapToGrid(this Vector2 v, float gridSize)
+        {
+            v /= gridSize;
+            v.x = Mathf.RoundToInt(v.x);
+            v.y = Mathf.RoundToInt(v.y);
+            return v * gridSize;
+        }
+
+        public static Vector2 SnapToGrid(this Vector2 v, Vector2 gridSize)
+        {
+            v.x = Mathf.RoundToInt(v.x / gridSize.x) * gridSize.x;
+            v.y = Mathf.RoundToInt(v.y / gridSize.y) * gridSize.y;
             return v;
         }
 
-        public static Vector3 OverrideY(this Vector3 v, float y)
+        #endregion
+
+        #region Vector3 Extensions
+
+        public static Vector3 WithX(this Vector3 v, float x)
         {
-            v.y = y;
-            return v;
+            return new Vector3(x, v.y, v.z);
         }
 
-        public static Vector3 OverrideZ(this Vector3 v, float z)
+        public static Vector3 WithY(this Vector3 v, float y)
         {
-            v.z = z;
-            return v;
+            return new Vector3(v.x, y, v.z);
         }
 
-        public static Vector3 SnapPositionToGrid(this Vector3 v, float size)
+        public static Vector3 WithZ(this Vector3 v, float z)
         {
-            v /= size;
+            return new Vector3(v.x, v.y, z);
+        }
+
+        public static Vector3 SnapToGrid(this Vector3 v, float gridSize)
+        {
+            v /= gridSize;
             v.x = Mathf.RoundToInt(v.x);
             v.y = Mathf.RoundToInt(v.y);
             v.z = Mathf.RoundToInt(v.z);
-            return v * size;
+            return v * gridSize;
         }
 
-        public static Vector3 SnapPositionToGrid(this Vector3 v, Vector3 size)
+        public static Vector3 SnapToGrid(this Vector3 v, Vector3 gridSize)
         {
-            v.x = Mathf.RoundToInt(v.x / size.x) * size.x;
-            v.y = Mathf.RoundToInt(v.y / size.y) * size.y;
-            v.z = Mathf.RoundToInt(v.z / size.z) * size.z;
+            v.x = Mathf.RoundToInt(v.x / gridSize.x) * gridSize.x;
+            v.y = Mathf.RoundToInt(v.y / gridSize.y) * gridSize.y;
+            v.z = Mathf.RoundToInt(v.z / gridSize.z) * gridSize.z;
             return v;
         }
 
-        public static Quaternion SnapRotationToGrid(this Quaternion rot)
+        #endregion
+
+        #region Quaternion Extensions
+
+        public static Quaternion SnapToStandardAngles(this Quaternion rot)
         {
             var r = rot.eulerAngles;
-            r.x = GetClosestAngle(r.x);
-            r.y = GetClosestAngle(r.y);
-            r.z = GetClosestAngle(r.z);
+            r.x = Helpers.FindNearestStandardAngle(r.x);
+            r.y = Helpers.FindNearestStandardAngle(r.y);
+            r.z = Helpers.FindNearestStandardAngle(r.z);
             return Quaternion.Euler(r);
-
-
-            float GetClosestAngle(float val)
-            {
-                float[] angles = { 0f, 90f, 180f, 270f };
-                val %= 360f;
-                return angles.OrderBy(x => Mathf.Abs(x - val)).First();
-            }
         }
+
+        #endregion
     }
 
     public static class Helpers
@@ -125,16 +150,9 @@ namespace Util
             return value;
         }
 
-        public static string ConvertSceneNameToInkKnot(string input)
-        {
-            string[] parts = input.Split('_');
-            string lastPart = parts[parts.Length - 1];
-            return ConvertCamelToSnake(ConvertCamelToSnake(lastPart));
-        }
-
         public static string ConvertCamelToSnake(string input)
         {
-            return Regex.Replace(input, "([a-z])([A-Z])", "$1_$2").ToLower();
+            return System.Text.RegularExpressions.Regex.Replace(input, "([a-z])([A-Z])", "$1_$2").ToLower();
         }
 
         public static float MapRange01(float value, float min, float max)
@@ -145,6 +163,17 @@ namespace Util
         public static float MapRange(float value, float fromMin, float fromMax, float toMin, float toMax)
         {
             return toMin + (value - fromMin) * (toMax - toMin) / (fromMax - fromMin);
+        }
+
+        public static float FindNearestStandardAngle(float angle)
+        {
+            angle = angle % 360f;           // Normalize to (-360, 360)
+            if (angle < 0) angle += 360f;   // Normalize to [0, 360)
+
+            int nearestMultipleOf90 = Mathf.RoundToInt(angle / 90f) * 90;
+
+            // Ensure result is in [0, 360)
+            return nearestMultipleOf90 % 360f;
         }
     }
 
