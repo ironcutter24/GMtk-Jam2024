@@ -7,5 +7,7 @@ public class GeneralObject : MonoBehaviour
     public virtual void GameOver()
     {
         Debug.Log("Fa qualcosa quando vai in Game Over");
+
+        GameManager.Instance.UpdateGameState(GameManager.GameState.GameOver);
     }
 }

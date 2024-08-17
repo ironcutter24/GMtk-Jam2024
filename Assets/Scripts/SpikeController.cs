@@ -11,7 +11,5 @@ public class SpikeController : GeneralObject
     {
         base.GameOver();
         Debug.Log("Fa qualcosa specifico per le punte quando vai in Game Over");
-
-        GameManager.Instance.UpdateGameState(GameManager.GameState.GameOver);
     } 
 }
