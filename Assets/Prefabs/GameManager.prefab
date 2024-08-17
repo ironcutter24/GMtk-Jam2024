@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5082789943397898972}
   - component: {fileID: 5387469606394452572}
   - component: {fileID: 1170109166692411496}
+  - component: {fileID: 1002769645569664546}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d920442ca7283b54e8ffcd642a026eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelList: {fileID: 11400000, guid: 04798bd7660a3814e8269df9de67727a, type: 2}
+  state: 0
 --- !u!114 &1170109166692411496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,3 +60,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497ada14e8c77114a9b7865f461a35af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1002769645569664546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2917991161917756351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d9214d40608d945881e6a4dbe234d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MoveSpeed>k__BackingField: 6
+  <JumpSpeed>k__BackingField: 12
+  <Strength>k__BackingField: 1
+  <Weight>k__BackingField: 1
