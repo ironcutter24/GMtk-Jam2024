@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameManager.Instance.UnsetPlayerController(this);
+
         InputManager.Actions.Player.Move.performed -= PlayerMove_performed;
         InputManager.Actions.Player.Move.canceled -= PlayerMove_performed;
         InputManager.Actions.Player.Jump.performed -= PlayerJump_performed;
@@ -109,6 +111,11 @@ public class PlayerController : MonoBehaviour
         anim.SetBool(ANIM_MOVING_ID, isMoving);
         anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
         anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+    }
+
+    public void Death()
+    {
+        GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
     }
 
     private void SetCharacterBounds(Vector2 size)

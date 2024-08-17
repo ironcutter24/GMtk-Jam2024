@@ -8,15 +8,12 @@ public class SpikeController : GeneralObject
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.ReloadCurrentLevel();
+            collision.GetComponent<PlayerController>().Death();
         }
     }
 
-    /// <summary>
-    /// Vado in Game Over.
-    /// </summary>
-    public override void GameOver()
+    protected override void ResetState()
     {
-        Debug.Log("Fa qualcosa specifico per le punte quando vai in Game Over");
+        // Noting to reset
     } 
 }

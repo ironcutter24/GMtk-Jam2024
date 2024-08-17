@@ -4,5 +4,15 @@ using UnityEngine;
 
 public abstract class GeneralObject : MonoBehaviour
 {
-    public abstract void GameOver();
+    protected virtual void Start()
+    {
+        GameManager.PlayerDied += ResetState;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        GameManager.PlayerDied -= ResetState;
+    }
+
+    protected abstract void ResetState();
 }
