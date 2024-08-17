@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private float move;
     private float gravityScale;
     private Flag jumpFlag = new Flag();
+
+    private Animator anim;
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb;
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -48,8 +51,6 @@ public class PlayerController : MonoBehaviour
         InputManager.Actions.Player.ReloadLevel.performed += PlayerReloadLevel_performed;
 
         InputManager.SwitchActionMapToPlayer();
-
-        //SetCharacterBounds(new Vector2(2, 2));
     }
 
     private void OnDestroy()
@@ -109,7 +110,10 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerJump_performed(InputAction.CallbackContext context)
     {
-        jumpFlag.Set();
+        if (IsOnGround())
+        {
+            jumpFlag.Set();
+        }
     }
 
     private void PlayerInteract_performed(InputAction.CallbackContext context)
