@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         InputManager.Actions.Player.Move.canceled += PlayerMove_performed;
         InputManager.Actions.Player.Jump.performed += PlayerJump_performed;
         InputManager.Actions.Player.Interact.performed += PlayerInteract_performed;
+        InputManager.Actions.Player.ReloadLevel.performed += PlayerReloadLevel_performed;
 
         InputManager.SwitchActionMapToPlayer();
     }
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         InputManager.Actions.Player.Move.canceled -= PlayerMove_performed;
         InputManager.Actions.Player.Jump.performed -= PlayerJump_performed;
         InputManager.Actions.Player.Interact.performed -= PlayerInteract_performed;
+        InputManager.Actions.Player.ReloadLevel.performed -= PlayerReloadLevel_performed;
     }
 
     private void FixedUpdate()
@@ -100,6 +102,11 @@ public class PlayerController : MonoBehaviour
     private void PlayerInteract_performed(InputAction.CallbackContext context)
     {
 
+    }
+
+    private void PlayerReloadLevel_performed(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.ReloadCurrentLevel();
     }
 
     private bool IsOnGround()
