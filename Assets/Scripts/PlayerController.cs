@@ -35,6 +35,23 @@ public class PlayerController : MonoBehaviour
     private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
     private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
 
+    [Header("Body references:")]
+    [SerializeField] GameObject playerChest;
+    [SerializeField] GameObject playerLegs;
+
+    [Header("Body parts:")]
+    [Header("Weigth parts:")]
+    [SerializeField] GameObject thinChest;
+    [SerializeField] GameObject normalChest;
+    [SerializeField] GameObject fatChest;
+
+    [Header("Body parts:")]
+    [Header("Speed parts:")]
+    [SerializeField] GameObject smallLegs;
+    [SerializeField] GameObject normalLegs;
+    [SerializeField] GameObject tallLegs;
+
+
 
     private void Awake()
     {
@@ -189,15 +206,20 @@ public class PlayerController : MonoBehaviour
             //MoveSpeed
             if (PlayerStats.Instance.MoveSpeed < 3)
             {
-                SetCharacterBounds(new Vector2(1f, 0.5f));
+                //Cambio la sprite delle gambe (Legs) del personaggio con quelle corte.
+                //Adatto il collider alle nuove gambe.
+
+                //SetCharacterBounds(new Vector2(1f, 0.5f));
             }
             else if (PlayerStats.Instance.MoveSpeed > 2 && PlayerStats.Instance.MoveSpeed < 4)
             {
-                SetCharacterBounds(new Vector2(1f, 1f));
+                //SetCharacterBounds(new Vector2(1f, 1f));
+                playerLegs = normalLegs;
             }
             else if (PlayerStats.Instance.MoveSpeed > 3)
             {
-                SetCharacterBounds(new Vector2(1f, 2f));
+                //SetCharacterBounds(new Vector2(1f, 2f));
+                playerLegs = tallLegs;
             }
         }
         else if (sliderName.name == "SliderJumpSpeed")
