@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Util;
 
 public class GameManager : Singleton<GameManager>
 {
-    //Variables:
+    int levelIndex = 0;
+
+    [SerializeField] LevelList_SO levelList;
+
     [Header("Game state:")]
-    public GameState state;
+    [SerializeField] GameState state;
 
     protected override void Awake()
     {
@@ -34,6 +38,25 @@ public class GameManager : Singleton<GameManager>
             case GameState.BuildYourBuild:
                 break;
         }
+    }
+
+    public void ReloadCurrentLevel()
+    {
+        var activeScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
+    }
+
+    public void LoadNextLevel()
+    {
+        if (++levelIndex >= levelList.GetCount())
+        {
+            Debug.LogError("Level index has gone over level count.");
+            levelIndex--;
+            return;
+        }
+
+        var sceneName = levelList.GetLevelAt(levelIndex);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public enum GameState
