@@ -6,20 +6,27 @@ using Util;
 
 public class PlayerController : MonoBehaviour
 {
+    readonly Vector2 groundCheckBox = new Vector2(.94f, .06f);
+
     float move;
+    float gravityScale;
+    Flag jumpFlag = new Flag();
     Rigidbody2D rb;
 
     [SerializeField, Min(0f)] float moveSpeed = 2f;
     [SerializeField, Min(0f)] float jumpSpeed = 20f;
-    [SerializeField, Min(0f)] float gravityScale = 1f;
+
+    [SerializeField, Min(0f)] float gravityScaleUp = 1f;
+    [SerializeField, Min(0f)] float gravityScaleDown = 1f;
 
     [SerializeField] LayerMask groundMask;
 
-    Flag jumpFlag = new Flag();
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        gravityScale = gravityScaleDown;
     }
 
     private void Start()
@@ -44,23 +51,40 @@ public class PlayerController : MonoBehaviour
     {
         var velocity = rb.velocity;
 
-        if (IsGrounded())
+        if (IsOnGround())
         {
-            velocity.y = jumpFlag.Pop() ? jumpSpeed : 0f;
+            if (jumpFlag.Pop())
+            {
+                velocity.y = jumpSpeed;
+            }
+            else
+            {
+                velocity.y = 0f;
+            }
+        }
+        else if (IsOnCeiling() && velocity.y > 0f)
+        {
+            velocity.y = 0f;
         }
         else
         {
+            gravityScale = velocity.y > 0 ? gravityScaleDown : gravityScaleUp;
             velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
         }
 
         velocity.x = move * moveSpeed;
+        if (!Mathf.Approximately(move, 0f))
+        {
+            bool pushingLeft = move < 0f && IsOnWallLeft();
+            bool pushingRight = move > 0f && IsOnWallRight();
+
+            if (pushingLeft || pushingRight)
+            {
+                velocity.x = 0f;
+            }
+        }
 
         rb.velocity = velocity;
-    }
-
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapBox(rb.position, new Vector2(.98f, .06f), 0f, groundMask);
     }
 
     private void PlayerMove_performed(InputAction.CallbackContext context)
@@ -76,5 +100,25 @@ public class PlayerController : MonoBehaviour
     private void PlayerInteract_performed(InputAction.CallbackContext context)
     {
 
+    }
+
+    private bool IsOnGround()
+    {
+        return Physics2D.OverlapBox(rb.position, groundCheckBox, 0f, groundMask);
+    }
+
+    private bool IsOnCeiling()
+    {
+        return Physics2D.OverlapBox(rb.position + Vector2.up, groundCheckBox, 0f, groundMask);
+    }
+
+    private bool IsOnWallRight()
+    {
+        return Physics2D.OverlapBox(rb.position + new Vector2(.5f, .5f), groundCheckBox, 90f, groundMask);
+    }
+
+    private bool IsOnWallLeft()
+    {
+        return Physics2D.OverlapBox(rb.position + new Vector2(-.5f, .5f), groundCheckBox, 90f, groundMask);
     }
 }
