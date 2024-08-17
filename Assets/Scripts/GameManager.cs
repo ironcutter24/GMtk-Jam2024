@@ -13,7 +13,10 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
 
-        DontDestroyOnLoad(gameObject);
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public void UpdateGameState(GameState newState)
