@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
     public PlayerController PlayerController { get; private set; }
 
+    public static event Action PlayerDied;
+
 
     protected override void Awake()
     {
@@ -32,7 +35,15 @@ public class GameManager : Singleton<GameManager>
         PlayerController = playerController;
     }
 
-    public void UpdateGameState(GameState newState)
+    public void UnsetPlayerController(PlayerController playerController)
+    {
+        if (PlayerController == playerController)
+        {
+            PlayerController = null;
+        }
+    }
+
+    public void SetGameState(GameState newState)
     {
         state = newState;
 
@@ -40,10 +51,16 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.Play:
                 break;
+
             case GameState.GameOver:
+                PlayerDied?.Invoke();
+                ReloadCurrentLevel();
+                SetGameState(GameState.Play);
                 break;
+
             case GameState.PauseMenu:
                 break;
+
             case GameState.BuildYourBuild:
                 break;
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatSlaiderController : MonoBehaviour
+public class StatSliderController : MonoBehaviour
 {
     [SerializeField] Slider sliderStrenght;
     [SerializeField] Slider sliderWeight;

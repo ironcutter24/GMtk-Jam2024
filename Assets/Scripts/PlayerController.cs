@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameManager.Instance.UnsetPlayerController(this);
+
         InputManager.Actions.Player.Move.performed -= PlayerMove_performed;
         InputManager.Actions.Player.Move.canceled -= PlayerMove_performed;
         InputManager.Actions.Player.Jump.performed -= PlayerJump_performed;
@@ -110,6 +112,11 @@ public class PlayerController : MonoBehaviour
         anim.SetBool(ANIM_MOVING_ID, isMoving);
         anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
         anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+    }
+
+    public void Death()
+    {
+        GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
     }
 
     private void SetCharacterBounds(Vector2 size)
@@ -201,20 +208,18 @@ public class PlayerController : MonoBehaviour
 
     #region Physics checks
 
-    private bool IsOnGround() => Physics2D.OverlapBox(rb.position, GroundBoxSize, 0f, groundMask);
-    private bool IsOnCeiling() => Physics2D.OverlapBox(rb.position + new Vector2(0f, bounds.y), GroundBoxSize, 0f, groundMask);
-    private bool IsOnWallLeft() => Physics2D.OverlapBox(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize, 0f, groundMask);
-    private bool IsOnWallRight() => Physics2D.OverlapBox(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize, 0f, groundMask);
+    private bool IsOnGround() => GroundCheck(rb.position, GroundBoxSize);
+    private bool IsOnCeiling() => GroundCheck(rb.position + new Vector2(0f, bounds.y), GroundBoxSize);
+    private bool IsOnWallLeft() => GroundCheck(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize);
+    private bool IsOnWallRight() => GroundCheck(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize);
 
-    private bool GroundCheck(Vector2 pos, Vector2 size, LayerMask layerMask)
+    private bool GroundCheck(Vector2 pos, Vector2 size)
     {
-        var hits = Physics2D.OverlapBoxAll(pos, size, 0f, layerMask);
+        var hits = Physics2D.OverlapBoxAll(pos, size, 0f, groundMask);
         for (int i = 0; i < hits.Length; i++)
         {
             if (!hits[i].isTrigger)
-            {
                 return true;
-            }
         }
         return false;
     }
