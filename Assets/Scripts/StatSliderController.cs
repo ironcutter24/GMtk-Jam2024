@@ -10,22 +10,17 @@ public class StatSliderController : MonoBehaviour
     [SerializeField] Slider sliderSpeed;
     [SerializeField] Slider sliderJumpSpeed;
 
-    public bool movingStrenght = false;
-    public bool movingWeight = false;
-    public bool movingSpeed = false;
-    public bool movingJumpSpeed = false;
-
     private void Start()
     {
-        sliderSpeed.onValueChanged.AddListener(SetSpeed);
-        sliderJumpSpeed.onValueChanged.AddListener(SetJumpSpeed);
-        sliderWeight.onValueChanged.AddListener(SetWeight);
-        sliderStrenght.onValueChanged.AddListener(SetStrenght);
-
         sliderSpeed.value = PlayerStats.Instance.MoveSpeed;
         sliderJumpSpeed.value = PlayerStats.Instance.JumpSpeed;
         sliderWeight.value = PlayerStats.Instance.Weight;
         sliderStrenght.value = PlayerStats.Instance.Strength;
+
+        sliderSpeed.onValueChanged.AddListener(SetSpeed);
+        sliderJumpSpeed.onValueChanged.AddListener(SetJumpSpeed);
+        sliderWeight.onValueChanged.AddListener(SetWeight);
+        sliderStrenght.onValueChanged.AddListener(SetStrenght);
     }
 
     private void SetStrenght(float value)

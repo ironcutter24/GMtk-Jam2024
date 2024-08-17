@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     public void CheckAndSetSize(Slider sliderName)
     {
-        if(sliderName.name == "SliderStrenght")
+        if (sliderName.name == "SliderStrenght")
         {
             //Strength
             if (PlayerStats.Instance.Strength < 3)
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
                 SetCharacterBounds(new Vector2(2f, 2f));
             }
         }
-        else if(sliderName.name == "SliderWeight")
+        else if (sliderName.name == "SliderWeight")
         {
             //Weight
             if (PlayerStats.Instance.Weight < 3)

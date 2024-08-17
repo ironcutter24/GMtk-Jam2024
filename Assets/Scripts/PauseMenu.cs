@@ -1,53 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject pauseMenuUI;
-    public bool isPaused = false;
-
-    // Update is called once per frame
+    [SerializeField] Button resumeButton, restartButton, quitButton;
+    [SerializeField] bool isPaused = false;
 
     private void Start()
     {
-        pauseMenuUI.SetActive(false);
+        resumeButton.onClick.AddListener(OnResumeButton);
+        restartButton.onClick.AddListener(OnRestartButton);
+        quitButton.onClick.AddListener(OnQuitButton);
+
+        InputManager.Actions.Player.PauseGame.performed += PlayerTogglePause_performed;
+        InputManager.Actions.UI.Cancel.performed += PlayerTogglePause_performed;
+
+        gameObject.SetActive(false);
     }
-    void Update()
+
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (isPaused) 
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-                
-        }
+        InputManager.Actions.Player.PauseGame.performed -= PlayerTogglePause_performed;
+        InputManager.Actions.UI.Cancel.performed -= PlayerTogglePause_performed;
     }
-    void Pause()
+
+    private void PlayerTogglePause_performed(InputAction.CallbackContext context)
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f; //pause the game
+        if (isPaused) OnResumeButton();
+        else PauseGame();
+    }
+
+    private void PauseGame()
+    {
+        gameObject.SetActive(true);
+        Time.timeScale = 0f;  // Pause game
         isPaused = true;
     }
-    public void Resume()
+
+    private void OnResumeButton()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f; //unpauses the game
+        gameObject.SetActive(false);
+        Time.timeScale = 1f;  // Resume game
         isPaused = false;
     }
 
-    public void Restart()
+    private void OnRestartButton()
     {
-        //funzione per far tornare il player a inizio game
+        GameManager.Instance.ReloadCurrentLevel();
+        OnResumeButton();
     }
 
-    public void QuitGame()
+    private void OnQuitButton()
     {
         Debug.Log("Quit button pressed!");
         Application.Quit();
