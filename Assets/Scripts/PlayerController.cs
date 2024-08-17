@@ -6,13 +6,18 @@ using Util;
 
 public class PlayerController : MonoBehaviour
 {
-    readonly Vector2 groundCheckBox = new Vector2(.94f, .06f);
+    const float contactCheckDepth = .06f;
+    const float contactCheckOffset = .06f;
 
-    float move;
-    float gravityScale;
-    Flag jumpFlag = new Flag();
-    Rigidbody2D rb;
+    private Vector2 bounds = Vector2.one;
 
+    private float move;
+    private float gravityScale;
+    private Flag jumpFlag = new Flag();
+    private BoxCollider2D boxCollider;
+    private Rigidbody2D rb;
+
+    [SerializeField] Transform graphics;
 
     [Header("Jump")]
     [SerializeField, Min(0f)] float gravityScaleUp = 1f;
@@ -21,9 +26,13 @@ public class PlayerController : MonoBehaviour
     [Header("Layers")]
     [SerializeField] LayerMask groundMask;
 
+    private Vector2 GroundBoxSize => new Vector2(bounds.x - contactCheckOffset, contactCheckDepth);
+    private Vector2 WallBoxSize => new Vector2(bounds.y - contactCheckOffset, contactCheckDepth);
+
 
     private void Awake()
     {
+        boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
         gravityScale = gravityScaleDown;
@@ -38,6 +47,8 @@ public class PlayerController : MonoBehaviour
         InputManager.Actions.Player.ReloadLevel.performed += PlayerReloadLevel_performed;
 
         InputManager.SwitchActionMapToPlayer();
+
+        //SetCharacterBounds(new Vector2(2, 2));
     }
 
     private void OnDestroy()
@@ -55,14 +66,7 @@ public class PlayerController : MonoBehaviour
 
         if (IsOnGround())
         {
-            if (jumpFlag.Pop())
-            {
-                velocity.y = PlayerStats.Instance.JumpSpeed;
-            }
-            else
-            {
-                velocity.y = 0f;
-            }
+            velocity.y = jumpFlag.Pop() ? PlayerStats.Instance.JumpSpeed : 0f;
         }
         else if (IsOnCeiling() && velocity.y > 0f)
         {
@@ -89,6 +93,14 @@ public class PlayerController : MonoBehaviour
         rb.velocity = velocity;
     }
 
+    private void SetCharacterBounds(Vector2 size)
+    {
+        bounds = size;
+        boxCollider.size = size;
+        boxCollider.offset = Vector2.up * size.y * .5f;
+        graphics.localScale = new Vector3(size.x, size.y, 1f);
+    }
+
     private void PlayerMove_performed(InputAction.CallbackContext context)
     {
         move = context.ReadValue<float>();
@@ -101,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerInteract_performed(InputAction.CallbackContext context)
     {
-
+        Debug.LogWarning("Interaction was not implemented.");
     }
 
     private void PlayerReloadLevel_performed(InputAction.CallbackContext context)
@@ -109,23 +121,13 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.ReloadCurrentLevel();
     }
 
-    private bool IsOnGround()
-    {
-        return Physics2D.OverlapBox(rb.position, groundCheckBox, 0f, groundMask);
-    }
+    #region Physics checks
 
-    private bool IsOnCeiling()
-    {
-        return Physics2D.OverlapBox(rb.position + Vector2.up, groundCheckBox, 0f, groundMask);
-    }
+    private bool IsOnGround() => Physics2D.OverlapBox(rb.position, GroundBoxSize, 0f, groundMask);
+    private bool IsOnCeiling() => Physics2D.OverlapBox(rb.position + new Vector2(0f, bounds.y), GroundBoxSize, 0f, groundMask);
+    private bool IsOnWallLeft() => Physics2D.OverlapBox(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize, 90f, groundMask);
+    private bool IsOnWallRight() => Physics2D.OverlapBox(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize, 90f, groundMask);
 
-    private bool IsOnWallRight()
-    {
-        return Physics2D.OverlapBox(rb.position + new Vector2(.5f, .5f), groundCheckBox, 90f, groundMask);
-    }
+    #endregion
 
-    private bool IsOnWallLeft()
-    {
-        return Physics2D.OverlapBox(rb.position + new Vector2(-.5f, .5f), groundCheckBox, 90f, groundMask);
-    }
 }
