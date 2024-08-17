@@ -121,8 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   jumpSpeed: 12
-  gravityScaleUp: 3.5
-  gravityScaleDown: 2
+  gravityScaleUp: 2
+  gravityScaleDown: 3.5
   groundMask:
     serializedVersion: 2
     m_Bits: 1
