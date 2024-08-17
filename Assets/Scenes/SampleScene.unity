@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 193469588}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 6
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -2066,7 +2066,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1937964154}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 6
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -3534,7 +3534,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1103918300}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 6
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -3820,7 +3820,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1026547984}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 6
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -3872,7 +3872,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1002769645569664546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: <JumpSpeed>k__BackingField
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002769645569664546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+      propertyPath: <MoveSpeed>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2917991161917756351, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_Name

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Util;
 
 public class PlayerController : MonoBehaviour
@@ -140,6 +141,62 @@ public class PlayerController : MonoBehaviour
     private void PlayerReloadLevel_performed(InputAction.CallbackContext context)
     {
         GameManager.Instance.ReloadCurrentLevel();
+    }
+
+    public void CheckAndSetSize(Slider sliderName)
+    {
+        if(sliderName.name == "SliderStrenght")
+        {
+            //Strength
+            if (PlayerStats.Instance.Strength < 3)
+            {
+                SetCharacterBounds(new Vector2(0.5f, 0.5f));
+            }
+            else if (PlayerStats.Instance.Strength > 2 && PlayerStats.Instance.Strength < 4)
+            {
+                SetCharacterBounds(new Vector2(1f, 1f));
+            }
+            else if (PlayerStats.Instance.Strength > 3)
+            {
+                SetCharacterBounds(new Vector2(2f, 2f));
+            }
+        }
+        else if(sliderName.name == "SliderWeight")
+        {
+            //Weight
+            if (PlayerStats.Instance.Weight < 3)
+            {
+                SetCharacterBounds(new Vector2(0.5f, 1f));
+            }
+            else if (PlayerStats.Instance.Weight > 2 && PlayerStats.Instance.Weight < 4)
+            {
+                SetCharacterBounds(new Vector2(1f, 1f));
+            }
+            else if (PlayerStats.Instance.Weight > 3)
+            {
+                SetCharacterBounds(new Vector2(2f, 1f));
+            }
+        }
+        else if (sliderName.name == "SliderSpeed")
+        {
+            //MoveSpeed
+            if (PlayerStats.Instance.MoveSpeed < 3)
+            {
+                SetCharacterBounds(new Vector2(1f, 0.5f));
+            }
+            else if (PlayerStats.Instance.MoveSpeed > 2 && PlayerStats.Instance.MoveSpeed < 4)
+            {
+                SetCharacterBounds(new Vector2(1f, 1f));
+            }
+            else if (PlayerStats.Instance.MoveSpeed > 3)
+            {
+                SetCharacterBounds(new Vector2(1f, 2f));
+            }
+        }
+        else if (sliderName.name == "SliderJumpSpeed")
+        {
+
+        }
     }
 
     #region Physics checks

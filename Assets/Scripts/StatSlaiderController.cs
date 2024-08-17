@@ -10,6 +10,11 @@ public class StatSlaiderController : MonoBehaviour
     [SerializeField] Slider sliderSpeed;
     [SerializeField] Slider sliderJumpSpeed;
 
+    public bool movingStrenght = false;
+    public bool movingWeight = false;
+    public bool movingSpeed = false;
+    public bool movingJumpSpeed = false;
+
     private void Start()
     {
         sliderSpeed.onValueChanged.AddListener(SetSpeed);
@@ -26,20 +31,24 @@ public class StatSlaiderController : MonoBehaviour
     private void SetStrenght(float value)
     {
         PlayerStats.Instance.SetStrength(value);
+        GameManager.Instance.PlayerController.CheckAndSetSize(sliderStrenght);
     }
 
     private void SetWeight(float value)
     {
         PlayerStats.Instance.SetWeight(value);
+        GameManager.Instance.PlayerController.CheckAndSetSize(sliderWeight);
     }
 
     private void SetSpeed(float value)
     {
         PlayerStats.Instance.SetMoveSpeed(value);
+        GameManager.Instance.PlayerController.CheckAndSetSize(sliderSpeed);
     }
 
     private void SetJumpSpeed(float value)
     {
         PlayerStats.Instance.SetJumpSpeed(value);
+        GameManager.Instance.PlayerController.CheckAndSetSize(sliderJumpSpeed);
     }
 }
