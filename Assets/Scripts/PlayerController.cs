@@ -13,12 +13,12 @@ public class PlayerController : MonoBehaviour
     Flag jumpFlag = new Flag();
     Rigidbody2D rb;
 
-    [SerializeField, Min(0f)] float moveSpeed = 2f;
-    [SerializeField, Min(0f)] float jumpSpeed = 20f;
 
+    [Header("Jump")]
     [SerializeField, Min(0f)] float gravityScaleUp = 1f;
     [SerializeField, Min(0f)] float gravityScaleDown = 1f;
 
+    [Header("Layers")]
     [SerializeField] LayerMask groundMask;
 
 
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpFlag.Pop())
             {
-                velocity.y = jumpSpeed;
+                velocity.y = PlayerStats.Instance.JumpSpeed;
             }
             else
             {
@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            gravityScale = velocity.y > 0 ? gravityScaleDown : gravityScaleUp;
+            gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
             velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
         }
 
-        velocity.x = move * moveSpeed;
+        velocity.x = move * PlayerStats.Instance.MoveSpeed;
         if (!Mathf.Approximately(move, 0f))
         {
             bool pushingLeft = move < 0f && IsOnWallLeft();
