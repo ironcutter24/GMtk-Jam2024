@@ -5,10 +5,10 @@ using Util;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
-    [field: SerializeField, Range(0f, 4f)] public float MoveSpeed { get; private set; } = 2f;
-    [field: SerializeField, Range(0f, 4f)] public float JumpSpeed { get; private set; } = 4f;
-    [field: SerializeField, Range(0f, 4f)] public float Strength { get; private set; } = 1f;
-    [field: SerializeField, Range(0f, 4f)] public float Weight { get; private set; } = 1f;
+    [field: SerializeField, Range(0f, 10f)] public float MoveSpeed { get; private set; } = 6f;
+    [field: SerializeField, Range(0f, 10f)] public float JumpSpeed { get; private set; } = 9f;
+    [field: SerializeField, Range(0f, 10f)] public float Strength { get; private set; } = 1f;
+    [field: SerializeField, Range(0f, 10f)] public float Weight { get; private set; } = 1f;
 
 
     public void SetMoveSpeed(float value) => MoveSpeed = value;

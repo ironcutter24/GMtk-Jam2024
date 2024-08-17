@@ -1613,19 +1613,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 62371818}
-        m_TargetAssemblyTypeName: StatSlaiderController, Assembly-CSharp
-        m_MethodName: SetJumpHeight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1089286054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1090895133}
   m_Layer: 0
-  m_Name: ====CMAERA====
+  m_Name: ====CAMERA====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,19 +2071,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 62371818}
-        m_TargetAssemblyTypeName: StatSlaiderController, Assembly-CSharp
-        m_MethodName: SetStrenght
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1216894694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,10 +3217,10 @@ RectTransform:
   - {fileID: 2096277463}
   m_Father: {fileID: 549329753}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1080.1598, y: 570.4624}
-  m_SizeDelta: {x: 399.6804, y: 299.0751}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 199.84021, y: -149.53754}
+  m_SizeDelta: {x: 399.68042, y: 299.07507}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1799121727
 MonoBehaviour:
@@ -3563,19 +3539,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 62371818}
-        m_TargetAssemblyTypeName: StatSlaiderController, Assembly-CSharp
-        m_MethodName: SetSpeed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1937964153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3861,19 +3825,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 62371818}
-        m_TargetAssemblyTypeName: StatSlaiderController, Assembly-CSharp
-        m_MethodName: SetWeight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2135104513
 GameObject:
   m_ObjectHideFlags: 0
@@ -3918,14 +3870,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1002769645569664546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
-      propertyPath: <JumpSpeed>k__BackingField
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1002769645569664546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
-      propertyPath: <MoveSpeed>k__BackingField
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2917991161917756351, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -3983,25 +3927,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 663116659310244275, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
-      propertyPath: m_Color.b
-      value: 0.031951167
-      objectReference: {fileID: 0}
-    - target: {fileID: 663116659310244275, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7830189
-      objectReference: {fileID: 0}
-    - target: {fileID: 663116659310244275, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7892959881415632378, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8067923144227943460, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4125
       objectReference: {fileID: 0}
     - target: {fileID: 8067923144227943460, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
       propertyPath: m_LocalPosition.x

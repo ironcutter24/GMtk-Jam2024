@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     const float contactCheckDepth = .06f;
     const float contactCheckOffset = .06f;
 
-    private Vector2 bounds = Vector2.one;
 
     private float move;
     private float gravityScale;
@@ -18,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] Transform graphics;
+    [SerializeField] Vector2 bounds = Vector2.one;
 
     [Header("Jump")]
     [SerializeField, Min(0f)] float gravityScaleUp = 1f;
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         gravityScale = gravityScaleDown;
+        SetCharacterBounds(bounds);
     }
 
     private void Start()

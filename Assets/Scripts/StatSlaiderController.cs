@@ -12,29 +12,34 @@ public class StatSlaiderController : MonoBehaviour
 
     private void Start()
     {
+        sliderSpeed.onValueChanged.AddListener(SetSpeed);
+        sliderJumpSpeed.onValueChanged.AddListener(SetJumpSpeed);
+        sliderWeight.onValueChanged.AddListener(SetWeight);
+        sliderStrenght.onValueChanged.AddListener(SetStrenght);
+
         sliderSpeed.value = PlayerStats.Instance.MoveSpeed;
         sliderJumpSpeed.value = PlayerStats.Instance.JumpSpeed;
         sliderWeight.value = PlayerStats.Instance.Weight;
         sliderStrenght.value = PlayerStats.Instance.Strength;
     }
 
-    public void SetStrenght()
+    private void SetStrenght(float value)
     {
-         PlayerStats.Instance.SetMoveSpeed(sliderStrenght.value);
+        PlayerStats.Instance.SetStrength(value);
     }
 
-    public void SetWeight()
+    private void SetWeight(float value)
     {
-        PlayerStats.Instance.SetWeight(sliderWeight.value);
+        PlayerStats.Instance.SetWeight(value);
     }
 
-    public void SetSpeed()
+    private void SetSpeed(float value)
     {
-        PlayerStats.Instance.SetMoveSpeed(sliderSpeed.value);
+        PlayerStats.Instance.SetMoveSpeed(value);
     }
 
-    public void SetJumpSpeed()
+    private void SetJumpSpeed(float value)
     {
-        PlayerStats.Instance.SetJumpSpeed(sliderJumpSpeed.value);
+        PlayerStats.Instance.SetJumpSpeed(value);
     }
 }
