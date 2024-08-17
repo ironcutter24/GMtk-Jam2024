@@ -6,9 +6,12 @@ using Util;
 
 public class PlayerController : MonoBehaviour
 {
-    const float contactCheckDepth = .06f;
-    const float contactCheckOffset = .06f;
+    const float CONTACT_CHECK_DEPTH = .06f;
+    const float CONTACT_CHECK_OFFSET = .06f;
 
+    const string ANIM_GROUNDED_ID = "IsGrounded";
+    const string ANIM_MOVING_ID = "IsMoving";
+    const string ANIM_VERTICAL_SPEED_ID = "VerticalSpeed";
 
     private float move;
     private float gravityScale;
@@ -28,8 +31,8 @@ public class PlayerController : MonoBehaviour
     [Header("Layers")]
     [SerializeField] LayerMask groundMask;
 
-    private Vector2 GroundBoxSize => new Vector2(bounds.x - contactCheckOffset, contactCheckDepth);
-    private Vector2 WallBoxSize => new Vector2(bounds.y - contactCheckOffset, contactCheckDepth);
+    private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
+    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
 
 
     private void Awake()
@@ -40,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
         gravityScale = gravityScaleDown;
         SetCharacterBounds(bounds);
+
+        GameManager.Instance.SetPlayerController(this);
     }
 
     private void Start()
@@ -66,22 +71,28 @@ public class PlayerController : MonoBehaviour
     {
         var velocity = rb.velocity;
 
-        if (IsOnGround())
+        var isGrounded = IsOnGround();
+        if (isGrounded)
         {
             velocity.y = jumpFlag.Pop() ? PlayerStats.Instance.JumpSpeed : 0f;
         }
-        else if (IsOnCeiling() && velocity.y > 0f)
-        {
-            velocity.y = 0f;
-        }
         else
         {
-            gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
-            velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+            if (IsOnCeiling() && velocity.y > 0f)
+            {
+                velocity.y = 0f;
+            }
+            else
+            {
+                gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
+                velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+            }
         }
 
         velocity.x = move * PlayerStats.Instance.MoveSpeed;
-        if (!Mathf.Approximately(move, 0f))
+
+        var isMoving = !Mathf.Approximately(move, 0f);
+        if (isMoving)
         {
             bool pushingLeft = move < 0f && IsOnWallLeft();
             bool pushingRight = move > 0f && IsOnWallRight();
@@ -93,6 +104,11 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = velocity;
+
+        // Animation parameters
+        anim.SetBool(ANIM_MOVING_ID, isMoving);
+        anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
+        anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
     }
 
     private void SetCharacterBounds(Vector2 size)
@@ -130,8 +146,21 @@ public class PlayerController : MonoBehaviour
 
     private bool IsOnGround() => Physics2D.OverlapBox(rb.position, GroundBoxSize, 0f, groundMask);
     private bool IsOnCeiling() => Physics2D.OverlapBox(rb.position + new Vector2(0f, bounds.y), GroundBoxSize, 0f, groundMask);
-    private bool IsOnWallLeft() => Physics2D.OverlapBox(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize, 90f, groundMask);
-    private bool IsOnWallRight() => Physics2D.OverlapBox(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize, 90f, groundMask);
+    private bool IsOnWallLeft() => Physics2D.OverlapBox(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize, 0f, groundMask);
+    private bool IsOnWallRight() => Physics2D.OverlapBox(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize, 0f, groundMask);
+
+    private bool GroundCheck(Vector2 pos, Vector2 size, LayerMask layerMask)
+    {
+        var hits = Physics2D.OverlapBoxAll(pos, size, 0f, layerMask);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (!hits[i].isTrigger)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     #endregion
 

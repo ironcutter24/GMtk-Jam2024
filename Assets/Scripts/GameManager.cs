@@ -6,12 +6,16 @@ using Util;
 
 public class GameManager : Singleton<GameManager>
 {
-    int levelIndex = 0;
+    private int levelIndex = 0;
+
 
     [SerializeField] LevelList_SO levelList;
 
     [Header("Game state:")]
     [SerializeField] GameState state;
+
+    public PlayerController PlayerController { get; private set; }
+
 
     protected override void Awake()
     {
@@ -21,6 +25,11 @@ public class GameManager : Singleton<GameManager>
         {
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void SetPlayerController(PlayerController playerController)
+    {
+        PlayerController = playerController;
     }
 
     public void UpdateGameState(GameState newState)
