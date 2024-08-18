@@ -332,6 +332,12 @@ MonoBehaviour:
   gravityScaleDown: 3.5
   groundMask:
     serializedVersion: 2
+    m_Bits: 513
+  ceilingMask:
+    serializedVersion: 2
+    m_Bits: 1
+  wallMask:
+    serializedVersion: 2
     m_Bits: 1
   playerChest: {fileID: 0}
   playerLegs: {fileID: 0}

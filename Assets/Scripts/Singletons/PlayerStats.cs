@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,26 +12,47 @@ public class PlayerStats : Singleton<PlayerStats>
     [field: SerializeField, Range(0f, 10f)] public float Weight { get; private set; }
 
 
-    public void SetMoveSpeed(float value) => MoveSpeed = value;
-    public void SetJumpSpeed(float value) => JumpSpeed = value;
-    public void SetStrength(float value) => Strength = value;
-    public void SetWeight(float value) => Weight = value;
+    public static Action MoveSpeedChanged;
+    public static Action JumpSpeedChanged;
+    public static Action StrengthChanged;
+    public static Action WeightChanged;
 
-    protected override void Awake()
+
+    IEnumerator Start()
     {
-        base.Awake();
-
-        if (Instance == this)
-        {
-            ResetStats();
-        }
+        yield return null;
+        ResetStats();
     }
 
     public void ResetStats()
     {
-        MoveSpeed = 6f;
-        JumpSpeed = 9f;
-        Strength = 1f;
-        Weight = 1f;
+        SetMoveSpeed(6f);
+        SetJumpSpeed(9f);
+        SetStrength(1f);
+        SetWeight(1f);
+    }
+
+    public void SetMoveSpeed(float value)
+    {
+        MoveSpeed = value;
+        MoveSpeedChanged?.Invoke();
+    }
+
+    public void SetJumpSpeed(float value)
+    {
+        JumpSpeed = value;
+        JumpSpeedChanged?.Invoke();
+    }
+
+    public void SetStrength(float value)
+    {
+        Strength = value;
+        StrengthChanged?.Invoke();
+    }
+
+    public void SetWeight(float value)
+    {
+        Weight = value;
+        WeightChanged?.Invoke();
     }
 }

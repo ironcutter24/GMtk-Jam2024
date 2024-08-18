@@ -1513,6 +1513,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed62b5c3c9649d04fb9de3ffa74abf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &955531091
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5697796072918945691, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_Name
+      value: HeavyCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6997184
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.053323627
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
 --- !u!1 &1026547983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1656,10 @@ PrefabInstance:
     - target: {fileID: 3652144449132790862, guid: 346aea3b4aff77b45b0e2dfa50630347, type: 3}
       propertyPath: m_Name
       value: ArrowShooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652144449132790862, guid: 346aea3b4aff77b45b0e2dfa50630347, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5654972896712517049, guid: 346aea3b4aff77b45b0e2dfa50630347, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1734,7 +1795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2192,7 +2253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3517,7 +3578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4124,7 +4185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4328,10 +4389,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4079665512844693303, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7892959881415632378, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4521,3 +4578,4 @@ SceneRoots:
   - {fileID: 5438616844978195447}
   - {fileID: 148027595072920016}
   - {fileID: 1027176733}
+  - {fileID: 955531091}
