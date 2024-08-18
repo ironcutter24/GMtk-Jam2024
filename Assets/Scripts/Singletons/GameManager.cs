@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] LevelList_SO levelList;
 
     [Header("Game state:")]
-    [SerializeField] GameState state;
+    public GameState state;
 
     public PlayerController PlayerController { get; private set; }
 
@@ -50,15 +50,15 @@ public class GameManager : Singleton<GameManager>
         switch (newState)
         {
             case GameState.Play:
+                Time.timeScale = 1;
                 break;
 
             case GameState.GameOver:
                 PlayerDied?.Invoke();
-                ReloadCurrentLevel();
-                SetGameState(GameState.Play);
                 break;
 
             case GameState.PauseMenu:
+                Time.timeScale = 0;
                 break;
 
             case GameState.BuildYourBuild:
