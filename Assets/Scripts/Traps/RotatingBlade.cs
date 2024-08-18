@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class RotatingBlade : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] float bladeSpeed;
+    [SerializeField] Transform pointA;
 
     private void Start()
     {
@@ -17,7 +16,7 @@ public class RotatingBlade : MonoBehaviour
     {
         Sequence mySequence = DOTween.Sequence();
         mySequence
-            .Append(transform.DOMove(target.position, 2f))
+            .Append(transform.DOMove(pointA.position, 2f))
             .Append(transform.DOMove(transform.position, 2f))
             .SetLoops(-1);
     }
