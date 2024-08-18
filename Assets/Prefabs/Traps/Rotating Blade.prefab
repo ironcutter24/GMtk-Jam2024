@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2121113564759964645}
   - component: {fileID: 8558224005527236174}
   - component: {fileID: 6703871526210797429}
-  - component: {fileID: 4244676258406026780}
+  - component: {fileID: 3784935735065589642}
   m_Layer: 0
   m_Name: Rotating Blade
   m_TagString: Untagged
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4244676258406026780
+--- !u!114 &3784935735065589642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8989246160855789514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a27b28c1db16e848a4cb11aced8f8b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f563559660e04e48a76f5f24f8bfe71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 6980514545378706775}
-  bladeSpeed: 5
+  pointA: {fileID: 6980514545378706775}
