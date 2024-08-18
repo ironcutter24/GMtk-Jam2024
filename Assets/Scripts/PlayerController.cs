@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Flag jumpFlag = new Flag();
 
     private Animator anim;
-    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D bodyCollider;
     private Rigidbody2D rb;
 
     [SerializeField] Transform graphics;
@@ -51,11 +51,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject tallLegs;
 
 
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        bodyCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
         gravityScale = gravityScaleDown;
@@ -141,8 +140,8 @@ public class PlayerController : MonoBehaviour
     private void SetCharacterBounds(Vector2 size)
     {
         bounds = size;
-        boxCollider.size = size;
-        boxCollider.offset = Vector2.up * size.y * .5f;
+        bodyCollider.size = size;
+        bodyCollider.offset = Vector2.up * size.y * .5f;
         //graphics.localScale = new Vector3(size.x, size.y, 1f);
     }
 
