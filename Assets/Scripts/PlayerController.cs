@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
         bounds = size;
         boxCollider.size = size;
         boxCollider.offset = Vector2.up * size.y * .5f;
-        graphics.localScale = new Vector3(size.x, size.y, 1f);
+        //graphics.localScale = new Vector3(size.x, size.y, 1f);
     }
 
     private void PlayerMove_performed(InputAction.CallbackContext context)
