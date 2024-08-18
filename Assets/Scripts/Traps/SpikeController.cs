@@ -6,9 +6,12 @@ public class SpikeController : GeneralObject
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (GameManager.Instance.state == GameManager.GameState.Play)
         {
-            collision.GetComponent<PlayerController>().Death();
+            if (collision.CompareTag("Player"))
+            {
+                collision.GetComponent<PlayerController>().Death();
+            }
         }
     }
 

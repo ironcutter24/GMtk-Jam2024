@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
+        PanelsManager.Instance.Open_Panel("GameOver_Panel");
     }
 
     private void SetCharacterBounds(Vector2 size)

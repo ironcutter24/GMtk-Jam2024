@@ -18,11 +18,6 @@ public class MainMenu : MonoBehaviour
         creditsButton.onClick.AddListener(OnCreditsButton);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnBeAHero()
     {
         SceneManager.LoadScene("SampleScene");
