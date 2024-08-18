@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f069b9998793cfc43b2eb2c154980d67
+guid: bb98c65229c62a049a9c4d615c39a1df
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -115,17 +115,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 828.3333
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 925
+        height: 998
+      alignment: 9
+      pivot: {x: 0.52, y: 0.08}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a64293b4cdd5704c8f50cf1c42379cc
-      internalID: -866727308
+      spriteID: 576e3f0dfa4a18b419b9cba272689074
+      internalID: -1142615220
       vertices: []
       indices: 
       edges: []
@@ -134,19 +134,19 @@ TextureImporter:
       name: Full_AnimSheet_Jump_1
       rect:
         serializedVersion: 2
-        x: 828
+        x: 925
         y: 0
-        width: 828.3333
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 925
+        height: 998
+      alignment: 9
+      pivot: {x: 0.52, y: 0.08}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f3c0469f14408b43842c1c2c0a98cc2
-      internalID: -1137891802
+      spriteID: 8378b0dd548f6fc458934684ee8f8062
+      internalID: -193520862
       vertices: []
       indices: 
       edges: []
@@ -155,19 +155,19 @@ TextureImporter:
       name: Full_AnimSheet_Jump_2
       rect:
         serializedVersion: 2
-        x: 1656
+        x: 1850
         y: 0
-        width: 828.3333
-        height: 1080
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 925
+        height: 998
+      alignment: 9
+      pivot: {x: 0.52, y: 0.08}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe3617a160889ed49a454a6bc351597b
-      internalID: 83796628
+      spriteID: c387f8e60f7f48c41916ca04dfe79575
+      internalID: -1236786236
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Full_AnimSheet_Jump_0: -866727308
-      Full_AnimSheet_Jump_1: -1137891802
-      Full_AnimSheet_Jump_2: 83796628
+      Full_AnimSheet_Jump_0: -1142615220
+      Full_AnimSheet_Jump_1: -193520862
+      Full_AnimSheet_Jump_2: -1236786236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

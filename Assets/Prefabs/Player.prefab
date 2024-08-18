@@ -27,7 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8597732619326110902}
   m_Father: {fileID: 8067923144227943460}
@@ -180,6 +180,14 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  playerChest: {fileID: 0}
+  playerLegs: {fileID: 0}
+  thinChest: {fileID: 0}
+  normalChest: {fileID: 0}
+  fatChest: {fileID: 0}
+  smallLegs: {fileID: 0}
+  normalLegs: {fileID: 0}
+  tallLegs: {fileID: 0}
 --- !u!1 &8726028275634985226
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +262,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.7830189, b: 0.031951167, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
