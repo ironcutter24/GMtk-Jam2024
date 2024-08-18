@@ -5,12 +5,8 @@ using UnityEngine;
 
 public class RotatingBlade : MonoBehaviour
 {
-    [SerializeField] Transform pointA;
-    [SerializeField] Transform pointB;
-
+    [SerializeField] Transform target;
     [SerializeField] float bladeSpeed;
-
-    public bool isCoroutineRunning;
 
     private void Start()
     {
@@ -19,22 +15,12 @@ public class RotatingBlade : MonoBehaviour
 
     private void StartMovingBlade()
     {
-        StartCoroutine(MovingBlade());
+        Sequence mySequence = DOTween.Sequence();
+        mySequence
+            .Append(transform.DOMove(target.position, 2f))
+            .Append(transform.DOMove(transform.position, 2f))
+            .SetLoops(-1);
     }
-
-    IEnumerator MovingBlade()
-    {
-        isCoroutineRunning = true;
-
-        yield return transform.DOMove(pointB.transform.position, 2f).WaitForCompletion();
-
-        yield return transform.DOMove(pointA.transform.position, 2f).WaitForCompletion();
-
-        isCoroutineRunning = false;
-
-        StartCoroutine(MovingBlade());
-    }
-        
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
