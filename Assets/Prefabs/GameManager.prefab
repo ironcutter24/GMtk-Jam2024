@@ -73,6 +73,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MoveSpeed>k__BackingField: 6
-  <JumpSpeed>k__BackingField: 12
+  <JumpSpeed>k__BackingField: 10
   <Strength>k__BackingField: 1
   <Weight>k__BackingField: 1
