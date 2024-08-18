@@ -13,36 +13,38 @@ public class ShooterTrap : MonoBehaviour
     [SerializeField] float ammoSpeed = 5f;
     [SerializeField] float fireRate = 3f;
 
-    bool playerDetected;
+    private bool playerDetected;
+
+    private Vector3 ShootDirection => Vector3.right * (transform.localScale.x < 0f ? -1f : 1f);
 
     private void FixedUpdate()
     {
-        if(GameManager.Instance.state == GameManager.GameState.Play)
+        if (GameManager.Instance.state == GameManager.GameState.Play)
         {
             CheckPlayerInRange();
-        }      
+        }
     }
 
     private void CheckPlayerInRange()
     {
-        RaycastHit2D hitPlayer = Physics2D.CircleCast(transform.position, circleRadius, transform.right, maxDistance, layerMask);
+        RaycastHit2D hitPlayer = Physics2D.CircleCast(transform.position, circleRadius, ShootDirection, maxDistance, layerMask);
 
-        if(hitPlayer.collider != null)
+        if (hitPlayer.collider != null)
         {
-            if(playerDetected == false)
+            if (playerDetected == false)
             {
                 playerDetected = true;
 
-                StartCoroutine(ShootPlayer(hitPlayer.collider.gameObject));
-            }  
+                StartCoroutine(_ShootPlayer(hitPlayer.collider.gameObject));
+            }
         }
     }
 
-    IEnumerator ShootPlayer(GameObject player)
+    IEnumerator _ShootPlayer(GameObject player)
     {
-        GameObject ammo = Instantiate(ammoPrefab, transform.position + new Vector3(1f, 0f, 0f), transform.rotation);
+        GameObject ammo = Instantiate(ammoPrefab, transform.position + ShootDirection, transform.rotation);
 
-        Vector3 direction = (player.transform.position - transform.position + new Vector3(1f, 0f, 0f)).normalized;
+        Vector3 direction = (player.transform.position - transform.position + ShootDirection);
         ammo.GetComponent<Rigidbody2D>().velocity = direction * ammoSpeed;
 
         yield return new WaitForSeconds(fireRate);

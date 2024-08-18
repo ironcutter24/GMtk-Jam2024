@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [ExecuteInEditMode]
@@ -10,6 +11,7 @@ public class SimpleAnimation : MonoBehaviour
     private SpriteRenderer spriteRend;
     private int index = 0;
 
+    [SerializeField] bool randomizeStartFrame = false;
     [SerializeField] SpriteFrame[] frames;
 
     private void Start()
@@ -18,6 +20,11 @@ public class SimpleAnimation : MonoBehaviour
 
         if (Application.isPlaying)
         {
+            if (randomizeStartFrame)
+            {
+                index = Random.Range(0, frames.Length);
+            }
+
             StartCoroutine(_LoopThroughSprites());
         }
     }
