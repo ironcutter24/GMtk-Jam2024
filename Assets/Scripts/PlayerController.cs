@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     const string ANIM_VERTICAL_SPEED_ID = "VerticalSpeed";
 
     private float move;
+    private bool isFlipped = false;
     private float gravityScale;
     private Flag jumpFlag = new Flag();
 
@@ -39,14 +40,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject playerChest;
     [SerializeField] GameObject playerLegs;
 
-    [Header("Body parts:")]
-    [Header("Weigth parts:")]
+    [Header("Body parts (weight):")]
     [SerializeField] GameObject thinChest;
     [SerializeField] GameObject normalChest;
     [SerializeField] GameObject fatChest;
 
-    [Header("Body parts:")]
-    [Header("Speed parts:")]
+    [Header("Body parts (speed):")]
     [SerializeField] GameObject smallLegs;
     [SerializeField] GameObject normalLegs;
     [SerializeField] GameObject tallLegs;
@@ -114,6 +113,9 @@ public class PlayerController : MonoBehaviour
         var isMoving = !Mathf.Approximately(move, 0f);
         if (isMoving)
         {
+            isFlipped = velocity.x < 0f;
+            graphics.transform.localScale = isFlipped ? new Vector3(-1f, 1f, 1f) : Vector3.one;
+
             bool pushingLeft = move < 0f && IsOnWallLeft();
             bool pushingRight = move > 0f && IsOnWallRight();
 
