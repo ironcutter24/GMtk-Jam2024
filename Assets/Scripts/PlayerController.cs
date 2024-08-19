@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using Util;
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +13,60 @@ public class PlayerController : MonoBehaviour
     const string ANIM_MOVING_ID = "IsMoving";
     const string ANIM_VERTICAL_SPEED_ID = "VerticalSpeed";
 
+    #region Stats Data
+
+    private readonly Vector2 defaultSize = new Vector2(.5f, 1f);
+
+    private readonly Dictionary<string, ParamValue[]> keyValuePairs = new Dictionary<string, ParamValue[]>()
+    {
+        {
+            "Speed", new ParamValue[]
+            {
+                new ParamValue(5f, Vector2.zero),
+                new ParamValue(10f, new Vector2(0f, .5f)),
+                new ParamValue(15f, new Vector2(0f, 1f))
+            }
+        },
+        {
+            "Jump", new ParamValue[]
+            {
+                new ParamValue(5f, Vector2.zero),
+                new ParamValue(9f, Vector2.zero),
+                new ParamValue(14f, Vector2.zero)
+            }
+        },
+        {
+            "Weight", new ParamValue[]
+            {
+                new ParamValue(0f, Vector2.zero),
+                new ParamValue(1f, Vector2.zero),
+                new ParamValue(2f, new Vector2(.5f, 0f))
+            }
+        },
+        {
+            "Strength", new ParamValue[]
+            {
+                new ParamValue(0f, Vector2.zero),
+                new ParamValue(1f, Vector2.zero),
+                new ParamValue(2f, new Vector2(1f, .5f))
+            }
+        },
+    };
+
+    private struct ParamValue
+    {
+        public float value;
+        public Vector2 sizeDelta;
+
+        public ParamValue(float value, Vector2 sizeDelta)
+        {
+            this.value = value;
+            this.sizeDelta = sizeDelta;
+        }
+    }
+
+    #endregion
+
     private float move;
     private bool isFlipped = false;
     private float gravityScale;
@@ -24,7 +77,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] Transform graphics;
-    [SerializeField] Vector2 bounds = Vector2.one;
+    [SerializeField, HideInInspector] Vector2 bounds;
 
     [Header("Jump")]
     [SerializeField, Min(0f)] float gravityScaleUp = 1f;
@@ -34,9 +87,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask ceilingMask;
     [SerializeField] LayerMask wallMask;
-
-    private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
-    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
 
     [Header("Body references:")]
     [SerializeField] GameObject playerChest;
@@ -53,6 +103,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject tallLegs;
 
 
+    private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
+    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
+
+    private float MoveSpeed => keyValuePairs["Speed"][PlayerStats.Instance.MoveSpeed].value;
+    private float JumpSpeed => keyValuePairs["Jump"][PlayerStats.Instance.JumpSpeed].value;
+
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -60,13 +117,15 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         gravityScale = gravityScaleDown;
-        SetCharacterBounds(bounds);
+        SetCharacterBounds(defaultSize);
 
         GameManager.Instance.SetPlayerController(this);
     }
 
     private void Start()
     {
+        PlayerStats.AnyChanged += RefreshBounds;
+
         InputManager.Actions.Player.Move.performed += PlayerMove_performed;
         InputManager.Actions.Player.Move.canceled += PlayerMove_performed;
         InputManager.Actions.Player.Jump.performed += PlayerJump_performed;
@@ -79,6 +138,8 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Instance.UnsetPlayerController(this);
+
+        PlayerStats.AnyChanged -= RefreshBounds;
 
         InputManager.Actions.Player.Move.performed -= PlayerMove_performed;
         InputManager.Actions.Player.Move.canceled -= PlayerMove_performed;
@@ -94,7 +155,7 @@ public class PlayerController : MonoBehaviour
         var isGrounded = IsOnGround();
         if (isGrounded)
         {
-            velocity.y = jumpFlag.Pop() ? PlayerStats.Instance.JumpSpeed : 0f;
+            velocity.y = jumpFlag.Pop() ? JumpSpeed : 0f;
         }
         else
         {
@@ -109,7 +170,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        velocity.x = move * PlayerStats.Instance.MoveSpeed;
+        velocity.x = move * MoveSpeed;
 
         var isMoving = !Mathf.Approximately(move, 0f);
         if (isMoving)
@@ -121,8 +182,6 @@ public class PlayerController : MonoBehaviour
             {
                 spr.flipX = isFlipped;
             }
-
-            //graphics.transform.localScale = isFlipped ? new Vector3(-1f, 1f, 1f) : Vector3.one;
 
             bool pushingLeft = move < 0f && IsOnWallLeft();
             bool pushingRight = move > 0f && IsOnWallRight();
@@ -145,14 +204,6 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
         PanelsManager.Instance.Open_Panel("GameOver_Panel");
-    }
-
-    private void SetCharacterBounds(Vector2 size)
-    {
-        bounds = size;
-        bodyCollider.size = size;
-        bodyCollider.offset = Vector2.up * size.y * .5f;
-        graphics.localScale = new Vector3(size.x, size.y, 1f);
     }
 
     private void PlayerMove_performed(InputAction.CallbackContext context)
@@ -178,65 +229,25 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.ReloadCurrentLevel();
     }
 
-    public void CheckAndSetSize(Slider sliderName)
+    public void RefreshBounds()
     {
-        if (sliderName.name == "SliderStrenght")
-        {
-            //Strength
-            if (PlayerStats.Instance.Strength < 3)
-            {
-                SetCharacterBounds(new Vector2(0.5f, 0.5f));
-            }
-            else if (PlayerStats.Instance.Strength > 2 && PlayerStats.Instance.Strength < 4)
-            {
-                SetCharacterBounds(new Vector2(1f, 1f));
-            }
-            else if (PlayerStats.Instance.Strength > 3)
-            {
-                SetCharacterBounds(new Vector2(2f, 2f));
-            }
-        }
-        else if (sliderName.name == "SliderWeight")
-        {
-            //Weight
-            if (PlayerStats.Instance.Weight < 3)
-            {
-                SetCharacterBounds(new Vector2(0.5f, 1f));
-            }
-            else if (PlayerStats.Instance.Weight > 2 && PlayerStats.Instance.Weight < 4)
-            {
-                SetCharacterBounds(new Vector2(1f, 1f));
-            }
-            else if (PlayerStats.Instance.Weight > 3)
-            {
-                SetCharacterBounds(new Vector2(2f, 1f));
-            }
-        }
-        else if (sliderName.name == "SliderSpeed")
-        {
-            //MoveSpeed
-            if (PlayerStats.Instance.MoveSpeed < 3)
-            {
-                //Cambio la sprite delle gambe (Legs) del personaggio con quelle corte.
-                //Adatto il collider alle nuove gambe.
+        var stats = PlayerStats.Instance;
 
-                //SetCharacterBounds(new Vector2(1f, 0.5f));
-            }
-            else if (PlayerStats.Instance.MoveSpeed > 2 && PlayerStats.Instance.MoveSpeed < 4)
-            {
-                //SetCharacterBounds(new Vector2(1f, 1f));
-                playerLegs = normalLegs;
-            }
-            else if (PlayerStats.Instance.MoveSpeed > 3)
-            {
-                //SetCharacterBounds(new Vector2(1f, 2f));
-                playerLegs = tallLegs;
-            }
-        }
-        else if (sliderName.name == "SliderJumpSpeed")
-        {
+        Vector2 totalSize = defaultSize;
+        totalSize += keyValuePairs["Speed"][stats.MoveSpeed].sizeDelta;
+        totalSize += keyValuePairs["Jump"][stats.JumpSpeed].sizeDelta;
+        totalSize += keyValuePairs["Weight"][stats.Weight].sizeDelta;
+        totalSize += keyValuePairs["Strength"][stats.Strength].sizeDelta;
 
-        }
+        SetCharacterBounds(totalSize);
+    }
+
+    private void SetCharacterBounds(Vector2 size)
+    {
+        bounds = size;
+        bodyCollider.size = size;
+        bodyCollider.offset = Vector2.up * size.y * .5f;
+        graphics.localScale = new Vector3(size.x, size.y, 1f);
     }
 
     #region Physics checks

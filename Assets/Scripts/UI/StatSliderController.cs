@@ -26,24 +26,20 @@ public class StatSliderController : MonoBehaviour
     private void SetStrenght(float value)
     {
         PlayerStats.Instance.SetStrength(value);
-        GameManager.Instance.PlayerController.CheckAndSetSize(sliderStrenght);
     }
 
     private void SetWeight(float value)
     {
         PlayerStats.Instance.SetWeight(value);
-        GameManager.Instance.PlayerController.CheckAndSetSize(sliderWeight);
     }
 
     private void SetSpeed(float value)
     {
         PlayerStats.Instance.SetMoveSpeed(value);
-        GameManager.Instance.PlayerController.CheckAndSetSize(sliderSpeed);
     }
 
     private void SetJumpSpeed(float value)
     {
         PlayerStats.Instance.SetJumpSpeed(value);
-        GameManager.Instance.PlayerController.CheckAndSetSize(sliderJumpSpeed);
     }
 }

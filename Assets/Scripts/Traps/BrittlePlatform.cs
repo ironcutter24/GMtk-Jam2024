@@ -5,23 +5,25 @@ using UnityEngine;
 
 public class BrittlePlatform : MonoBehaviour
 {
-    const float MAX_SUPPORTED_WEIGHT = 2.5f;
     const float BREAK_WAIT_TIME = 1f;
     const float BREAK_DURATION_TIME = 1f;
 
+    [SerializeField, Range(0, 2)] int maxSuportedWeight = 2;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] BoxCollider2D boxCollider;
 
     private bool wasTriggered = false;
 
-    public static bool IsExcedingMaxWeight => PlayerStats.Instance.Weight > MAX_SUPPORTED_WEIGHT;
+    public bool IsExcedingMaxWeight => PlayerStats.Instance.Weight >= maxSuportedWeight;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (wasTriggered) return;
 
-        if (collision.CompareTag("Player")/* && IsExcedingMaxWeight*/)
+        if (collision.CompareTag("Player") || collision.CompareTag("Crate"))
         {
+            if (!IsExcedingMaxWeight) return;
+
             wasTriggered = true;
 
             Sequence mySequence = DOTween.Sequence();
