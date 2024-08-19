@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fecccd0ab68629440bec2f0d48a48221
+guid: 9385d6aa9c20d0549aeca5ed7ca6ac05
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC_LongLeg_N_Jump_0
+      name: U_MC_ShortLeg_N_Walk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1379.6666
-        height: 1568
+        width: 897.75
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 778f0b21497e430449231253c042f0ce
-      internalID: -1528913321
+      spriteID: 57f4ed09bb6e4b24d8c732d323e0f595
+      internalID: 319153713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_LongLeg_N_Jump_1
+      name: U_MC_ShortLeg_N_Walk_1
       rect:
         serializedVersion: 2
-        x: 1379
+        x: 897
         y: 0
-        width: 1379.6666
-        height: 1568
+        width: 897.75
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 040114a603ec4774094ce6033b09c1aa
-      internalID: 515545875
+      spriteID: fa4afad8fd0bf0342a4f5206b53dafbe
+      internalID: 721997325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MC_LongLeg_N_Jump_2
+      name: U_MC_ShortLeg_N_Walk_2
       rect:
         serializedVersion: 2
-        x: 2758
+        x: 1794
         y: 0
-        width: 1379.6666
-        height: 1568
+        width: 897.75
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 813545808511c544fbb093d17c51afdd
-      internalID: -918518636
+      spriteID: a92afda07036cf04990bcaf8aa14828d
+      internalID: -1916237182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: U_MC_ShortLeg_N_Walk_3
+      rect:
+        serializedVersion: 2
+        x: 2691
+        y: 0
+        width: 897.75
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680d817bd3f3000428e40a70ab6ee7f6
+      internalID: -1804777621
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MC_LongLeg_N_Jump_0: -1528913321
-      MC_LongLeg_N_Jump_1: 515545875
-      MC_LongLeg_N_Jump_2: -918518636
+      U_MC_ShortLeg_N_Walk_0: 319153713
+      U_MC_ShortLeg_N_Walk_1: 721997325
+      U_MC_ShortLeg_N_Walk_2: -1916237182
+      U_MC_ShortLeg_N_Walk_3: -1804777621
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

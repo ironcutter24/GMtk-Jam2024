@@ -63,6 +63,8 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.BuildYourBuild:
+                PanelsManager.Instance.Open_Panel("BuildYourBuild_Panel");
+                PanelsManager.Instance.Close_Panel("LockStat_Panel");
                 break;
         }
     }
