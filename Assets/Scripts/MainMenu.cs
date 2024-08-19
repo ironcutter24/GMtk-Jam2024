@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button controlsButton;
     [SerializeField] Button creditsButton;
+    [SerializeField] Button quitButton;
 
     [Header("Panels")]
     [SerializeField] Transform controlsPanel;
@@ -22,6 +23,7 @@ public class MainMenu : MonoBehaviour
         startButton.onClick.AddListener(OnBeAHeroButton);
         controlsButton.onClick.AddListener(OnControlsButton);
         creditsButton.onClick.AddListener(OnCreditsButton);
+        quitButton.onClick.AddListener(OnQuit);
 
         InputManager.Actions.UI.Cancel.performed += UICancel_performed;
         InputManager.SwitchActionMapToUI();
@@ -51,6 +53,11 @@ public class MainMenu : MonoBehaviour
     {
         creditsPanel.gameObject.SetActive(true);
         AudioManager.Instance.PlayUIClick();
+    }
+    private void OnQuit()
+    {
+        Application.Quit();
+        Debug.Log("Game is quitting"); // This will not be seen in the build
     }
 
     private void OnBack()
