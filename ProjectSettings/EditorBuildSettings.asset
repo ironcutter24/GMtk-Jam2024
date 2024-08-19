@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Prod/Videos/VideoLogo.unity
+    guid: 5dcb42d7f86eebc4b9b4c04c98bbb76f
+  - enabled: 1
+    path: Assets/Scenes/Prod/Videos/VideoIntro.unity
+    guid: 33f9abe8a6864fa42b974511a6fdfdb0
+  - enabled: 1
     path: Assets/Scenes/Prod/TitleScreen.unity
     guid: 20f0946c1795a7940a272252922cf785
   - enabled: 1
     path: Assets/Scenes/Prod/MainMenu.unity
     guid: 6e37effd2dfddcc4dabd4a083e1b4ff0
+  - enabled: 1
+    path: Assets/Scenes/Prod/Videos/VideoEnding.unity
+    guid: 70ea85e8011ef4344b6beec441907afc
   m_configObjects: {}

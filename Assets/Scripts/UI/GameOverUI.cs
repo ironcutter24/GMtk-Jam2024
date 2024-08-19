@@ -5,16 +5,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static GameManager;
-using static SceneLoader;
 
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] Button restartButton, mainMenuButton;
-
-    //[Header("Panels")]
-    //[SerializeField] Transform controlsPanel;
-    //[SerializeField] Transform creditsPanel;
-
 
     private void Start()
     {

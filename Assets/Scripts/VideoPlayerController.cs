@@ -5,20 +5,28 @@ using UnityEngine.Events;
 using UnityEngine.Video;
 
 [RequireComponent(typeof(VideoPlayer))]
-public class VideoPlayerEvents : MonoBehaviour
+public class VideoPlayerController : MonoBehaviour
 {
+    const string remotePath = "https://ironcutter24.github.io/remote-hosting/built-like-a-hero/";
+
     private VideoPlayer videoPlayer;
 
+    [SerializeField] string remoteFileName;
+    [Space]
     public UnityEvent OnVideoEnded;
 
     private void Awake()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer = gameObject.GetComponent<VideoPlayer>();
     }
 
     private void Start()
     {
         videoPlayer.loopPointReached += OnLoopPointReached;
+
+        videoPlayer.source = VideoSource.Url;
+        videoPlayer.url = remotePath + remoteFileName;
+        videoPlayer.Play();
     }
 
     private void OnDestroy()
