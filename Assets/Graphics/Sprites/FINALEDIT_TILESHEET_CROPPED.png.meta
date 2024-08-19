@@ -609,10 +609,10 @@ TextureImporter:
       name: FINALEDIT_TILESHEET_CROPPED_78
       rect:
         serializedVersion: 2
-        x: 3731
-        y: 2
-        width: 1066
-        height: 1067
+        x: 3735
+        y: 0
+        width: 1063
+        height: 1065
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -630,10 +630,10 @@ TextureImporter:
       name: FINALEDIT_TILESHEET_CROPPED_81
       rect:
         serializedVersion: 2
-        x: 5330
-        y: 3
-        width: 1066
-        height: 1066
+        x: 5336
+        y: 0
+        width: 1064
+        height: 1063
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
