@@ -13,6 +13,7 @@ public class VideoPlayerController : MonoBehaviour
 
     [SerializeField] string remoteFileName;
     [Space]
+    public UnityEvent OnVideoStarted;
     public UnityEvent OnVideoEnded;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class VideoPlayerController : MonoBehaviour
 
     private void Start()
     {
+        videoPlayer.started += OnStarted;
         videoPlayer.loopPointReached += OnLoopPointReached;
 
         videoPlayer.source = VideoSource.Url;
@@ -31,7 +33,13 @@ public class VideoPlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
+        videoPlayer.started -= OnStarted;
         videoPlayer.loopPointReached -= OnLoopPointReached;
+    }
+
+    private void OnStarted(VideoPlayer vp)
+    {
+        OnVideoStarted?.Invoke();
     }
 
     private void OnLoopPointReached(VideoPlayer vp)

@@ -320,6 +320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   remoteFileName: Logo.mp4
+  OnVideoStarted:
+    m_PersistentCalls:
+      m_Calls: []
   OnVideoEnded:
     m_PersistentCalls:
       m_Calls:
