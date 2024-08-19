@@ -10,6 +10,7 @@ public class GameOverUI : MonoBehaviour
     public void On_RestartButton()
     {
         GameManager.Instance.ReloadCurrentLevel();
+        PanelsManager.Instance.Close_Panel("GameOver_Panel");
         GameManager.Instance.SetGameState(GameState.Play);
     }
 
