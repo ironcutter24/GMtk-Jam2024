@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Actor
   - 
   - 
   - 
@@ -38,12 +38,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2230614067
+    locked: 0
+  - name: ActorsBG
+    uniqueID: 53125323
+    locked: 0
+  - name: Ground
+    uniqueID: 1274871643
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Actors
     uniqueID: 1798408973
     locked: 0
+  - name: Player
+    uniqueID: 2681950155
+    locked: 0
   - name: Foreground
     uniqueID: 2724929865
+    locked: 0
+  - name: Balloon
+    uniqueID: 2513049809
     locked: 0

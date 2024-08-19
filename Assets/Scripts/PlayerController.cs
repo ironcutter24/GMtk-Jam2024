@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Layers")]
     [SerializeField] LayerMask groundMask;
+    [SerializeField] LayerMask ceilingMask;
+    [SerializeField] LayerMask wallMask;
 
     private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
     private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
@@ -232,14 +234,14 @@ public class PlayerController : MonoBehaviour
 
     #region Physics checks
 
-    private bool IsOnGround() => GroundCheck(rb.position, GroundBoxSize);
-    private bool IsOnCeiling() => GroundCheck(rb.position + new Vector2(0f, bounds.y), GroundBoxSize);
-    private bool IsOnWallLeft() => GroundCheck(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize);
-    private bool IsOnWallRight() => GroundCheck(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize);
+    private bool IsOnGround() => GroundCheck(rb.position, GroundBoxSize, groundMask);
+    private bool IsOnCeiling() => GroundCheck(rb.position + new Vector2(0f, bounds.y), GroundBoxSize, ceilingMask);
+    private bool IsOnWallLeft() => GroundCheck(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize, wallMask);
+    private bool IsOnWallRight() => GroundCheck(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize, wallMask);
 
-    private bool GroundCheck(Vector2 pos, Vector2 size)
+    private bool GroundCheck(Vector2 pos, Vector2 size, LayerMask layerMask)
     {
-        var hits = Physics2D.OverlapBoxAll(pos, size, 0f, groundMask);
+        var hits = Physics2D.OverlapBoxAll(pos, size, 0f, layerMask);
         for (int i = 0; i < hits.Length; i++)
         {
             if (!hits[i].isTrigger)

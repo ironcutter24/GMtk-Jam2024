@@ -11,6 +11,7 @@ public class BrittlePlatform : MonoBehaviour
 
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] BoxCollider2D boxCollider;
+
     private bool wasTriggered = false;
 
     public static bool IsExcedingMaxWeight => PlayerStats.Instance.Weight > MAX_SUPPORTED_WEIGHT;
