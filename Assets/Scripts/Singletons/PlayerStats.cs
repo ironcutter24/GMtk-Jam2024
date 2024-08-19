@@ -6,12 +6,13 @@ using Util;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
-    [field: SerializeField, Range(0f, 10f)] public float MoveSpeed { get; private set; }
-    [field: SerializeField, Range(0f, 10f)] public float JumpSpeed { get; private set; }
-    [field: SerializeField, Range(0f, 10f)] public float Strength { get; private set; }
-    [field: SerializeField, Range(0f, 10f)] public float Weight { get; private set; }
+    [field: SerializeField, Range(0f, 2f)] public int MoveSpeed { get; private set; }
+    [field: SerializeField, Range(0f, 2f)] public int JumpSpeed { get; private set; }
+    [field: SerializeField, Range(0f, 2f)] public int Strength { get; private set; }
+    [field: SerializeField, Range(0f, 2f)] public int Weight { get; private set; }
 
 
+    public static Action AnyChanged;
     public static Action MoveSpeedChanged;
     public static Action JumpSpeedChanged;
     public static Action StrengthChanged;
@@ -26,33 +27,37 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void ResetStats()
     {
-        SetMoveSpeed(6f);
-        SetJumpSpeed(9f);
-        SetStrength(1f);
-        SetWeight(1f);
+        SetMoveSpeed(0f);
+        SetJumpSpeed(0f);
+        SetStrength(0f);
+        SetWeight(0f);
     }
 
     public void SetMoveSpeed(float value)
     {
-        MoveSpeed = value;
+        MoveSpeed = (int)value;
         MoveSpeedChanged?.Invoke();
+        AnyChanged?.Invoke();
     }
 
     public void SetJumpSpeed(float value)
     {
-        JumpSpeed = value;
+        JumpSpeed = (int)value;
         JumpSpeedChanged?.Invoke();
+        AnyChanged?.Invoke();
     }
 
     public void SetStrength(float value)
     {
-        Strength = value;
+        Strength = (int)value;
         StrengthChanged?.Invoke();
+        AnyChanged?.Invoke();
     }
 
     public void SetWeight(float value)
     {
-        Weight = value;
+        Weight = (int)value;
         WeightChanged?.Invoke();
+        AnyChanged?.Invoke();
     }
 }

@@ -6,7 +6,7 @@ public class PushableCrate : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [SerializeField, Range(0, 10)] int minPushStrength = 3;
+    [SerializeField, Range(0, 2)] int minPushStrength = 2;
 
     private bool IsPushable => PlayerStats.Instance.Strength >= minPushStrength;
 
