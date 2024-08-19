@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: Water_Muddy
+  m_Name: Ground_Grass
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 842435014, guid: b1594e6500c7dce4ab990c339e2dfb78, type: 3}
+  m_DefaultSprite: {fileID: -124807186, guid: b1594e6500c7dce4ab990c339e2dfb78, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 2
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 842435014, guid: b1594e6500c7dce4ab990c339e2dfb78, type: 3}
+    - {fileID: -124807186, guid: b1594e6500c7dce4ab990c339e2dfb78, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -33,7 +33,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 1
     m_Sprites:
-    - {fileID: -356901657, guid: b1594e6500c7dce4ab990c339e2dfb78, type: 3}
+    - {fileID: -262047620, guid: b1594e6500c7dce4ab990c339e2dfb78, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
