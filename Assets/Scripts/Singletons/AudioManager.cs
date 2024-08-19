@@ -15,6 +15,14 @@ public class AudioManager : Singleton<AudioManager>
     [Header("Game Events")]
     [SerializeField] FMODUnity.EventReference gameOverEvent;
 
+    [Header("Player Events")]
+    [SerializeField] FMODUnity.EventReference playerStepEvent;
+    [SerializeField] FMODUnity.EventReference playerJumpEvent;
+    [SerializeField] FMODUnity.EventReference playerDashEvent;
+    [SerializeField] FMODUnity.EventReference playerDeathDrownEvent;
+    [SerializeField] FMODUnity.EventReference playerDeathBladeEvent;
+    [SerializeField] FMODUnity.EventReference playerDeathKnightEvent;
+
 
     public void PlayUIClick() => PlayOneShot(uiClickEvent);
     public void PlayUICancel() => PlayOneShot(uiCancelEvent);
@@ -23,6 +31,13 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayUIGameStarted() => PlayOneShot(uiGameStartEvent);
 
     public void PlayGameOver() => PlayOneShot(gameOverEvent);
+
+    public void PlayPlayerStep() => PlayOneShot(playerStepEvent);
+    public void PlayPlayerJump() => PlayOneShot(playerJumpEvent);
+    public void PlayPlayerDash() => PlayOneShot(playerDashEvent);
+    public void PlayPlayerDeathDrown() => PlayOneShot(playerDeathDrownEvent);
+    public void PlayPlayerDeathBlade() => PlayOneShot(playerDeathBladeEvent);
+    public void PlayPlayerDeathKnight() => PlayOneShot(playerDeathKnightEvent);
 
 
     private void PlayOneShot(FMODUnity.EventReference soundEvent)

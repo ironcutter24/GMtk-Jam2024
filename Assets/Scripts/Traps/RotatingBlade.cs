@@ -28,7 +28,7 @@ public class RotatingBlade : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PlayerController>().Death();
+                collision.GetComponent<PlayerController>().Death(DeathType.Blade);
             }
         } 
     }

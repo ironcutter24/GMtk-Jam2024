@@ -88,21 +88,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask ceilingMask;
     [SerializeField] LayerMask wallMask;
 
-    [Header("Body references:")]
-    [SerializeField] GameObject playerChest;
-    [SerializeField] GameObject playerLegs;
-
-    [Header("Body parts (weight):")]
-    [SerializeField] GameObject thinChest;
-    [SerializeField] GameObject normalChest;
-    [SerializeField] GameObject fatChest;
-
-    [Header("Body parts (speed):")]
-    [SerializeField] GameObject smallLegs;
-    [SerializeField] GameObject normalLegs;
-    [SerializeField] GameObject tallLegs;
-
-
     private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
     private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
 
@@ -156,6 +141,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             velocity.y = jumpFlag.Pop() ? JumpSpeed : 0f;
+            AudioManager.Instance.PlayPlayerJump();
         }
         else
         {
@@ -200,10 +186,28 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
     }
 
-    public void Death()
+    public void Death(DeathType deathType)
     {
+        PlayDeathAudio(deathType);
+
         GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
         PanelsManager.Instance.Open_Panel("GameOver_Panel");
+    }
+
+    private void PlayDeathAudio(DeathType deathType)
+    {
+        AudioManager.Instance.PlayGameOver();
+
+        switch(deathType)
+        {
+            case DeathType.Blade:
+                AudioManager.Instance.PlayPlayerDeathBlade();
+                break;
+
+            case DeathType.Drown:
+                AudioManager.Instance.PlayPlayerDeathDrown();
+                break;
+        }
     }
 
     private void PlayerMove_performed(InputAction.CallbackContext context)

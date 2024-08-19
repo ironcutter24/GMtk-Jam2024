@@ -13,7 +13,7 @@ public class Ammo_ShooterTrap : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerController>().Death();
+            collision.GetComponent<PlayerController>().Death(DeathType.Default);
         }
     }
 
