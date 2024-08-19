@@ -237,10 +237,14 @@ public class PlayerController : MonoBehaviour
         totalSize += keyValuePairs["Speed"][stats.MoveSpeed].sizeDelta;
         totalSize += keyValuePairs["Jump"][stats.JumpSpeed].sizeDelta;
 
-
-
-        totalSize += keyValuePairs["Weight"][stats.Weight].sizeDelta;
-        totalSize += keyValuePairs["Strength"][stats.Strength].sizeDelta;
+        if (stats.Strength >= stats.Weight)
+        {
+            totalSize += keyValuePairs["Strength"][stats.Strength].sizeDelta;
+        }
+        else
+        {
+            totalSize += keyValuePairs["Weight"][stats.Weight].sizeDelta;
+        }
 
         SetCharacterBounds(totalSize);
     }
