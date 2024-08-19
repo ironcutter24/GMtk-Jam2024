@@ -377,6 +377,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292e51d25b6f0624aaf553d6e1e0ff58, type: 3}
+--- !u!114 &344190483 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5061976995202274265, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+  m_PrefabInstance: {fileID: 1718418821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &371029560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1249,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 344190483}
+    - target: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+      propertyPath: mainMenuButton
+      value: 
+      objectReference: {fileID: 1758128261}
     - target: {fileID: 7031160069422808793, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1255,6 +1274,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+--- !u!114 &1758128261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 711985629263606906, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+  m_PrefabInstance: {fileID: 1718418821}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1834848417
 PrefabInstance:
   m_ObjectHideFlags: 0
