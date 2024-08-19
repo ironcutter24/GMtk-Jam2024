@@ -1577,7 +1577,7 @@ MonoBehaviour:
       Data2: 1308354808
       Data3: 1377780132
       Data4: -1523775987
-    Path: event:/GameOver
+    Path: event:/Death/GameOver
 --- !u!114 &1002769645569664546
 MonoBehaviour:
   m_ObjectHideFlags: 0
