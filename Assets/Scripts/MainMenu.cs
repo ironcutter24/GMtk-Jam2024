@@ -1,33 +1,62 @@
-using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Button startButton, commandButton, creditsButton;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Button startButton;
+    [SerializeField] Button controlsButton;
+    [SerializeField] Button creditsButton;
+
+    [Header("Panels")]
+    [SerializeField] Transform controlsPanel;
+    [SerializeField] Transform creditsPanel;
+
+
+    private void Start()
     {
         gameObject.SetActive(true);
-        startButton.onClick.AddListener(OnBeAHero);
-        commandButton.onClick.AddListener(OnCommandButton);
+        startButton.onClick.AddListener(OnBeAHeroButton);
+        controlsButton.onClick.AddListener(OnControlsButton);
         creditsButton.onClick.AddListener(OnCreditsButton);
+
+        InputManager.Actions.UI.Cancel.performed += UICancel_performed;
+        InputManager.SwitchActionMapToUI();
     }
 
-    private void OnBeAHero()
+    private void OnDestroy()
     {
-        SceneManager.LoadScene("SampleScene");
+        InputManager.Actions.UI.Cancel.performed -= UICancel_performed;
     }
-    private void OnCommandButton()
-    {
 
+    private void UICancel_performed(InputAction.CallbackContext context)
+    {
+        OnBack();
+    }
+
+    private void OnBeAHeroButton()
+    {
+        AudioManager.Instance.PlayUIGameStarted();
+        GameManager.Instance.LoadFirstLevel();
+    }
+    private void OnControlsButton()
+    {
+        controlsPanel.gameObject.SetActive(true);
+        AudioManager.Instance.PlayUIClick();
     }
     private void OnCreditsButton()
     {
+        creditsPanel.gameObject.SetActive(true);
+        AudioManager.Instance.PlayUIClick();
+    }
 
+    private void OnBack()
+    {
+        controlsPanel.gameObject.SetActive(false);
+        creditsPanel.gameObject.SetActive(false);
+        AudioManager.Instance.PlayUICancel();
     }
 }

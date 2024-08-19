@@ -54,6 +54,7 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.GameOver:
+                AudioManager.Instance.PlayGameOver();
                 PlayerDied?.Invoke();
                 break;
 
@@ -70,6 +71,12 @@ public class GameManager : Singleton<GameManager>
     {
         var activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
+    }
+
+    public void LoadFirstLevel()
+    {
+        levelIndex = 0;
+        SceneManager.LoadScene(levelList.GetLevelAt(levelIndex), LoadSceneMode.Single);
     }
 
     public void LoadNextLevel()

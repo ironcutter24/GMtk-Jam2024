@@ -1,0 +1,831 @@
+fileFormatVersion: 2
+guid: b1594e6500c7dce4ab990c339e2dfb78
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 512
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3733.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f84e5cab0752940bcf04b79a6b0266
+      internalID: 689107331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_1
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 3733.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45fa11ad18dbebf4d94bb1c06d1f14f7
+      internalID: 1702155706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_7
+      rect:
+        serializedVersion: 2
+        x: 3731
+        y: 3733.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ce5032b9348284da34ca2cc23b5589
+      internalID: -194820864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_8
+      rect:
+        serializedVersion: 2
+        x: 4264
+        y: 3733.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe00dfa4d231f8a4882d7150953a613d
+      internalID: -596498689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_9
+      rect:
+        serializedVersion: 2
+        x: 4797
+        y: 3733.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca54b20f0ce9b646822d97bbd5c027f
+      internalID: -2033170906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2667.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60df6b0d016bbc842af8d522bd8763a8
+      internalID: -100411953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_25
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 2667.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d955a87d964dc54e89e0a17da040185
+      internalID: 1328097580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_26
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 2667.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a850ff860e9d7748a37874d3b5b1cd0
+      internalID: 1625603652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_28
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 2668
+        width: 1599
+        height: 533
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9adc303794fdcf2408bb1635ec26c447
+      internalID: -447928334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_31
+      rect:
+        serializedVersion: 2
+        x: 3731
+        y: 1604
+        width: 2665
+        height: 1600
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c49ceefc44b60f4d9c5daf9a3574bd6
+      internalID: 1931009200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2134.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ac9010826aec1f4d850dac344bdb75c
+      internalID: 550083558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_37
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 2134.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ea8b6065b394241b73ccff4a83e685
+      internalID: 1482236753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_38
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 2134.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50020db9582463a4f890e6e7480d1fec
+      internalID: 322796731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_41
+      rect:
+        serializedVersion: 2
+        x: 2665
+        y: 2134.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01d2413adb3bca4d9241255e77abd50
+      internalID: 1124494780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1601.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5476f21cf0ddef249a9bd2629504a7ee
+      internalID: -1900218038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_49
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1601.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b170fcf7defce9a4d99693e5c95dbe5e
+      internalID: -1454096073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_50
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 1601.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f18fb25bcbba613448007e5d494f9111
+      internalID: 473690287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_52
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 1602
+        width: 1599
+        height: 533
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8482730c0642b6849af907042959aae5
+      internalID: 501876639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_71
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 535.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdf03bbdc7bb4c4081c883d52b75a5b
+      internalID: 842435014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_72
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 535.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5752bd5abdac1c542bf3cf97fb17d40f
+      internalID: -225327761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_73
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 535.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffe0c4971719bc4ea27a7c5170bfa2a
+      internalID: -244389236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_74
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 535.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18cfca6c945c10e4dba754ebc42a7843
+      internalID: -860020231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_76
+      rect:
+        serializedVersion: 2
+        x: 2665
+        y: 535.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8daf7e19c41406c47acd5ec99c438b99
+      internalID: -124807186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_78
+      rect:
+        serializedVersion: 2
+        x: 3731
+        y: 2
+        width: 1066
+        height: 1067
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50757c1822dc3b46a96a4ba6bb84031
+      internalID: -2030271095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_81
+      rect:
+        serializedVersion: 2
+        x: 5330
+        y: 3
+        width: 1066
+        height: 1066
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ff65b56aa5bbc44914825ba9a911a9
+      internalID: -607106132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_84
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 2.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3eeb46994b559c4fbb394b37a553c94
+      internalID: -356901657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_85
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 2.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58042f486f7068848bf242d3fb218ea3
+      internalID: -577669144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_86
+      rect:
+        serializedVersion: 2
+        x: 1599
+        y: 2.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e1b0ddcd882e840aa33edbe5b01cbd
+      internalID: -143850089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FINALEDIT_TILESHEET_CROPPED_88
+      rect:
+        serializedVersion: 2
+        x: 2665
+        y: 2.625
+        width: 533.3333
+        height: 533.375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5d997347a257d4fb827fb9a95b1a61
+      internalID: -262047620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FINALEDIT_TILESHEET_CROPPED_0: 689107331
+      FINALEDIT_TILESHEET_CROPPED_1: 1702155706
+      FINALEDIT_TILESHEET_CROPPED_10: 1585298509
+      FINALEDIT_TILESHEET_CROPPED_11: -2135785266
+      FINALEDIT_TILESHEET_CROPPED_12: -2016621593
+      FINALEDIT_TILESHEET_CROPPED_13: -1980873277
+      FINALEDIT_TILESHEET_CROPPED_14: 606833489
+      FINALEDIT_TILESHEET_CROPPED_15: -483409140
+      FINALEDIT_TILESHEET_CROPPED_16: 1928650130
+      FINALEDIT_TILESHEET_CROPPED_17: -136069711
+      FINALEDIT_TILESHEET_CROPPED_18: 2047370000
+      FINALEDIT_TILESHEET_CROPPED_19: -1579573097
+      FINALEDIT_TILESHEET_CROPPED_2: 1877800117
+      FINALEDIT_TILESHEET_CROPPED_20: 1055606307
+      FINALEDIT_TILESHEET_CROPPED_21: -2042955774
+      FINALEDIT_TILESHEET_CROPPED_22: 998565409
+      FINALEDIT_TILESHEET_CROPPED_23: 1424406885
+      FINALEDIT_TILESHEET_CROPPED_24: -100411953
+      FINALEDIT_TILESHEET_CROPPED_25: 1328097580
+      FINALEDIT_TILESHEET_CROPPED_26: 1625603652
+      FINALEDIT_TILESHEET_CROPPED_27: 269318376
+      FINALEDIT_TILESHEET_CROPPED_28: -447928334
+      FINALEDIT_TILESHEET_CROPPED_29: 1812909855
+      FINALEDIT_TILESHEET_CROPPED_3: 1522133707
+      FINALEDIT_TILESHEET_CROPPED_30: -797765456
+      FINALEDIT_TILESHEET_CROPPED_31: 1931009200
+      FINALEDIT_TILESHEET_CROPPED_32: 1219890106
+      FINALEDIT_TILESHEET_CROPPED_33: 1546240108
+      FINALEDIT_TILESHEET_CROPPED_34: 1924076207
+      FINALEDIT_TILESHEET_CROPPED_35: -1746625088
+      FINALEDIT_TILESHEET_CROPPED_36: 550083558
+      FINALEDIT_TILESHEET_CROPPED_37: 1482236753
+      FINALEDIT_TILESHEET_CROPPED_38: 322796731
+      FINALEDIT_TILESHEET_CROPPED_39: 1240941093
+      FINALEDIT_TILESHEET_CROPPED_4: -157215183
+      FINALEDIT_TILESHEET_CROPPED_40: 319046949
+      FINALEDIT_TILESHEET_CROPPED_41: 1124494780
+      FINALEDIT_TILESHEET_CROPPED_42: 10294682
+      FINALEDIT_TILESHEET_CROPPED_43: -457881819
+      FINALEDIT_TILESHEET_CROPPED_44: -1737030357
+      FINALEDIT_TILESHEET_CROPPED_45: 2007038892
+      FINALEDIT_TILESHEET_CROPPED_46: -1123095687
+      FINALEDIT_TILESHEET_CROPPED_47: -1007646049
+      FINALEDIT_TILESHEET_CROPPED_48: -1900218038
+      FINALEDIT_TILESHEET_CROPPED_49: -1454096073
+      FINALEDIT_TILESHEET_CROPPED_5: -347418802
+      FINALEDIT_TILESHEET_CROPPED_50: 473690287
+      FINALEDIT_TILESHEET_CROPPED_51: 970941481
+      FINALEDIT_TILESHEET_CROPPED_52: 501876639
+      FINALEDIT_TILESHEET_CROPPED_53: 509886436
+      FINALEDIT_TILESHEET_CROPPED_54: -2122793994
+      FINALEDIT_TILESHEET_CROPPED_55: 586237441
+      FINALEDIT_TILESHEET_CROPPED_56: -1441964484
+      FINALEDIT_TILESHEET_CROPPED_57: 1095661076
+      FINALEDIT_TILESHEET_CROPPED_58: 111901857
+      FINALEDIT_TILESHEET_CROPPED_59: 583194891
+      FINALEDIT_TILESHEET_CROPPED_6: 877759136
+      FINALEDIT_TILESHEET_CROPPED_60: 1670608200
+      FINALEDIT_TILESHEET_CROPPED_61: 1108722722
+      FINALEDIT_TILESHEET_CROPPED_62: -1133392444
+      FINALEDIT_TILESHEET_CROPPED_63: 667411122
+      FINALEDIT_TILESHEET_CROPPED_64: -1325023313
+      FINALEDIT_TILESHEET_CROPPED_65: 1000521873
+      FINALEDIT_TILESHEET_CROPPED_66: -1953072273
+      FINALEDIT_TILESHEET_CROPPED_67: -1314273091
+      FINALEDIT_TILESHEET_CROPPED_68: 1658300891
+      FINALEDIT_TILESHEET_CROPPED_69: -2106311721
+      FINALEDIT_TILESHEET_CROPPED_7: -194820864
+      FINALEDIT_TILESHEET_CROPPED_70: -196210630
+      FINALEDIT_TILESHEET_CROPPED_71: 842435014
+      FINALEDIT_TILESHEET_CROPPED_72: -225327761
+      FINALEDIT_TILESHEET_CROPPED_73: -244389236
+      FINALEDIT_TILESHEET_CROPPED_74: -860020231
+      FINALEDIT_TILESHEET_CROPPED_75: 974037611
+      FINALEDIT_TILESHEET_CROPPED_76: -124807186
+      FINALEDIT_TILESHEET_CROPPED_77: -1457401833
+      FINALEDIT_TILESHEET_CROPPED_78: -2030271095
+      FINALEDIT_TILESHEET_CROPPED_79: 390473314
+      FINALEDIT_TILESHEET_CROPPED_8: -596498689
+      FINALEDIT_TILESHEET_CROPPED_80: -1050724547
+      FINALEDIT_TILESHEET_CROPPED_81: -607106132
+      FINALEDIT_TILESHEET_CROPPED_82: -1474371427
+      FINALEDIT_TILESHEET_CROPPED_83: 2101891800
+      FINALEDIT_TILESHEET_CROPPED_84: -356901657
+      FINALEDIT_TILESHEET_CROPPED_85: -577669144
+      FINALEDIT_TILESHEET_CROPPED_86: -143850089
+      FINALEDIT_TILESHEET_CROPPED_87: 147488151
+      FINALEDIT_TILESHEET_CROPPED_88: -262047620
+      FINALEDIT_TILESHEET_CROPPED_89: -1068627230
+      FINALEDIT_TILESHEET_CROPPED_9: -2033170906
+      FINALEDIT_TILESHEET_CROPPED_90: 413307223
+      FINALEDIT_TILESHEET_CROPPED_91: 1763167827
+      FINALEDIT_TILESHEET_CROPPED_92: 1532882217
+      FINALEDIT_TILESHEET_CROPPED_93: 739476536
+      FINALEDIT_TILESHEET_CROPPED_94: -329728681
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

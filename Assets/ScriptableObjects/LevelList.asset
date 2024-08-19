@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553c30bd42b6e0e4a95a2c6f3bd3cb97, type: 3}
   m_Name: LevelList
   m_EditorClassIdentifier: 
-  sceneList: []
+  sceneList:
+  - IntroVideo
