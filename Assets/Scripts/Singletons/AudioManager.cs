@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 using Util;
 
 public class AudioManager : Singleton<AudioManager>
@@ -13,16 +12,18 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] FMODUnity.EventReference uiHoverExitEvent;
     [SerializeField] FMODUnity.EventReference uiGameStartEvent;
 
-    private void Start()
-    {
-        
-    }
+    [Header("Game Events")]
+    [SerializeField] FMODUnity.EventReference gameOverEvent;
+
 
     public void PlayUIClick() => PlayOneShot(uiClickEvent);
     public void PlayUICancel() => PlayOneShot(uiCancelEvent);
     public void PlayUIHoverEnter() => PlayOneShot(uiHoverEnterEvent);
     public void PlayUIHoverExit() => PlayOneShot(uiHoverExitEvent);
     public void PlayUIGameStarted() => PlayOneShot(uiGameStartEvent);
+
+    public void PlayGameOver() => PlayOneShot(gameOverEvent);
+
 
     private void PlayOneShot(FMODUnity.EventReference soundEvent)
     {

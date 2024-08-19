@@ -108,6 +108,13 @@ MonoBehaviour:
       Data3: -1260740452
       Data4: -374150021
     Path: event:/UI/StartGame
+  gameOverEvent:
+    Guid:
+      Data1: 104695072
+      Data2: 1308354808
+      Data3: 1377780132
+      Data4: -1523775987
+    Path: event:/GameOver
 --- !u!114 &1002769645569664546
 MonoBehaviour:
   m_ObjectHideFlags: 0
