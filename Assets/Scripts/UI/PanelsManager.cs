@@ -2,17 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util;
 
-public class PanelsManager : MonoBehaviour
+public class PanelsManager : Singleton<PanelsManager>
 {
-    public static PanelsManager Instance;
-
     public GameObject[] panels;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
 
     /// <summary>
     /// Opens a panel, specified through name.
