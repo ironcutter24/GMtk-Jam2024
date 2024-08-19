@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Util;
+using static GameManager;
 
 public class PlayerController : MonoBehaviour
 {
@@ -89,55 +90,61 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var velocity = rb.velocity;
+        if(GameManager.Instance.state == GameManager.GameState.Play)
+        {
+            var velocity = rb.velocity;
 
-        var isGrounded = IsOnGround();
-        if (isGrounded)
-        {
-            velocity.y = jumpFlag.Pop() ? PlayerStats.Instance.JumpSpeed : 0f;
-        }
-        else
-        {
-            if (IsOnCeiling() && velocity.y > 0f)
+            var isGrounded = IsOnGround();
+            if (isGrounded)
             {
-                velocity.y = 0f;
+                velocity.y = jumpFlag.Pop() ? PlayerStats.Instance.JumpSpeed : 0f;
             }
             else
             {
-                gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
-                velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                if (IsOnCeiling() && velocity.y > 0f)
+                {
+                    velocity.y = 0f;
+                }
+                else
+                {
+                    gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
+                    velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                }
             }
-        }
 
-        velocity.x = move * PlayerStats.Instance.MoveSpeed;
+            velocity.x = move * PlayerStats.Instance.MoveSpeed;
 
-        var isMoving = !Mathf.Approximately(move, 0f);
-        if (isMoving)
-        {
-            isFlipped = velocity.x < 0f;
-            graphics.transform.localScale = isFlipped ? new Vector3(-1f, 1f, 1f) : Vector3.one;
-
-            bool pushingLeft = move < 0f && IsOnWallLeft();
-            bool pushingRight = move > 0f && IsOnWallRight();
-
-            if (pushingLeft || pushingRight)
+            var isMoving = !Mathf.Approximately(move, 0f);
+            if (isMoving)
             {
-                velocity.x = 0f;
+                isFlipped = velocity.x < 0f;
+                graphics.transform.localScale = isFlipped ? new Vector3(-1f, 1f, 1f) : Vector3.one;
+
+                bool pushingLeft = move < 0f && IsOnWallLeft();
+                bool pushingRight = move > 0f && IsOnWallRight();
+
+                if (pushingLeft || pushingRight)
+                {
+                    velocity.x = 0f;
+                }
             }
-        }
 
-        rb.velocity = velocity;
+            rb.velocity = velocity;
 
-        // Animation parameters
-        anim.SetBool(ANIM_MOVING_ID, isMoving);
-        anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
-        anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+            // Animation parameters
+            anim.SetBool(ANIM_MOVING_ID, isMoving);
+            anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
+            anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+        }  
     }
 
     public void Death()
     {
         GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
-        PanelsManager.Instance.Open_Panel("GameOver_Panel");
+
+        GameManager.Instance.ReloadCurrentLevel();
+        GameManager.Instance.SetGameState(GameState.Play);
+        //PanelsManager.Instance.Open_Panel("GameOver_Panel");
     }
 
     private void SetCharacterBounds(Vector2 size)
