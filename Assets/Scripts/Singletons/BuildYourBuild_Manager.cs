@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class BuildYourBuild_Manager : MonoBehaviour
 {
+    [SerializeField] Button confirmYourBuild_Button;
 
     private void Start()
     {
+        confirmYourBuild_Button.onClick.AddListener(ConfirmYourBuild);
         BuildToBuiltMoment();
     }
 
@@ -15,6 +17,7 @@ public class BuildYourBuild_Manager : MonoBehaviour
     {
         GameManager.Instance.SetGameState(GameManager.GameState.BuildYourBuild);
         PanelsManager.Instance.Open_Panel("BuildYourBuild_Panel");
+        PanelsManager.Instance.Close_Panel("LockStat_Panel");
     }
 
     public void ConfirmYourBuild()
