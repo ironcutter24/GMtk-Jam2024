@@ -140,8 +140,15 @@ public class PlayerController : MonoBehaviour
         var isGrounded = IsOnGround();
         if (isGrounded)
         {
-            velocity.y = jumpFlag.Pop() ? JumpSpeed : 0f;
-            AudioManager.Instance.PlayPlayerJump();
+            if (jumpFlag.Pop())
+            {
+                velocity.y = JumpSpeed;
+                AudioManager.Instance.PlayPlayerJump();
+            }
+            else
+            {
+                velocity.y = 0f;
+            }
         }
         else
         {
@@ -198,7 +205,7 @@ public class PlayerController : MonoBehaviour
     {
         AudioManager.Instance.PlayGameOver();
 
-        switch(deathType)
+        switch (deathType)
         {
             case DeathType.Blade:
                 AudioManager.Instance.PlayPlayerDeathBlade();
@@ -206,6 +213,10 @@ public class PlayerController : MonoBehaviour
 
             case DeathType.Drown:
                 AudioManager.Instance.PlayPlayerDeathDrown();
+                break;
+
+            case DeathType.Knight:
+                AudioManager.Instance.PlayPlayerDeathKnight();
                 break;
         }
     }

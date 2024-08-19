@@ -3,10 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    Tween currentTween;
+    private Tween currentTween;
+
+    [SerializeField] bool hasClickSound = true;
+
+    private void Start()
+    {
+        if (hasClickSound)
+        {
+            GetComponent<Button>().onClick.AddListener(OnClick);
+        }
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -18,6 +30,11 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         AudioManager.Instance.PlayUIHoverExit();
         TweenTo(1f);
+    }
+
+    private void OnClick()
+    {
+        AudioManager.Instance.PlayUIClick();
     }
 
     private void TweenTo(float relativeScale)
