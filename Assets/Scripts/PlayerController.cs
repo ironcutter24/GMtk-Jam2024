@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     #region Stats Data
 
-    private readonly Vector2 defaultSize = new Vector2(.5f, 1f);
+    private readonly Vector2 defaultSize = new Vector2(.5f, 1.5f);
 
     private readonly Dictionary<string, ParamValue[]> keyValuePairs = new Dictionary<string, ParamValue[]>()
     {
@@ -236,6 +236,9 @@ public class PlayerController : MonoBehaviour
         Vector2 totalSize = defaultSize;
         totalSize += keyValuePairs["Speed"][stats.MoveSpeed].sizeDelta;
         totalSize += keyValuePairs["Jump"][stats.JumpSpeed].sizeDelta;
+
+
+
         totalSize += keyValuePairs["Weight"][stats.Weight].sizeDelta;
         totalSize += keyValuePairs["Strength"][stats.Strength].sizeDelta;
 
