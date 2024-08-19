@@ -115,7 +115,14 @@ public class PlayerController : MonoBehaviour
         if (isMoving)
         {
             isFlipped = velocity.x < 0f;
-            graphics.transform.localScale = isFlipped ? new Vector3(-1f, 1f, 1f) : Vector3.one;
+            var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
+
+            foreach (var spr in sprs)
+            {
+                spr.flipX = isFlipped;
+            }
+
+            //graphics.transform.localScale = isFlipped ? new Vector3(-1f, 1f, 1f) : Vector3.one;
 
             bool pushingLeft = move < 0f && IsOnWallLeft();
             bool pushingRight = move > 0f && IsOnWallRight();
@@ -145,7 +152,7 @@ public class PlayerController : MonoBehaviour
         bounds = size;
         bodyCollider.size = size;
         bodyCollider.offset = Vector2.up * size.y * .5f;
-        //graphics.localScale = new Vector3(size.x, size.y, 1f);
+        graphics.localScale = new Vector3(size.x, size.y, 1f);
     }
 
     private void PlayerMove_performed(InputAction.CallbackContext context)
