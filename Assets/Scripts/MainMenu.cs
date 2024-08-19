@@ -47,12 +47,10 @@ public class MainMenu : MonoBehaviour
     private void OnControlsButton()
     {
         controlsPanel.gameObject.SetActive(true);
-        AudioManager.Instance.PlayUIClick();
     }
     private void OnCreditsButton()
     {
         creditsPanel.gameObject.SetActive(true);
-        AudioManager.Instance.PlayUIClick();
     }
     private void OnQuit()
     {
