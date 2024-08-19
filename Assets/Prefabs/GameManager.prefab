@@ -863,10 +863,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d9214d40608d945881e6a4dbe234d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MoveSpeed>k__BackingField: 1
-  <JumpSpeed>k__BackingField: 1
-  <Strength>k__BackingField: 1
-  <Weight>k__BackingField: 1
+  <MoveSpeed>k__BackingField: 0
+  <JumpSpeed>k__BackingField: 0
+  <Strength>k__BackingField: 0
+  <Weight>k__BackingField: 0
 --- !u!114 &2171475621964003265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed62b5c3c9649d04fb9de3ffa74abf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restartButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
 --- !u!114 &5741550272404905859
 MonoBehaviour:
   m_ObjectHideFlags: 0
