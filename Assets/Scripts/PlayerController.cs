@@ -150,54 +150,57 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var velocity = rb.velocity;
+        if(GameManager.Instance.state == GameManager.GameState.Play)
+        {
+            var velocity = rb.velocity;
 
-        var isGrounded = IsOnGround();
-        if (isGrounded)
-        {
-            velocity.y = jumpFlag.Pop() ? JumpSpeed : 0f;
-        }
-        else
-        {
-            if (IsOnCeiling() && velocity.y > 0f)
+            var isGrounded = IsOnGround();
+            if (isGrounded)
             {
-                velocity.y = 0f;
+                velocity.y = jumpFlag.Pop() ? JumpSpeed : 0f;
             }
             else
             {
-                gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
-                velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                if (IsOnCeiling() && velocity.y > 0f)
+                {
+                    velocity.y = 0f;
+                }
+                else
+                {
+                    gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
+                    velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                }
             }
-        }
 
-        velocity.x = move * MoveSpeed;
+            velocity.x = move * MoveSpeed;
 
-        var isMoving = !Mathf.Approximately(move, 0f);
-        if (isMoving)
-        {
-            isFlipped = velocity.x < 0f;
-            var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
-
-            foreach (var spr in sprs)
+            var isMoving = !Mathf.Approximately(move, 0f);
+            if (isMoving)
             {
-                spr.flipX = isFlipped;
+                isFlipped = velocity.x < 0f;
+                var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
+
+                foreach (var spr in sprs)
+                {
+                    spr.flipX = isFlipped;
+                }
+
+                bool pushingLeft = move < 0f && IsOnWallLeft();
+                bool pushingRight = move > 0f && IsOnWallRight();
+
+                if (pushingLeft || pushingRight)
+                {
+                    velocity.x = 0f;
+                }
             }
 
-            bool pushingLeft = move < 0f && IsOnWallLeft();
-            bool pushingRight = move > 0f && IsOnWallRight();
+            rb.velocity = velocity;
 
-            if (pushingLeft || pushingRight)
-            {
-                velocity.x = 0f;
-            }
-        }
-
-        rb.velocity = velocity;
-
-        // Animation parameters
-        anim.SetBool(ANIM_MOVING_ID, isMoving);
-        anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
-        anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+            // Animation parameters
+            anim.SetBool(ANIM_MOVING_ID, isMoving);
+            anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
+            anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+        }  
     }
 
     public void Death()
