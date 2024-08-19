@@ -11,12 +11,12 @@ public class BuiltToBuilt_Manager : MonoBehaviour
     {
         GameManager.Instance.SetGameState(GameManager.GameState.BuildYourBuild);
 
-        PanelsManager.Instance.Open_Panel("BuiltToBuilt_Panel");
+        PanelsManager.Instance.Open_Panel("BuiltToBuild_Panel");
     }
 
     public void ConfirmYourBuild()
     {
-        PanelsManager.Instance.Close_Panel("BuiltToBuilt_Panel");
+        PanelsManager.Instance.Close_Panel("BuiltToBuild_Panel");
         PanelsManager.Instance.Open_Panel("LockStat_Panel");
 
         GameManager.Instance.SetGameState(GameManager.GameState.Play);

@@ -135,62 +135,65 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var velocity = rb.velocity;
-
-        var isGrounded = IsOnGround();
-        if (isGrounded)
+        if(GameManager.Instance.state == GameManager.GameState.Play)
         {
-            if (jumpFlag.Pop())
+            var velocity = rb.velocity;
+
+            var isGrounded = IsOnGround();
+            if (isGrounded)
             {
-                velocity.y = JumpSpeed;
-                AudioManager.Instance.PlayPlayerJump();
+                if (jumpFlag.Pop())
+                {
+                    velocity.y = JumpSpeed;
+                    AudioManager.Instance.PlayPlayerJump();
+                }
+                else
+                {
+                    velocity.y = 0f;
+                }
             }
             else
             {
-                velocity.y = 0f;
+                if (IsOnCeiling() && velocity.y > 0f)
+                {
+                    velocity.y = 0f;
+                }
+                else
+                {
+                    gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
+                    velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                }
             }
-        }
-        else
-        {
-            if (IsOnCeiling() && velocity.y > 0f)
+
+            velocity.x = move * MoveSpeed;
+
+            var isMoving = !Mathf.Approximately(move, 0f);
+            if (isMoving)
             {
-                velocity.y = 0f;
-            }
-            else
-            {
-                gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
-                velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
-            }
-        }
+                isFlipped = velocity.x < 0f;
+                var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
 
-        velocity.x = move * MoveSpeed;
+                foreach (var spr in sprs)
+                {
+                    spr.flipX = isFlipped;
+                }
 
-        var isMoving = !Mathf.Approximately(move, 0f);
-        if (isMoving)
-        {
-            isFlipped = velocity.x < 0f;
-            var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
+                bool pushingLeft = move < 0f && IsOnWallLeft();
+                bool pushingRight = move > 0f && IsOnWallRight();
 
-            foreach (var spr in sprs)
-            {
-                spr.flipX = isFlipped;
+                if (pushingLeft || pushingRight)
+                {
+                    velocity.x = 0f;
+                }
             }
 
-            bool pushingLeft = move < 0f && IsOnWallLeft();
-            bool pushingRight = move > 0f && IsOnWallRight();
+            rb.velocity = velocity;
 
-            if (pushingLeft || pushingRight)
-            {
-                velocity.x = 0f;
-            }
-        }
-
-        rb.velocity = velocity;
-
-        // Animation parameters
-        anim.SetBool(ANIM_MOVING_ID, isMoving);
-        anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
-        anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+            // Animation parameters
+            anim.SetBool(ANIM_MOVING_ID, isMoving);
+            anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
+            anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+        } 
     }
 
     public void Death(DeathType deathType)

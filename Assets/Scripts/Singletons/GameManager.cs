@@ -63,7 +63,7 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.BuildYourBuild:
-                PanelsManager.Instance.Open_Panel("BuiltToBuilt_Panel");
+                PanelsManager.Instance.Open_Panel("BuiltToBuild_Panel");
                 PanelsManager.Instance.Close_Panel("LockStat_Panel");
                 break;
         }
