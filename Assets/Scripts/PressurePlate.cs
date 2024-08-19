@@ -14,17 +14,19 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !isTriggered)
+        if (collision.CompareTag("Player") || collision.CompareTag("Crate"))
         {
-            isTriggered = true;
+            if (!isTriggered)
+                isTriggered = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && isTriggered)
+        if (collision.CompareTag("Player") || collision.CompareTag("Crate"))
         {
-            isTriggered = false;
+            if (isTriggered)
+                isTriggered = false;
         }
     }
 
