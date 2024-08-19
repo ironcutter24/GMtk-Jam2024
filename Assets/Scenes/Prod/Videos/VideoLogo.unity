@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6283307090222216976, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: remoteFileName
-      value: Logo.webm
+      value: Logo_Gioco_Animato.webm
       objectReference: {fileID: 0}
     - target: {fileID: 7944404584999247393, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: m_Name
