@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     #region Stats Data
 
-    private readonly Vector2 defaultSize = new Vector2(.5f, 1.5f);
+    private readonly Vector2 defaultSize = new Vector2(.8f, 1.8f);
 
     private readonly Dictionary<string, ParamValue[]> keyValuePairs = new Dictionary<string, ParamValue[]>()
     {
@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
             "Speed", new ParamValue[]
             {
                 new ParamValue(5f, Vector2.zero),
-                new ParamValue(10f, new Vector2(0f, .5f)),
-                new ParamValue(15f, new Vector2(0f, 1f))
+                new ParamValue(10f, new Vector2(0f, 1f)),
+                new ParamValue(15f, new Vector2(0f, 2f))
             }
         },
         {
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             {
                 new ParamValue(0f, Vector2.zero),
                 new ParamValue(1f, Vector2.zero),
-                new ParamValue(2f, new Vector2(.5f, 0f))
+                new ParamValue(2f, new Vector2(1f, 0f))
             }
         },
         {
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             {
                 new ParamValue(0f, Vector2.zero),
                 new ParamValue(1f, Vector2.zero),
-                new ParamValue(2f, new Vector2(1f, .5f))
+                new ParamValue(2f, new Vector2(2f, 2f))
             }
         },
     };
