@@ -7,7 +7,7 @@ using UnityEngine.Video;
 [RequireComponent(typeof(VideoPlayer))]
 public class VideoPlayerController : MonoBehaviour
 {
-    const string remotePath = "https://ironcutter24.github.io/remote-hosting/built-like-a-hero/";
+    const string remotePath = "https://ironcutter24.github.io/GMtk-Jam2024/";
 
     private VideoPlayer videoPlayer;
 
