@@ -72,6 +72,12 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
     }
 
+    public void LoadFirstLevel()
+    {
+        levelIndex = 0;
+        SceneManager.LoadScene(levelList.GetLevelAt(levelIndex), LoadSceneMode.Single);
+    }
+
     public void LoadNextLevel()
     {
         if (++levelIndex >= levelList.GetCount())

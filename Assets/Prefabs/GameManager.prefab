@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5082789943397898972}
   - component: {fileID: 5387469606394452572}
   - component: {fileID: 1170109166692411496}
+  - component: {fileID: 3147111638422660429}
   - component: {fileID: 1002769645569664546}
   m_Layer: 0
   m_Name: GameManager
@@ -60,6 +61,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497ada14e8c77114a9b7865f461a35af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3147111638422660429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2917991161917756351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd78922b83334a459a22e8a778df90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiClickEvent:
+    Guid:
+      Data1: 1148567566
+      Data2: 1138021846
+      Data3: 1734710915
+      Data4: 45202868
+    Path: event:/UI/Click
+  uiCancelEvent:
+    Guid:
+      Data1: -1866384541
+      Data2: 1293405525
+      Data3: 737329823
+      Data4: -1797788699
+    Path: event:/UI/Cancel
+  uiHoverEnterEvent:
+    Guid:
+      Data1: 1449526157
+      Data2: 1317498434
+      Data3: 108300177
+      Data4: 173820429
+    Path: event:/UI/HoverEnter
+  uiHoverExitEvent:
+    Guid:
+      Data1: -766583470
+      Data2: 1256134704
+      Data3: 234343592
+      Data4: 1551725598
+    Path: event:/UI/HoverExit
+  uiGameStartEvent:
+    Guid:
+      Data1: 1172609687
+      Data2: 1311915727
+      Data3: -1260740452
+      Data4: -374150021
+    Path: event:/UI/StartGame
 --- !u!114 &1002769645569664546
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,10 +7,10 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] SpriteRenderer pressableSurface;
     [SerializeField] float startHeight = .375f;
     [SerializeField] float endHeight = .01f;
-    [SerializeField] float speed = 5f; // Speed of the movement
+    [SerializeField] float speed = 5f;
 
     private bool isTriggered = false;
-    private float t = 0f; // Interpolation parameter
+    private float t = 0f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,7 +30,6 @@ public class PressurePlate : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Update the interpolation parameter
         if (isTriggered)
         {
             t += speed * Time.fixedDeltaTime;
