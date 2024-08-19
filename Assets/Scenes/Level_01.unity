@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &49045703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2917991161917756351, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+  m_PrefabInstance: {fileID: 822363394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &157390606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,11 +3909,11 @@ PrefabInstance:
     - target: {fileID: 2171475621964003265, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: panels.Array.data[1]
       value: 
-      objectReference: {fileID: 1285227623}
+      objectReference: {fileID: 711934378}
     - target: {fileID: 2171475621964003265, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: panels.Array.data[2]
       value: 
-      objectReference: {fileID: 711934378}
+      objectReference: {fileID: 1285227623}
     - target: {fileID: 2436570552127558250, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3968,7 +3973,7 @@ PrefabInstance:
     - target: {fileID: 2957900648442629546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 822363409}
+      objectReference: {fileID: 822363417}
     - target: {fileID: 2957900648442629546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3979,7 +3984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957900648442629546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BuiltToBuilt_Manager, Assembly-CSharp
+      value: BuildYourBuild_Manager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2957900648442629546, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -4087,7 +4092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4241994422472395476, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_Name
-      value: BuiltToBuild_Panel
+      value: BuildYourBuild_Panel
       objectReference: {fileID: 0}
     - target: {fileID: 4309940279761213379, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4477,14 +4482,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5768146907865604903, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6996962891644247933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
     - {fileID: 9012524301443842117, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
     - {fileID: 8261959071355997718, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
     - {fileID: 5295812528311379477, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2917991161917756351, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 822363417}
   m_SourcePrefab: {fileID: 100100000, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
 --- !u!114 &822363395 stripped
 MonoBehaviour:
@@ -4557,18 +4566,19 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
   m_PrefabInstance: {fileID: 822363394}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 49045703}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed62b5c3c9649d04fb9de3ffa74abf3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &822363409 stripped
+--- !u!114 &822363417
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5768146907865604903, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
-  m_PrefabInstance: {fileID: 822363394}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 49045703}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92d220847a423614fadf29e1b19dae20, type: 3}
@@ -4742,11 +4752,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8067923144227943460, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.59
+      value: -20.75
       objectReference: {fileID: 0}
     - target: {fileID: 8067923144227943460, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.05
+      value: -10.78
       objectReference: {fileID: 0}
     - target: {fileID: 8067923144227943460, guid: 75ed02ba87e8221478c592cecd803b24, type: 3}
       propertyPath: m_LocalPosition.z

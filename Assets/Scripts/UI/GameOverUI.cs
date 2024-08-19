@@ -19,7 +19,6 @@ public class GameOverUI : MonoBehaviour
     {
         GameManager.Instance.ReloadCurrentLevel();
         PanelsManager.Instance.Close_Panel("GameOver_Panel");
-        GameManager.Instance.SetGameState(GameState.Play);
     }
 
     public void On_MenuButton()
