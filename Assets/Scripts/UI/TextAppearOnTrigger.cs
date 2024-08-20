@@ -1,22 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class TextAppearOnTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject textBallon;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] SpriteRenderer balloon;
+    [SerializeField] SpriteRenderer pointer;
+    [SerializeField] TextMeshPro textMeshPro;
+    [SerializeField] Color balloonColor;
+    [SerializeField] Color tutorialColor;
+    [Space]
+    [SerializeField] bool isTutorial = false;
+    [Space]
+    [SerializeField, Multiline] string textMessage;
+
+    private void Start()
     {
-        textBallon.SetActive(false);
+        if (!Application.isPlaying) return;
+
+        balloon.gameObject.SetActive(false);
+        textMeshPro.text = textMessage;
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (!Application.isPlaying)
+        {
+            textMeshPro.text = textMessage;
+
+            balloon.color = isTutorial ? tutorialColor : balloonColor;
+            pointer.color = balloonColor;
+            pointer.gameObject.SetActive(!isTutorial);
+        }
+    }
+#endif
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-                textBallon.SetActive(true);
+        balloon.gameObject.SetActive(true);
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Destroy(textBallon);
+        balloon.gameObject.SetActive(false);
     }
 }
