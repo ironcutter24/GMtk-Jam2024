@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using Util;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] LevelList_SO levelList;
     [SerializeField] PlayerAnimControllers_SO animControllers;
 
     [Header("Game state")]
@@ -17,6 +17,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject statsSetPanel;
     [SerializeField] GameObject statsLockPanel;
+
+    [Header("Audio")]
+    [SerializeField] StudioEventEmitter menuAndTutorialMusic;
+    [SerializeField] StudioEventEmitter dungeonMusic;
 
     public PlayerController PlayerController { get; private set; }
     public PlayerAnimControllers_SO AnimControllers => animControllers;
@@ -44,9 +48,9 @@ public class GameManager : Singleton<GameManager>
     private void RefreshStateForCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name.Contains("Tutorial"))
+        if (currentScene.name.Contains("Tutorial") || currentScene.name.Contains("MainMenu"))
         {
-            SetGameState(GameState.Tutorial);
+            SetGameState(GameState.MenuAndTutorial);
         }
         else if (currentScene.name.Contains("Level"))
         {
@@ -77,6 +81,13 @@ public class GameManager : Singleton<GameManager>
 
         switch (newState)
         {
+            case GameState.MenuAndTutorial:
+                Time.timeScale = 1;
+                HideAllUI();
+                TryPlayMenuAndDungeonMusic();
+
+                break;
+
             case GameState.Play:
                 Time.timeScale = 1;
 
@@ -84,11 +95,6 @@ public class GameManager : Singleton<GameManager>
                 statsSetPanel.SetActive(true);
                 statsLockPanel.SetActive(true);
 
-                break;
-
-            case GameState.Tutorial:
-                Time.timeScale = 1;
-                HideAllUI();
                 break;
 
             case GameState.GameOver:
@@ -111,6 +117,8 @@ public class GameManager : Singleton<GameManager>
                 HideAllUI();
                 statsSetPanel.SetActive(true);
 
+                TryPlayDungeonMusic();
+
                 break;
 
             default:
@@ -118,6 +126,24 @@ public class GameManager : Singleton<GameManager>
                 HideAllUI();
                 break;
         }
+    }
+
+    private void TryPlayDungeonMusic()
+    {
+        if (!dungeonMusic.IsPlaying())
+        {
+            dungeonMusic.Play();
+        }
+        menuAndTutorialMusic.Stop();
+    }
+
+    private void TryPlayMenuAndDungeonMusic()
+    {
+        if (!menuAndTutorialMusic.IsPlaying())
+        {
+            menuAndTutorialMusic.Play();
+        }
+        dungeonMusic.Stop();
     }
 
     private void HideAllUI()
@@ -156,7 +182,7 @@ public class GameManager : Singleton<GameManager>
     public enum GameState
     {
         None,
-        Tutorial,
+        MenuAndTutorial,
         Play,
         GameOver,
         PauseMenu,
