@@ -263,6 +263,26 @@ PrefabInstance:
       propertyPath: sceneName
       value: MainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/OST/Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1583830105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1284647520
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 1387515306
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -100208987
+      objectReference: {fileID: 0}
     - target: {fileID: 6283307090222216976, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: remoteFileName
       value: Credits_MUSIC.mp4
