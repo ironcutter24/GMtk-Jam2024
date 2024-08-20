@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9385d6aa9c20d0549aeca5ed7ca6ac05
+guid: 8e815f5af3d16a240ab70900f8e986d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,30 +106,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: U_MC_ShortLeg_N_Walk_0
+      name: MC_Norm-Med_Walk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 897.75
-        height: 1080
+        width: 1505.5
+        height: 2098
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57f4ed09bb6e4b24d8c732d323e0f595
-      internalID: 319153713
+      spriteID: c7d1cb4c20016d5498eabdcdc6167ba8
+      internalID: 204892831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: U_MC_ShortLeg_N_Walk_1
+      name: MC_Norm-Med_Walk_1
       rect:
         serializedVersion: 2
-        x: 897
+        x: 1505
         y: 0
-        width: 897.75
-        height: 1080
+        width: 1505.5
+        height: 2098
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4afad8fd0bf0342a4f5206b53dafbe
-      internalID: 721997325
+      spriteID: b9657a6b94f09ae40b50814734ff8e84
+      internalID: -291041131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: U_MC_ShortLeg_N_Walk_2
+      name: MC_Norm-Med_Walk_2
       rect:
         serializedVersion: 2
-        x: 1794
+        x: 3010
         y: 0
-        width: 897.75
-        height: 1080
+        width: 1505.5
+        height: 2098
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a92afda07036cf04990bcaf8aa14828d
-      internalID: -1916237182
+      spriteID: fb23baa8d45f6b3459080f51ef6027b5
+      internalID: -418498519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: U_MC_ShortLeg_N_Walk_3
+      name: MC_Norm-Med_Walk_3
       rect:
         serializedVersion: 2
-        x: 2691
+        x: 4515
         y: 0
-        width: 897.75
-        height: 1080
+        width: 1505.5
+        height: 2098
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 680d817bd3f3000428e40a70ab6ee7f6
-      internalID: -1804777621
+      spriteID: 45647e205e737af4a8cdbe83ff84b583
+      internalID: 1487441028
       vertices: []
       indices: 
       edges: []
@@ -217,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      U_MC_ShortLeg_N_Walk_0: 319153713
-      U_MC_ShortLeg_N_Walk_1: 721997325
-      U_MC_ShortLeg_N_Walk_2: -1916237182
-      U_MC_ShortLeg_N_Walk_3: -1804777621
+      MC_Norm-Med_Walk_0: 204892831
+      MC_Norm-Med_Walk_1: -291041131
+      MC_Norm-Med_Walk_2: -418498519
+      MC_Norm-Med_Walk_3: 1487441028
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
