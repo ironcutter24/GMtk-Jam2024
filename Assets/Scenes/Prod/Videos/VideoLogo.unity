@@ -260,8 +260,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1748291903056758760, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
-      propertyPath: sceneName
-      value: VideoIntro
+      propertyPath: loadNextScene
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6283307090222216976, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: remoteFileName

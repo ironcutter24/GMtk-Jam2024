@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] string sceneName;
     [SerializeField] bool loadOnAwake = false;
+    [SerializeField] bool loadNextScene = false;
 
     private void Awake()
     {
@@ -18,9 +19,16 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
-        if (!string.IsNullOrEmpty(sceneName))
+        if (loadNextScene)
         {
-            SceneManager.LoadScene(sceneName);
+            GameManager.Instance.LoadNextLevel();
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(sceneName))
+            {
+                SceneManager.LoadScene(sceneName);
+            }
         }
     }
 }

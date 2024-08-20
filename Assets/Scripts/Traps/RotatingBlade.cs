@@ -24,7 +24,7 @@ public class RotatingBlade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.Instance.state == GameManager.GameState.Play)
+        if (GameManager.Instance.State == GameManager.GameState.Play)
         {
             if (collision.CompareTag("Player"))
             {

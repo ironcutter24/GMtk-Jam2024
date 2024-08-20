@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
     private void OnBeAHeroButton()
     {
         AudioManager.Instance.PlayUIGameStarted();
-        GameManager.Instance.LoadFirstLevel();
+        GameManager.Instance.LoadNextLevel();
     }
     private void OnControlsButton()
     {

@@ -7,14 +7,16 @@ using Util;
 
 public class GameManager : Singleton<GameManager>
 {
-    private int levelIndex = 0;
-
-
     [SerializeField] LevelList_SO levelList;
     [SerializeField] PlayerAnimControllers_SO animControllers;
 
-    [Header("Game state:")]
-    public GameState state;
+    [Header("Game state")]
+    [field: SerializeField] public GameState State = GameState.None;
+
+    [Header("UI Panels")]
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject statsSetPanel;
+    [SerializeField] GameObject statsLockPanel;
 
     public PlayerController PlayerController { get; private set; }
     public PlayerAnimControllers_SO AnimControllers => animControllers;
@@ -34,16 +36,25 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
+        RefreshStateForCurrentScene();
 
-        if(currentScene == SceneManager.GetSceneByName("MainMenu"))
+        SceneManager.sceneLoaded += (t, s) => RefreshStateForCurrentScene();
+    }
+
+    private void RefreshStateForCurrentScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name.Contains("Tutorial"))
         {
-            PanelsManager.Instance.Close_Panel("SliderPanel_Script");
-            PanelsManager.Instance.Close_Panel("BuildYourBuild_Panel");
+            SetGameState(GameState.Tutorial);
+        }
+        else if (currentScene.name.Contains("Level"))
+        {
+            SetGameState(GameState.BuildYourBuild);
         }
         else
         {
-            PanelsManager.Instance.Open_Panel("SliderPanel_Script");
+            SetGameState(GameState.None);
         }
     }
 
@@ -62,57 +73,90 @@ public class GameManager : Singleton<GameManager>
 
     public void SetGameState(GameState newState)
     {
-        state = newState;
+        State = newState;
 
         switch (newState)
         {
             case GameState.Play:
                 Time.timeScale = 1;
+
+                HideAllUI();
+                statsSetPanel.SetActive(true);
+                statsLockPanel.SetActive(true);
+
+                break;
+
+            case GameState.Tutorial:
+                Time.timeScale = 1;
+                HideAllUI();
                 break;
 
             case GameState.GameOver:
                 AudioManager.Instance.PlayGameOver();
                 PlayerDied?.Invoke();
+
+                HideAllUI();
+                gameOverPanel.SetActive(true);
+
                 break;
 
             case GameState.PauseMenu:
                 Time.timeScale = 0;
+
+                HideAllUI();
+
                 break;
 
             case GameState.BuildYourBuild:
+                HideAllUI();
+                statsSetPanel.SetActive(true);
+
+                break;
+
+            default:
+                Time.timeScale = 1;
+                HideAllUI();
                 break;
         }
+    }
+
+    private void HideAllUI()
+    {
+        gameOverPanel.SetActive(false);
+        statsSetPanel.SetActive(false);
+        statsLockPanel.SetActive(false);
     }
 
     public void ReloadCurrentLevel()
     {
         var activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
-
-        gameObject.GetComponent<BuildYourBuild_Manager>().BuildToBuiltMoment();
-    }
-
-    public void LoadFirstLevel()
-    {
-        levelIndex = 0;
-        SceneManager.LoadScene(levelList.GetLevelAt(levelIndex), LoadSceneMode.Single);
     }
 
     public void LoadNextLevel()
     {
-        if (++levelIndex >= levelList.GetCount())
-        {
-            Debug.LogError("Level index has gone over level count.");
-            levelIndex--;
-            return;
-        }
+        // Get the current scene index
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        var sceneName = levelList.GetLevelAt(levelIndex);
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        // Calculate the next scene index
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Check if the next scene index is within the valid range
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            // Load the next scene
+            SceneManager.LoadScene(nextSceneIndex, LoadSceneMode.Single);
+        }
+        else
+        {
+            Debug.Log("No more levels to load!");
+        }
     }
 
     public enum GameState
     {
+        None,
+        Tutorial,
         Play,
         GameOver,
         PauseMenu,

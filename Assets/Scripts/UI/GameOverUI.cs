@@ -15,10 +15,11 @@ public class GameOverUI : MonoBehaviour
         restartButton.onClick.AddListener(On_RestartButton);
         mainMenuButton.onClick.AddListener(On_MenuButton);
     }
+
     public void On_RestartButton()
     {
         GameManager.Instance.ReloadCurrentLevel();
-        PanelsManager.Instance.Close_Panel("GameOver_Panel");
+        GameManager.Instance.SetGameState(GameState.BuildYourBuild);
     }
 
     public void On_MenuButton()

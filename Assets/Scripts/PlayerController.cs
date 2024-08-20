@@ -135,9 +135,15 @@ public class PlayerController : MonoBehaviour
         InputManager.Actions.Player.ReloadLevel.performed -= PlayerReloadLevel_performed;
     }
 
+    private bool CanPlay()
+    {
+        return GameManager.Instance.State == GameManager.GameState.Play
+            || GameManager.Instance.State == GameManager.GameState.Tutorial;
+    }
+
     private void FixedUpdate()
     {
-        if (GameManager.Instance.state == GameManager.GameState.Play)
+        if (CanPlay())
         {
             var velocity = rb.velocity;
 
@@ -196,9 +202,7 @@ public class PlayerController : MonoBehaviour
     public void Death(DeathType deathType)
     {
         PlayDeathAudio(deathType);
-
         GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
-        PanelsManager.Instance.Open_Panel("GameOver_Panel");
     }
 
     private void PlayDeathAudio(DeathType deathType)
