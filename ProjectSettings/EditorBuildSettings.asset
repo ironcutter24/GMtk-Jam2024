@@ -24,6 +24,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/Level_01_Luca.unity
     guid: a38336c6f724dfd4394af2c6d14ee162
   - enabled: 1
+    path: Assets/Scenes/Prod/Level_02_Luca.unity
+    guid: e1fddcbcf5db8bf4ca79da2b4695895b
+  - enabled: 1
+    path: Assets/Scenes/Prod/Level_03_Luca.unity
+    guid: 0789b89a2136f6b4fa79ad62f118b502
+  - enabled: 1
+    path: Assets/Scenes/Prod/Level_04_Luca.unity
+    guid: ac4a7c85917af4b4d878ea426f09e5fe
+  - enabled: 1
     path: Assets/Scenes/Prod/Videos/VideoEnding.unity
     guid: 70ea85e8011ef4344b6beec441907afc
   - enabled: 1
