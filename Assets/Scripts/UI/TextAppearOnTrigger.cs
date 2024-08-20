@@ -13,20 +13,10 @@ public class TextAppearOnTrigger : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.Instance.State == GameManager.GameState.Play)
-        {
-            
                 textBallon.SetActive(true);
-            
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (GameManager.Instance.State == GameManager.GameState.Play)
-        {
-
-            Destroy(textBallon);
-
-        }
+        Destroy(textBallon);
     }
 }

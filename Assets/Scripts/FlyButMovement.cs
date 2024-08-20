@@ -15,12 +15,9 @@ public class FlyButMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (GameManager.Instance.State == GameManager.GameState.Play)
-        {
-            if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
             {
                 StartMovingBlade();
             }
-        } 
     }
 }
