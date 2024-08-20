@@ -2464,6 +2464,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4772917697442307518, guid: 300738f6a5c45b143b93cf6bdb0597b1, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8989246160855789514, guid: 300738f6a5c45b143b93cf6bdb0597b1, type: 3}
       propertyPath: m_Name
       value: Rotating Blade

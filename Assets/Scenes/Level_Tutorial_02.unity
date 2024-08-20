@@ -203,17 +203,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc8278ca79687c24e834812f7efb8228, type: 3}
---- !u!114 &344190483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5061976995202274265, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
-  m_PrefabInstance: {fileID: 1718418821}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &361057809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2096,11 +2085,11 @@ PrefabInstance:
     - target: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: restartButton
       value: 
-      objectReference: {fileID: 344190483}
+      objectReference: {fileID: 0}
     - target: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: mainMenuButton
       value: 
-      objectReference: {fileID: 1758128261}
+      objectReference: {fileID: 0}
     - target: {fileID: 6730905297195228586, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_fontSize
       value: 50
@@ -2443,17 +2432,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe9d3e037839094b9df073f142bb853, type: 3}
---- !u!114 &1758128261 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 711985629263606906, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
-  m_PrefabInstance: {fileID: 1718418821}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1801847285 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3656543953685880993, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
@@ -5173,8 +5151,77 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6572641672238581584, guid: 199519f3e10b2bc48977bf5fe769e4c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2409201895480160196}
+    - targetCorrespondingSourceObject: {fileID: 6572641672238581584, guid: 199519f3e10b2bc48977bf5fe769e4c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2409201895480160195}
   m_SourcePrefab: {fileID: 100100000, guid: 199519f3e10b2bc48977bf5fe769e4c5, type: 3}
+--- !u!1 &2409201895480160194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6572641672238581584, guid: 199519f3e10b2bc48977bf5fe769e4c5, type: 3}
+  m_PrefabInstance: {fileID: 2409201895480160193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2409201895480160195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409201895480160194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb710bacca15e7f41af07f97cc68c98d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Level_01
+--- !u!61 &2409201895480160196
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409201895480160194}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.95, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 19.2, y: 10.8}
+    newSize: {x: 19.2, y: 10.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.62, y: 10.8}
+  m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
