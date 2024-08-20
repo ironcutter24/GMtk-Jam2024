@@ -10,21 +10,10 @@ public class BuildYourBuild_Manager : MonoBehaviour
     private void Start()
     {
         confirmYourBuild_Button.onClick.AddListener(ConfirmYourBuild);
-        BuildToBuiltMoment();
-    }
-
-    public void BuildToBuiltMoment()
-    {
-        GameManager.Instance.SetGameState(GameManager.GameState.BuildYourBuild);
-        PanelsManager.Instance.Open_Panel("BuildYourBuild_Panel");
-        PanelsManager.Instance.Close_Panel("LockStat_Panel");
     }
 
     public void ConfirmYourBuild()
     {
-        PanelsManager.Instance.Close_Panel("BuildYourBuild_Panel");
-        PanelsManager.Instance.Open_Panel("LockStat_Panel");
-
         GameManager.Instance.SetGameState(GameManager.GameState.Play);
     }
 }

@@ -19,7 +19,7 @@ public class ShooterTrap : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.Instance.state == GameManager.GameState.Play)
+        if (GameManager.Instance.State == GameManager.GameState.Play)
         {
             CheckPlayerInRange();
         }
