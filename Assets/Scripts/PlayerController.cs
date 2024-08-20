@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private float gravityScale;
     private Flag jumpFlag = new Flag();
 
+    private SpriteRenderer spriteRend;
     private Animator anim;
     private CapsuleCollider2D bodyCollider;
     private Rigidbody2D rb;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        spriteRend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         bodyCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -171,12 +173,7 @@ public class PlayerController : MonoBehaviour
             if (isMoving)
             {
                 isFlipped = velocity.x < 0f;
-                var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
-
-                foreach (var spr in sprs)
-                {
-                    spr.flipX = isFlipped;
-                }
+                spriteRend.flipX = isFlipped;
 
                 bool pushingLeft = move < 0f && IsOnWallLeft();
                 bool pushingRight = move > 0f && IsOnWallRight();
