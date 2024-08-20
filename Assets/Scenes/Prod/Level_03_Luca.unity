@@ -336,6 +336,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &170392667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4058472433509654201, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+  m_PrefabInstance: {fileID: 822363394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &339127455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -346,7 +357,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1750459943169647317, guid: 6c6db6d0b82c2354f8c62f11c540c7f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.31
+      value: -8.09
       objectReference: {fileID: 0}
     - target: {fileID: 1750459943169647317, guid: 6c6db6d0b82c2354f8c62f11c540c7f4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1982,11 +1993,11 @@ PrefabInstance:
     - target: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: restartButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1332495384}
     - target: {fileID: 6468763464953698933, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: mainMenuButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 170392667}
     - target: {fileID: 6730905297195228586, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
       propertyPath: m_fontSize
       value: 50
@@ -5287,7 +5298,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 3.5940568
+      m_AnimationSpeed: 3.6652803
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -6, y: 10, z: 0}
@@ -5296,7 +5307,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 3.4588087
+      m_AnimationSpeed: 2.8138354
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 5, y: 11, z: 0}
@@ -5305,7 +5316,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 1.5680819
+      m_AnimationSpeed: 3.2769482
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -5404,6 +5415,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1332495384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8614309963025971482, guid: fd12513dcf96cdd458e57b7ef12ea414, type: 3}
+  m_PrefabInstance: {fileID: 822363394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1526806128
 PrefabInstance:
   m_ObjectHideFlags: 0
