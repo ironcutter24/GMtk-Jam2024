@@ -83,14 +83,30 @@ public class GameManager : Singleton<GameManager>
         {
             case GameState.MenuAndTutorial:
                 Time.timeScale = 1;
+                // UI -----------------------------------
                 HideAllUI();
+
+                // Audio --------------------------------
                 TryPlayMenuAndDungeonMusic();
+
+                break;
+
+            case GameState.BuildYourBuild:
+                Time.timeScale = 1;
+
+                // UI -----------------------------------
+                HideAllUI();
+                statsSetPanel.SetActive(true);
+
+                // Audio --------------------------------
+                TryPlayDungeonMusic();
 
                 break;
 
             case GameState.Play:
                 Time.timeScale = 1;
 
+                // UI -----------------------------------
                 HideAllUI();
                 statsSetPanel.SetActive(true);
                 statsLockPanel.SetActive(true);
@@ -101,6 +117,7 @@ public class GameManager : Singleton<GameManager>
                 AudioManager.Instance.PlayGameOver();
                 PlayerDied?.Invoke();
 
+                // UI -----------------------------------
                 HideAllUI();
                 gameOverPanel.SetActive(true);
 
@@ -109,23 +126,31 @@ public class GameManager : Singleton<GameManager>
             case GameState.PauseMenu:
                 Time.timeScale = 0;
 
+                // UI -----------------------------------
                 HideAllUI();
-
-                break;
-
-            case GameState.BuildYourBuild:
-                HideAllUI();
-                statsSetPanel.SetActive(true);
-
-                TryPlayDungeonMusic();
 
                 break;
 
             default:
                 Time.timeScale = 1;
+
+                // UI -----------------------------------
                 HideAllUI();
+
+                // Audio --------------------------------
+                StopAllMusic();
+
                 break;
         }
+    }
+
+    private void TryPlayMenuAndDungeonMusic()
+    {
+        if (!menuAndTutorialMusic.IsPlaying())
+        {
+            menuAndTutorialMusic.Play();
+        }
+        dungeonMusic.Stop();
     }
 
     private void TryPlayDungeonMusic()
@@ -137,12 +162,9 @@ public class GameManager : Singleton<GameManager>
         menuAndTutorialMusic.Stop();
     }
 
-    private void TryPlayMenuAndDungeonMusic()
+    private void StopAllMusic()
     {
-        if (!menuAndTutorialMusic.IsPlaying())
-        {
-            menuAndTutorialMusic.Play();
-        }
+        menuAndTutorialMusic.Stop();
         dungeonMusic.Stop();
     }
 
