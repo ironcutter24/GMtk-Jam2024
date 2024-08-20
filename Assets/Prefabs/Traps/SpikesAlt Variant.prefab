@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 143288900206668116, guid: cf26271fa09ff8a46b832b2af49738aa, type: 3}
       propertyPath: m_Name
-      value: SpikesAltVersion Variant
+      value: SpikesAlt Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134126591084339544, guid: cf26271fa09ff8a46b832b2af49738aa, type: 3}
+      propertyPath: alwaysKillPlayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1901983204469554783, guid: cf26271fa09ff8a46b832b2af49738aa, type: 3}
       propertyPath: m_Sprite
