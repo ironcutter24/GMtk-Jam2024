@@ -54,6 +54,12 @@ public class MainMenu : MonoBehaviour
     }
     private void OnQuit()
     {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            Debug.LogWarning("Running in WebGL: Cannot quit application.");
+            return;
+        }
+
         Application.Quit();
         Debug.Log("Game is quitting"); // This will not be seen in the build
     }

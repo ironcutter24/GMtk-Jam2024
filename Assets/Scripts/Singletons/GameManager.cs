@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using Util;
 
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] LevelList_SO levelList;
     [SerializeField] PlayerAnimControllers_SO animControllers;
 
     [Header("Game state")]
@@ -17,6 +17,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject statsSetPanel;
     [SerializeField] GameObject statsLockPanel;
+
+    [Header("Audio")]
+    [SerializeField] StudioEventEmitter menuAndTutorialMusic;
+    [SerializeField] StudioEventEmitter dungeonMusic;
 
     public PlayerController PlayerController { get; private set; }
     public PlayerAnimControllers_SO AnimControllers => animControllers;
@@ -44,9 +48,9 @@ public class GameManager : Singleton<GameManager>
     private void RefreshStateForCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name.Contains("Tutorial"))
+        if (currentScene.name.Contains("Tutorial") || currentScene.name.Contains("MainMenu"))
         {
-            SetGameState(GameState.Tutorial);
+            SetGameState(GameState.MenuAndTutorial);
         }
         else if (currentScene.name.Contains("Level"))
         {
@@ -77,24 +81,43 @@ public class GameManager : Singleton<GameManager>
 
         switch (newState)
         {
+            case GameState.MenuAndTutorial:
+                Time.timeScale = 1;
+                // UI -----------------------------------
+                HideAllUI();
+
+                // Audio --------------------------------
+                TryPlayMenuAndDungeonMusic();
+
+                break;
+
+            case GameState.BuildYourBuild:
+                Time.timeScale = 1;
+
+                // UI -----------------------------------
+                HideAllUI();
+                statsSetPanel.SetActive(true);
+
+                // Audio --------------------------------
+                TryPlayDungeonMusic();
+
+                break;
+
             case GameState.Play:
                 Time.timeScale = 1;
 
+                // UI -----------------------------------
                 HideAllUI();
                 statsSetPanel.SetActive(true);
                 statsLockPanel.SetActive(true);
 
                 break;
 
-            case GameState.Tutorial:
-                Time.timeScale = 1;
-                HideAllUI();
-                break;
-
             case GameState.GameOver:
                 AudioManager.Instance.PlayGameOver();
                 PlayerDied?.Invoke();
 
+                // UI -----------------------------------
                 HideAllUI();
                 gameOverPanel.SetActive(true);
 
@@ -103,21 +126,46 @@ public class GameManager : Singleton<GameManager>
             case GameState.PauseMenu:
                 Time.timeScale = 0;
 
+                // UI -----------------------------------
                 HideAllUI();
-
-                break;
-
-            case GameState.BuildYourBuild:
-                HideAllUI();
-                statsSetPanel.SetActive(true);
 
                 break;
 
             default:
                 Time.timeScale = 1;
+
+                // UI -----------------------------------
                 HideAllUI();
+
+                // Audio --------------------------------
+                StopAllMusic();
+
                 break;
         }
+    }
+
+    private void TryPlayMenuAndDungeonMusic()
+    {
+        if (!menuAndTutorialMusic.IsPlaying())
+        {
+            menuAndTutorialMusic.Play();
+        }
+        dungeonMusic.Stop();
+    }
+
+    private void TryPlayDungeonMusic()
+    {
+        if (!dungeonMusic.IsPlaying())
+        {
+            dungeonMusic.Play();
+        }
+        menuAndTutorialMusic.Stop();
+    }
+
+    private void StopAllMusic()
+    {
+        menuAndTutorialMusic.Stop();
+        dungeonMusic.Stop();
     }
 
     private void HideAllUI()
@@ -156,7 +204,7 @@ public class GameManager : Singleton<GameManager>
     public enum GameState
     {
         None,
-        Tutorial,
+        MenuAndTutorial,
         Play,
         GameOver,
         PauseMenu,

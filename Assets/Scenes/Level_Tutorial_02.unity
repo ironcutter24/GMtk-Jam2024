@@ -830,6 +830,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6037736
       objectReference: {fileID: 0}
+    - target: {fileID: 6173511982600350624, guid: cc8278ca79687c24e834812f7efb8228, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1285,6 +1289,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8018868
       objectReference: {fileID: 0}
+    - target: {fileID: 5934391937827304205, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324363518422081170, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1166213
@@ -1418,6 +1426,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.69803923
       objectReference: {fileID: 0}
+    - target: {fileID: 5547205566071891869, guid: 3c6d4577c8e374c4aaafb357043355e5, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1532,6 +1544,10 @@ PrefabInstance:
     - target: {fileID: 3477180260691265631, guid: 9792a2c7a3cecb44fa903588952f60ee, type: 3}
       propertyPath: m_Color.r
       value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477180260691265631, guid: 9792a2c7a3cecb44fa903588952f60ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4229548423072118945, guid: 9792a2c7a3cecb44fa903588952f60ee, type: 3}
       propertyPath: m_Name
@@ -1674,6 +1690,10 @@ PrefabInstance:
     - target: {fileID: 114381011710446304, guid: 76484bebadb69f84dad7aec30afa257e, type: 3}
       propertyPath: m_Color.r
       value: 0.4716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 114381011710446304, guid: 76484bebadb69f84dad7aec30afa257e, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5455364282495212357, guid: 76484bebadb69f84dad7aec30afa257e, type: 3}
       propertyPath: m_LocalScale.x
@@ -1900,6 +1920,10 @@ PrefabInstance:
     - target: {fileID: 5934391937827304205, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
       propertyPath: m_Color.r
       value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934391937827304205, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6324363518422081170, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
       propertyPath: m_LocalScale.x
@@ -2407,6 +2431,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.745283
       objectReference: {fileID: 0}
+    - target: {fileID: 3477180260691265631, guid: 9792a2c7a3cecb44fa903588952f60ee, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4229548423072118945, guid: 9792a2c7a3cecb44fa903588952f60ee, type: 3}
       propertyPath: m_Name
       value: RockMedium (1)
@@ -2547,6 +2575,10 @@ PrefabInstance:
     - target: {fileID: 5547205566071891869, guid: 3c6d4577c8e374c4aaafb357043355e5, type: 3}
       propertyPath: m_Color.r
       value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547205566071891869, guid: 3c6d4577c8e374c4aaafb357043355e5, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2935,7 +2967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5934391937827304205, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6324363518422081170, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
       propertyPath: m_LocalScale.x
@@ -5227,6 +5259,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8018868
       objectReference: {fileID: 0}
+    - target: {fileID: 5934391937827304205, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324363518422081170, guid: 24f96e2e3e6db4c44badf9d4911c67cb, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.0494
@@ -5495,6 +5531,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ASSET_entrataDungeon
       objectReference: {fileID: 0}
+    - target: {fileID: 7541568318667607407, guid: 199519f3e10b2bc48977bf5fe769e4c5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5523,7 +5563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb710bacca15e7f41af07f97cc68c98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_01
+  sceneName: Level_01_Luca
 --- !u!61 &2409201895480160196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5553,7 +5593,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 3.95, y: 0}
