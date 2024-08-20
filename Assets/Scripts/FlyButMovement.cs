@@ -7,12 +7,6 @@ public class FlyButMovement : MonoBehaviour
 {
     [Header("Path points")]
     [SerializeField] Transform pointA;
-
-    private void Start()
-    {
-        StartMovingBlade();
-    }
-
     private void StartMovingBlade()
     {
         Sequence mySequence = DOTween.Sequence();
@@ -25,7 +19,7 @@ public class FlyButMovement : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PlayerController>().Death(DeathType.Blade);
+                StartMovingBlade();
             }
         } 
     }

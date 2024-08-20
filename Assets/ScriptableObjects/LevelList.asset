@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: LevelList
   m_EditorClassIdentifier: 
   sceneList:
-  - IntroVideo
+  - Level_01
+  - Level_02
+  - Level_03
