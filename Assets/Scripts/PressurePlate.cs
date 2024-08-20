@@ -12,12 +12,16 @@ public class PressurePlate : MonoBehaviour
     private bool isTriggered = false;
     private float t = 0f;
 
+    [SerializeField] GameObject targetDoor;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Crate"))
         {
             if (!isTriggered)
                 isTriggered = true;
+            targetDoor.GetComponent<PressurePlate_Door>().OpenDoor();
+
         }
     }
 
@@ -27,6 +31,7 @@ public class PressurePlate : MonoBehaviour
         {
             if (isTriggered)
                 isTriggered = false;
+            targetDoor.GetComponent<PressurePlate_Door>().CloseDoor();
         }
     }
 
