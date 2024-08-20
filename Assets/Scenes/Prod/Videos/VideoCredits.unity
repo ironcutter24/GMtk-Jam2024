@@ -172,31 +172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1748291903056758760, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: sceneName
-      value: VideoCredits
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
-      propertyPath: EventReference.Path
-      value: event:/OST/Ending
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
-      propertyPath: EventReference.Guid.Data1
-      value: 1277595100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
-      propertyPath: EventReference.Guid.Data2
-      value: 1272708982
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
-      propertyPath: EventReference.Guid.Data3
-      value: -2086849101
-      objectReference: {fileID: 0}
-    - target: {fileID: 2082627865768091564, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
-      propertyPath: EventReference.Guid.Data4
-      value: -533975589
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6283307090222216976, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: remoteFileName
-      value: Final_Scene_MUSIC.webm
+      value: Credits_MUSIC.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 7944404584999247393, guid: 8105e074838faee4aa73cdf4d89dbb86, type: 3}
       propertyPath: m_Name
