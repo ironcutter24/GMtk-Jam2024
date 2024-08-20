@@ -32,6 +32,21 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    private void Start()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if(currentScene == SceneManager.GetSceneByName("MainMenu"))
+        {
+            PanelsManager.Instance.Close_Panel("SliderPanel_Script");
+            PanelsManager.Instance.Close_Panel("BuildYourBuild_Panel");
+        }
+        else
+        {
+            PanelsManager.Instance.Open_Panel("SliderPanel_Script");
+        }
+    }
+
     public void SetPlayerController(PlayerController playerController)
     {
         PlayerController = playerController;
