@@ -71,6 +71,8 @@ public class GameManager : Singleton<GameManager>
     {
         var activeScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(activeScene.name, LoadSceneMode.Single);
+
+        gameObject.GetComponent<BuildYourBuild_Manager>().BuildToBuiltMoment();
     }
 
     public void LoadFirstLevel()

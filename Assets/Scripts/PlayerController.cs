@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private float gravityScale;
     private Flag jumpFlag = new Flag();
 
+    private SpriteRenderer spriteRend;
     private Animator anim;
     private CapsuleCollider2D bodyCollider;
     private Rigidbody2D rb;
@@ -88,21 +89,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask ceilingMask;
     [SerializeField] LayerMask wallMask;
 
-    [Header("Body references:")]
-    [SerializeField] GameObject playerChest;
-    [SerializeField] GameObject playerLegs;
-
-    [Header("Body parts (weight):")]
-    [SerializeField] GameObject thinChest;
-    [SerializeField] GameObject normalChest;
-    [SerializeField] GameObject fatChest;
-
-    [Header("Body parts (speed):")]
-    [SerializeField] GameObject smallLegs;
-    [SerializeField] GameObject normalLegs;
-    [SerializeField] GameObject tallLegs;
-
-
     private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
     private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
 
@@ -112,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        spriteRend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         bodyCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -150,60 +137,88 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var velocity = rb.velocity;
+        if(GameManager.Instance.state == GameManager.GameState.Play)
+        {
+            var velocity = rb.velocity;
 
-        var isGrounded = IsOnGround();
-        if (isGrounded)
-        {
-            velocity.y = jumpFlag.Pop() ? JumpSpeed : 0f;
-        }
-        else
-        {
-            if (IsOnCeiling() && velocity.y > 0f)
+            var isGrounded = IsOnGround();
+            if (isGrounded)
             {
-                velocity.y = 0f;
+                if (jumpFlag.Pop())
+                {
+                    velocity.y = JumpSpeed;
+                    AudioManager.Instance.PlayPlayerJump();
+                }
+                else
+                {
+                    velocity.y = 0f;
+                }
             }
             else
             {
-                gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
-                velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                if (IsOnCeiling() && velocity.y > 0f)
+                {
+                    velocity.y = 0f;
+                }
+                else
+                {
+                    gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
+                    velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+                }
             }
-        }
 
-        velocity.x = move * MoveSpeed;
+            velocity.x = move * MoveSpeed;
 
-        var isMoving = !Mathf.Approximately(move, 0f);
-        if (isMoving)
-        {
-            isFlipped = velocity.x < 0f;
-            var sprs = graphics.GetComponentsInChildren<SpriteRenderer>();
-
-            foreach (var spr in sprs)
+            var isMoving = !Mathf.Approximately(move, 0f);
+            if (isMoving)
             {
-                spr.flipX = isFlipped;
+                isFlipped = velocity.x < 0f;
+                spriteRend.flipX = isFlipped;
+
+                bool pushingLeft = move < 0f && IsOnWallLeft();
+                bool pushingRight = move > 0f && IsOnWallRight();
+
+                if (pushingLeft || pushingRight)
+                {
+                    velocity.x = 0f;
+                }
             }
 
-            bool pushingLeft = move < 0f && IsOnWallLeft();
-            bool pushingRight = move > 0f && IsOnWallRight();
+            rb.velocity = velocity;
 
-            if (pushingLeft || pushingRight)
-            {
-                velocity.x = 0f;
-            }
-        }
-
-        rb.velocity = velocity;
-
-        // Animation parameters
-        anim.SetBool(ANIM_MOVING_ID, isMoving);
-        anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
-        anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+            // Animation parameters
+            anim.SetBool(ANIM_MOVING_ID, isMoving);
+            anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
+            anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+        } 
     }
 
-    public void Death()
+    public void Death(DeathType deathType)
     {
+        PlayDeathAudio(deathType);
+
         GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
         PanelsManager.Instance.Open_Panel("GameOver_Panel");
+    }
+
+    private void PlayDeathAudio(DeathType deathType)
+    {
+        AudioManager.Instance.PlayGameOver();
+
+        switch (deathType)
+        {
+            case DeathType.Blade:
+                AudioManager.Instance.PlayPlayerDeathBlade();
+                break;
+
+            case DeathType.Drown:
+                AudioManager.Instance.PlayPlayerDeathDrown();
+                break;
+
+            case DeathType.Knight:
+                AudioManager.Instance.PlayPlayerDeathKnight();
+                break;
+        }
     }
 
     private void PlayerMove_performed(InputAction.CallbackContext context)

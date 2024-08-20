@@ -10,7 +10,10 @@ public class SpikeController : GeneralObject
         {
             if (collision.CompareTag("Player"))
             {
-                collision.GetComponent<PlayerController>().Death();
+                if(PlayerStats.Instance.MoveSpeed >= 1)
+                {
+                    collision.GetComponent<PlayerController>().Death(DeathType.Default);
+                }               
             }
         }
     }

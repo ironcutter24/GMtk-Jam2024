@@ -58,7 +58,7 @@ public class ChallengerKnight : MonoBehaviour
 
         if (playerIsNear)
         {
-            collision.GetComponent<PlayerController>().Death();
+            collision.GetComponent<PlayerController>().Death(DeathType.Knight);
         }
         else
         {
