@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePlate_Door : MonoBehaviour
-{ 
+{
     Animator animator;
-    Collider2D collider2D;
+    Collider2D doorCollider2D;
 
     bool doorIsOpen;
 
@@ -20,31 +20,32 @@ public class PressurePlate_Door : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        collider2D = GetComponent<Collider2D>();
+        doorCollider2D = GetComponent<Collider2D>();
     }
 
     public void OpenDoor()
     {
-        if(!doorIsOpen)
+        if (!doorIsOpen)
         {
-            doorIsOpen = true;
-
-            animator.Play("OpenDoor");
-            collider2D.enabled = false;
+            SetDoorOpen(true);
         }
     }
 
     public void CloseDoor()
     {
-        if(state == DoorState.keepPressed)
+        if (state == DoorState.keepPressed)
         {
             if (doorIsOpen)
             {
-                doorIsOpen = false;
-
-                animator.Play("CloseDoor");
-                collider2D.enabled = true;
+                SetDoorOpen(false);
             }
-        } 
+        }
+    }
+
+    private void SetDoorOpen(bool isOpen)
+    {
+        doorIsOpen = isOpen;
+        doorCollider2D.enabled = !isOpen;
+        animator.Play(isOpen ? "OpenDoor" : "CloseDoor");
     }
 }
