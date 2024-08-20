@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     private bool CanPlay()
     {
         return GameManager.Instance.State == GameManager.GameState.Play
-            || GameManager.Instance.State == GameManager.GameState.Tutorial;
+            || GameManager.Instance.State == GameManager.GameState.MenuAndTutorial;
     }
 
     private void FixedUpdate()
