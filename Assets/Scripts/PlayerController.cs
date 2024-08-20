@@ -103,14 +103,14 @@ public class PlayerController : MonoBehaviour
         bodyCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
-        gravityScale = gravityScaleDown;
-        SetCharacterBounds(defaultSize);
-
         GameManager.Instance.SetPlayerController(this);
     }
 
     private void Start()
     {
+        gravityScale = gravityScaleDown;
+        RefreshBounds();
+
         PlayerStats.AnyChanged += RefreshBounds;
 
         InputManager.Actions.Player.Move.performed += PlayerMove_performed;
