@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushableCrate : MonoBehaviour
+public class PushableCrate : GeneralObject
 {
     private Rigidbody2D rb;
 
@@ -10,16 +10,25 @@ public class PushableCrate : MonoBehaviour
 
     private bool IsPushable => PlayerStats.Instance.Strength >= minPushStrength;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         rb = GetComponent<Rigidbody2D>();
 
         PlayerStats.StrengthChanged += OnStrengthChanged;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
+        base.OnDestroy();
+
         PlayerStats.StrengthChanged -= OnStrengthChanged;
+    }
+
+    protected override void ResetState()
+    {
+        OnStrengthChanged();
     }
 
     private void OnStrengthChanged()

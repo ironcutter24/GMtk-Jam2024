@@ -301,7 +301,7 @@ public class PlayerController : MonoBehaviour
     {
         bounds = size;
         bodyCollider.size = size;
-        bodyCollider.offset = Vector2.up * size.y * .5f;
+        bodyCollider.offset = new Vector2(-.25f, size.y * .5f);
         graphics.localScale = new Vector3(size.x, size.y, 1f);
     }
 
