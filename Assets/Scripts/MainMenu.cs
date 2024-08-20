@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button controlsButton;
     [SerializeField] Button creditsButton;
     [SerializeField] Button quitButton;
+    [SerializeField] Button homeButton;
+    [SerializeField] Button homeButton2;
 
     [Header("Panels")]
     [SerializeField] Transform controlsPanel;
@@ -24,7 +26,8 @@ public class MainMenu : MonoBehaviour
         controlsButton.onClick.AddListener(OnControlsButton);
         creditsButton.onClick.AddListener(OnCreditsButton);
         quitButton.onClick.AddListener(OnQuit);
-
+        homeButton.onClick.AddListener(OnBack);
+        homeButton2.onClick.AddListener(OnBack);
         InputManager.Actions.UI.Cancel.performed += UICancel_performed;
         InputManager.SwitchActionMapToUI();
     }

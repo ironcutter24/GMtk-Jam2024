@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class SpikeController : GeneralObject
 {
+    [SerializeField] bool alwaysKillPlayer = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (GameManager.Instance.State == GameManager.GameState.Play)
         {
             if (collision.CompareTag("Player"))
             {
-                if(PlayerStats.Instance.MoveSpeed >= 1)
+                if (PlayerStats.Instance.MoveSpeed >= 1 || alwaysKillPlayer)
                 {
                     collision.GetComponent<PlayerController>().Death(DeathType.Default);
-                }               
+                }
             }
         }
     }
@@ -21,5 +23,5 @@ public class SpikeController : GeneralObject
     protected override void ResetState()
     {
         // Noting to reset
-    } 
+    }
 }

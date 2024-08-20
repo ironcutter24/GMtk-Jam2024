@@ -108,7 +108,7 @@ public class GameManager : Singleton<GameManager>
 
                 // UI -----------------------------------
                 HideAllUI();
-                statsSetPanel.SetActive(true);
+                statsSetPanel.SetActive(false);
                 statsLockPanel.SetActive(true);
 
                 break;
