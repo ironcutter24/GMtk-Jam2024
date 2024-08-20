@@ -25,6 +25,7 @@ public class VideoPlayerController : MonoBehaviour
     {
         videoPlayer.started += OnStarted;
         videoPlayer.loopPointReached += OnLoopPointReached;
+        videoPlayer.errorReceived += OnErrorReceived;
 
         videoPlayer.source = VideoSource.Url;
         videoPlayer.url = remotePath + remoteFileName;
@@ -35,6 +36,7 @@ public class VideoPlayerController : MonoBehaviour
     {
         videoPlayer.started -= OnStarted;
         videoPlayer.loopPointReached -= OnLoopPointReached;
+        videoPlayer.errorReceived -= OnErrorReceived;
     }
 
     private void OnStarted(VideoPlayer vp)
@@ -43,6 +45,11 @@ public class VideoPlayerController : MonoBehaviour
     }
 
     private void OnLoopPointReached(VideoPlayer vp)
+    {
+        OnVideoEnded?.Invoke();
+    }
+
+    private void OnErrorReceived(VideoPlayer vp, string error)
     {
         OnVideoEnded?.Invoke();
     }
