@@ -11,11 +11,13 @@ public class GameManager : Singleton<GameManager>
 
 
     [SerializeField] LevelList_SO levelList;
+    [SerializeField] PlayerAnimControllers_SO animControllers;
 
     [Header("Game state:")]
     public GameState state;
 
     public PlayerController PlayerController { get; private set; }
+    public PlayerAnimControllers_SO AnimControllers => animControllers;
 
     public static event Action PlayerDied;
 

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ce9b63e9e5bdd42abec02a834ff84c, type: 3}
+  m_Name: PlayerAnimControllers
+  m_EditorClassIdentifier: 
+  Normal:
+  - {fileID: 9100000, guid: 592f109f2ec2cf145ac2cda6dc762915, type: 2}
+  - {fileID: 22100000, guid: 8437884eecf0e7e4b98cf94ac7f81424, type: 2}
+  - {fileID: 22100000, guid: 1c6d90d946c69bd4ea68e1f5f3fd81f5, type: 2}
+  Weight:
+  - {fileID: 22100000, guid: 31e95a8a0e2ec1149a6d71e3aa8a0dac, type: 2}
+  - {fileID: 22100000, guid: 22f5d469160c5c54b867ef6f122811e3, type: 2}
+  - {fileID: 22100000, guid: be86efe2775573247b9dd08dc300f9ae, type: 2}
+  Strength:
+  - {fileID: 22100000, guid: 3552d959ceee93e48aee30e0222af965, type: 2}
+  - {fileID: 22100000, guid: 45eeae9103acf2f43bd49ee847dca73e, type: 2}
+  - {fileID: 22100000, guid: e35b37e844d7d6442b21fc942d0a8fd7, type: 2}

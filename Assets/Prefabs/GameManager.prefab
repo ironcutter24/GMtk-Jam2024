@@ -1453,6 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelList: {fileID: 11400000, guid: 04798bd7660a3814e8269df9de67727a, type: 2}
+  animControllers: {fileID: 11400000, guid: 568cbdee99eb65e45bc17c17251d3ce9, type: 2}
   state: 0
 --- !u!114 &1170109166692411496
 MonoBehaviour:
@@ -1634,7 +1635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d220847a423614fadf29e1b19dae20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  builtToBuilt_Button: {fileID: 0}
+  confirmYourBuild_Button: {fileID: 0}
 --- !u!1 &2991887153815218290
 GameObject:
   m_ObjectHideFlags: 0

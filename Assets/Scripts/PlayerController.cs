@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameManager.Instance.state == GameManager.GameState.Play)
+        if (GameManager.Instance.state == GameManager.GameState.Play)
         {
             var velocity = rb.velocity;
 
@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool(ANIM_MOVING_ID, isMoving);
             anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
             anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
-        } 
+        }
     }
 
     public void Death(DeathType deathType)
@@ -246,6 +246,8 @@ public class PlayerController : MonoBehaviour
 
     public void RefreshBounds()
     {
+        // Set bounds size
+
         var stats = PlayerStats.Instance;
 
         Vector2 totalSize = defaultSize;
@@ -262,6 +264,33 @@ public class PlayerController : MonoBehaviour
         }
 
         SetCharacterBounds(totalSize);
+
+
+        // Set animation controller
+
+        var controllers = GameManager.Instance.AnimControllers;
+        int speedIndex = stats.MoveSpeed;
+
+        RuntimeAnimatorController ctrl;
+        if (stats.Strength >= 2)
+        {
+            ctrl = controllers.GetStrengthControllerAt(speedIndex);
+        }
+        else if (stats.Weight >= 2)
+        {
+            ctrl = controllers.GetWeightControllerAt(speedIndex);
+        }
+        else
+        {
+            ctrl = controllers.GetNormalControllerAt(speedIndex);
+        }
+
+        SetAnimationController(ctrl);
+    }
+
+    private void SetAnimationController(RuntimeAnimatorController ctrl)
+    {
+        anim.runtimeAnimatorController = ctrl;
     }
 
     private void SetCharacterBounds(Vector2 size)
