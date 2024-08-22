@@ -97,7 +97,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ammoPrefab: {fileID: 4715935504271334416, guid: 562517275cf14cd429567aa95780301c, type: 3}
-  ammoSpeed: 2
+  ammoSpeed: 30
   fireRate: 3
 --- !u!1 &8972736959267181911
 GameObject:

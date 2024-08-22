@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class ShooterTrap : MonoBehaviour
 {
+    const float AMMO_SPEED = 12f;
+
     [SerializeField] float circleRadius = 0.5f;
     [SerializeField] float maxDistance = 3f;
     [SerializeField] LayerMask layerMask;
 
     [SerializeField] GameObject ammoPrefab;
 
-    [SerializeField] float ammoSpeed = 5f;
     [SerializeField] float fireRate = 3f;
 
     private bool playerDetected;
 
-    private Vector3 ShootDirection => Vector3.right * (transform.localScale.x < 0f ? -1f : 1f);
+    private bool IsFlipped => transform.localScale.x < 0f;
+    private Vector3 ShootDirection => Vector3.right * (IsFlipped ? -1f : 1f);
 
     private void FixedUpdate()
     {
@@ -35,17 +37,20 @@ public class ShooterTrap : MonoBehaviour
             {
                 playerDetected = true;
 
-                StartCoroutine(_ShootPlayer(hitPlayer.collider.gameObject));
+                StartCoroutine(_ShootArrow());
             }
         }
     }
 
-    IEnumerator _ShootPlayer(GameObject player)
+    IEnumerator _ShootArrow()
     {
-        GameObject ammo = Instantiate(ammoPrefab, transform.position + ShootDirection, transform.rotation);
+        GameObject ammo = Instantiate(ammoPrefab, transform.position + ShootDirection, Quaternion.identity);
+        ammo.GetComponent<Rigidbody2D>().velocity = ShootDirection * AMMO_SPEED;
 
-        Vector3 direction = (player.transform.position - transform.position + ShootDirection);
-        ammo.GetComponent<Rigidbody2D>().velocity = direction * ammoSpeed;
+        if (IsFlipped)
+        {
+            ammo.GetComponent<SpriteRenderer>().flipX = IsFlipped;
+        }
 
         yield return new WaitForSeconds(fireRate);
 
