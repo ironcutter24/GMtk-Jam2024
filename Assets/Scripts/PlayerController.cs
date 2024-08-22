@@ -98,8 +98,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        spriteRend = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        spriteRend = graphics.GetComponent<SpriteRenderer>();
+        anim = graphics.GetComponent<Animator>();
+
         bodyCollider = GetComponent<CapsuleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -301,16 +302,20 @@ public class PlayerController : MonoBehaviour
     {
         bounds = size;
         bodyCollider.size = size;
-        bodyCollider.offset = new Vector2(-.25f, size.y * .5f);
-        graphics.localScale = new Vector3(size.x, size.y, 1f);
+        bodyCollider.offset = Vector2.up * size.y * .5f;
     }
 
     #region Physics checks
 
-    private bool IsOnGround() => GroundCheck(rb.position, GroundBoxSize, groundMask);
-    private bool IsOnCeiling() => GroundCheck(rb.position + new Vector2(0f, bounds.y), GroundBoxSize, ceilingMask);
-    private bool IsOnWallLeft() => GroundCheck(rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f), WallBoxSize, wallMask);
-    private bool IsOnWallRight() => GroundCheck(rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f), WallBoxSize, wallMask);
+    private Vector2 GroundBoxPos => rb.position;
+    private Vector2 CeilingBoxPos => rb.position + new Vector2(0f, bounds.y);
+    private Vector2 WallLeftBoxPos => rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f);
+    private Vector2 WallRightBoxPos => rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f);
+
+    private bool IsOnGround() => GroundCheck(GroundBoxPos, GroundBoxSize, groundMask);
+    private bool IsOnCeiling() => GroundCheck(CeilingBoxPos, GroundBoxSize, ceilingMask);
+    private bool IsOnWallLeft() => GroundCheck(WallLeftBoxPos, WallBoxSize, wallMask);
+    private bool IsOnWallRight() => GroundCheck(WallRightBoxPos, WallBoxSize, wallMask);
 
     private bool GroundCheck(Vector2 pos, Vector2 size, LayerMask layerMask)
     {
@@ -324,5 +329,17 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying && rb == null)
+            rb = GetComponent<Rigidbody2D>();
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(GroundBoxPos, GroundBoxSize);
+        Gizmos.DrawWireCube(CeilingBoxPos, GroundBoxSize);
+        Gizmos.DrawWireCube(WallLeftBoxPos, WallBoxSize);
+        Gizmos.DrawWireCube(WallRightBoxPos, WallBoxSize);
+    }
 
 }
