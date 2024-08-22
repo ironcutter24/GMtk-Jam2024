@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
             "Speed", new ParamValue[]
             {
                 new ParamValue(5f, Vector2.zero),
-                new ParamValue(10f, new Vector2(0f, 2f)),
+                new ParamValue(10f, new Vector2(0f, 1f)),
                 new ParamValue(15f, new Vector2(0f, 2f))
             }
         },
