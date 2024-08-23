@@ -117,7 +117,7 @@ TextureImporter:
         y: 0
         width: 1507.3334
         height: 2049
-      alignment: 7
+      alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Up_MC_LongLeg_M_Jump_1
       rect:
         serializedVersion: 2
-        x: 1507
+        x: 1509
         y: 0
-        width: 1507.3334
+        width: 1507
         height: 2049
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: -0.15}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,10 +157,10 @@ TextureImporter:
         serializedVersion: 2
         x: 3014
         y: 0
-        width: 1507.3334
+        width: 1507
         height: 2049
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: -0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
