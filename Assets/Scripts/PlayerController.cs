@@ -7,7 +7,7 @@ using Util;
 public class PlayerController : MonoBehaviour
 {
     const float CONTACT_CHECK_DEPTH = .06f;
-    const float CONTACT_CHECK_OFFSET = .06f;
+    const float CONTACT_CHECK_OFFSET = .12f;
 
     const string ANIM_GROUNDED_ID = "IsGrounded";
     const string ANIM_MOVING_ID = "IsMoving";
@@ -88,12 +88,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask ceilingMask;
     [SerializeField] LayerMask wallMask;
+    [Space]
+    [SerializeField] LayerMask pushableMask;
 
     private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
     private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
 
     private float MoveSpeed => keyValuePairs["Speed"][PlayerStats.Instance.MoveSpeed].value;
     private float JumpSpeed => keyValuePairs["Jump"][PlayerStats.Instance.JumpSpeed].value;
+
+    private bool CanPlay
+    {
+        get
+        {
+            return GameManager.Instance.State == GameManager.GameState.Play
+                || GameManager.Instance.State == GameManager.GameState.MenuAndTutorial;
+        }
+    }
 
 
     private void Awake()
@@ -136,67 +147,70 @@ public class PlayerController : MonoBehaviour
         InputManager.Actions.Player.ReloadLevel.performed -= PlayerReloadLevel_performed;
     }
 
-    private bool CanPlay()
-    {
-        return GameManager.Instance.State == GameManager.GameState.Play
-            || GameManager.Instance.State == GameManager.GameState.MenuAndTutorial;
-    }
-
     private void FixedUpdate()
     {
-        if (CanPlay())
-        {
-            var velocity = rb.velocity;
+        if (!CanPlay) return;
 
-            var isGrounded = IsOnGround();
-            if (isGrounded)
+        var velocity = rb.velocity;
+
+        var isGrounded = IsOnGround();
+        if (isGrounded)
+        {
+            if (jumpFlag.Pop())
             {
-                if (jumpFlag.Pop())
-                {
-                    velocity.y = JumpSpeed;
-                    AudioManager.Instance.PlayPlayerJump();
-                }
-                else
-                {
-                    velocity.y = 0f;
-                }
+                velocity.y = JumpSpeed;
+                AudioManager.Instance.PlayPlayerJump();
             }
             else
             {
-                if (IsOnCeiling() && velocity.y > 0f)
-                {
-                    velocity.y = 0f;
-                }
-                else
-                {
-                    gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
-                    velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
-                }
+                velocity.y = 0f;
             }
-
-            velocity.x = move * MoveSpeed;
-
-            var isMoving = !Mathf.Approximately(move, 0f);
-            if (isMoving)
+        }
+        else
+        {
+            if (IsOnCeiling() && velocity.y > 0f)
             {
-                isFlipped = velocity.x < 0f;
-                spriteRend.flipX = isFlipped;
-
-                bool pushingLeft = move < 0f && IsOnWallLeft();
-                bool pushingRight = move > 0f && IsOnWallRight();
-
-                if (pushingLeft || pushingRight)
-                {
-                    velocity.x = 0f;
-                }
+                velocity.y = 0f;
             }
+            else
+            {
+                gravityScale = velocity.y > 0 ? gravityScaleUp : gravityScaleDown;
+                velocity.y -= 9.81f * gravityScale * Time.fixedDeltaTime;
+            }
+        }
 
-            rb.velocity = velocity;
+        velocity.x = move * MoveSpeed;
 
-            // Animation parameters
-            anim.SetBool(ANIM_MOVING_ID, isMoving);
-            anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
-            anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+        var isMoving = !Mathf.Approximately(move, 0f);
+        if (isMoving)
+        {
+            isFlipped = velocity.x < 0f;
+            spriteRend.flipX = isFlipped;
+
+            bool pushingLeft = move < 0f && IsOnWallLeft();
+            bool pushingRight = move > 0f && IsOnWallRight();
+
+            if (pushingLeft || pushingRight)
+            {
+                TryMovePushable(-velocity.x);
+                velocity.x = 0f;
+            }
+        }
+
+        rb.velocity = velocity;
+
+        // Animation parameters
+        anim.SetBool(ANIM_MOVING_ID, isMoving);
+        anim.SetBool(ANIM_GROUNDED_ID, isGrounded);
+        anim.SetFloat(ANIM_VERTICAL_SPEED_ID, velocity.y);
+    }
+
+    private void TryMovePushable(float horizontalSpeed)
+    {
+        var pushable = IsOnPushable()?.gameObject.GetComponentInParent<Rigidbody2D>();
+        if (pushable)
+        {
+            pushable.velocity = new Vector2(horizontalSpeed, pushable.velocity.y);
         }
     }
 
@@ -312,20 +326,22 @@ public class PlayerController : MonoBehaviour
     private Vector2 WallLeftBoxPos => rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f);
     private Vector2 WallRightBoxPos => rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f);
 
-    private bool IsOnGround() => GroundCheck(GroundBoxPos, GroundBoxSize, groundMask);
-    private bool IsOnCeiling() => GroundCheck(CeilingBoxPos, GroundBoxSize, ceilingMask);
-    private bool IsOnWallLeft() => GroundCheck(WallLeftBoxPos, WallBoxSize, wallMask);
-    private bool IsOnWallRight() => GroundCheck(WallRightBoxPos, WallBoxSize, wallMask);
+    private Collider2D IsOnGround() => GroundCheck(GroundBoxPos, GroundBoxSize, groundMask);
+    private Collider2D IsOnCeiling() => GroundCheck(CeilingBoxPos, GroundBoxSize, ceilingMask);
+    private Collider2D IsOnWallLeft() => GroundCheck(WallLeftBoxPos, WallBoxSize, wallMask);
+    private Collider2D IsOnWallRight() => GroundCheck(WallRightBoxPos, WallBoxSize, wallMask);
 
-    private bool GroundCheck(Vector2 pos, Vector2 size, LayerMask layerMask)
+    private Collider2D IsOnPushable() => GroundCheck(GroundBoxPos, GroundBoxSize, pushableMask);
+
+    private Collider2D GroundCheck(Vector2 pos, Vector2 size, LayerMask layerMask)
     {
         var hits = Physics2D.OverlapBoxAll(pos, size, 0f, layerMask);
         for (int i = 0; i < hits.Length; i++)
         {
             if (!hits[i].isTrigger)
-                return true;
+                return hits[i];
         }
-        return false;
+        return null;
     }
 
     #endregion

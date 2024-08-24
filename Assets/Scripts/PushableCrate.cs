@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PushableCrate : GeneralObject
 {
+    private int editorLayer;
     private Rigidbody2D rb;
 
     [SerializeField, Range(0, 2)] int minPushStrength = 2;
 
     private bool IsPushable => PlayerStats.Instance.Strength >= minPushStrength;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     protected override void Start()
     {
         base.Start();
 
-        rb = GetComponent<Rigidbody2D>();
+        editorLayer = gameObject.layer;
+        ResetState();
 
         PlayerStats.StrengthChanged += OnStrengthChanged;
     }
@@ -36,7 +43,7 @@ public class PushableCrate : GeneralObject
         if (IsPushable)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            SetLayer("Actor");
+            SetLayer(LayerMask.LayerToName(editorLayer));
         }
         else
         {

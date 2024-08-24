@@ -384,10 +384,13 @@ MonoBehaviour:
   gravityScaleDown: 3.5
   groundMask:
     serializedVersion: 2
-    m_Bits: 513
+    m_Bits: 1537
   ceilingMask:
     serializedVersion: 2
     m_Bits: 1
   wallMask:
     serializedVersion: 2
     m_Bits: 1
+  pushableMask:
+    serializedVersion: 2
+    m_Bits: 1024

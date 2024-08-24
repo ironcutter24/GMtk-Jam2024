@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6479092170422147107}
   - component: {fileID: 3612425497097562574}
   - component: {fileID: 3391539345540593937}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Collisions
   m_TagString: Crate
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 3133613366732102114}
   - component: {fileID: 7413826416015824309}
   - component: {fileID: 8797227509036852345}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CrateHeavy
   m_TagString: Crate
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4d5258f914b4242448f6e3e24b4982dc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
