@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7400774279832759057}
   - component: {fileID: 449681059453039330}
   - component: {fileID: 4807695324506274249}
+  - component: {fileID: 5452183673339995682}
   m_Layer: 0
   m_Name: BatProp
   m_TagString: Untagged
@@ -107,3 +108,16 @@ MonoBehaviour:
     duration: 0.6
   - sprite: {fileID: 1170139721, guid: e31d8073bd68b19418a611715159d3e8, type: 3}
     duration: 0.1
+--- !u!114 &5452183673339995682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824087648225357449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9061f74ce47c74d4ba36e8f3ce28a2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 0.5

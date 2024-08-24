@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2781344998729488173}
   - component: {fileID: 4428451438527540334}
   - component: {fileID: 7619420423433277175}
+  - component: {fileID: 5045902567042942180}
   - component: {fileID: 5592164965233068538}
   m_Layer: 0
-  m_Name: DungeonDoor
+  m_Name: DungeonExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,6 +132,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 3.5}
   m_EdgeRadius: 0
+--- !u!114 &5045902567042942180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6239035592202204218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9061f74ce47c74d4ba36e8f3ce28a2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 1
 --- !u!114 &5592164965233068538
 MonoBehaviour:
   m_ObjectHideFlags: 0

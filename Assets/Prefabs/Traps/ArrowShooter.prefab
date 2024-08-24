@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5654972896712517049}
   - component: {fileID: 3897458163230546394}
+  - component: {fileID: 8158135375156711777}
   - component: {fileID: 5840844850555727000}
   m_Layer: 0
   m_Name: ArrowShooter
@@ -79,6 +80,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8158135375156711777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652144449132790862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9061f74ce47c74d4ba36e8f3ce28a2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 1
 --- !u!114 &5840844850555727000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +111,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ammoPrefab: {fileID: 4715935504271334416, guid: 562517275cf14cd429567aa95780301c, type: 3}
-  ammoSpeed: 30
   fireRate: 3
 --- !u!1 &8972736959267181911
 GameObject:

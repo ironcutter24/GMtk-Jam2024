@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1648110223319327856}
   - component: {fileID: 6583210664229717297}
+  - component: {fileID: 1668768446406685707}
   m_Layer: 0
   m_Name: DungeonEnter
   m_TagString: Untagged
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1668768446406685707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170674380007713107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9061f74ce47c74d4ba36e8f3ce28a2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSize: 1
