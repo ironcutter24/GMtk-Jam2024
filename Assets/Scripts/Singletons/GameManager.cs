@@ -48,9 +48,13 @@ public class GameManager : Singleton<GameManager>
     private void RefreshStateForCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name.Contains("Tutorial") || currentScene.name.Contains("MainMenu"))
+        if (currentScene.name.Contains("MainMenu"))
         {
-            SetGameState(GameState.MenuAndTutorial);
+            SetGameState(GameState.Menu);
+        }
+        else if (currentScene.name.Contains("Tutorial"))
+        {
+            SetGameState(GameState.Tutorial);
         }
         else if (currentScene.name.Contains("Level"))
         {
@@ -81,20 +85,25 @@ public class GameManager : Singleton<GameManager>
 
         switch (newState)
         {
-            case GameState.MenuAndTutorial:
+            case GameState.Menu:
                 Time.timeScale = 1;
-                // UI -----------------------------------
+                ShowCursor();
                 HideAllUI();
-
-                // Audio --------------------------------
                 TryPlayMenuAndDungeonMusic();
+                break;
 
+            case GameState.Tutorial:
+                Time.timeScale = 1;
+                HideCursor();
+                HideAllUI();
+                TryPlayMenuAndDungeonMusic();
                 break;
 
             case GameState.BuildYourBuild:
                 Time.timeScale = 1;
 
                 // UI -----------------------------------
+                ShowCursor();
                 HideAllUI();
                 statsSetPanel.SetActive(true);
 
@@ -107,6 +116,7 @@ public class GameManager : Singleton<GameManager>
                 Time.timeScale = 1;
 
                 // UI -----------------------------------
+                HideCursor();
                 HideAllUI();
                 statsSetPanel.SetActive(false);
                 statsLockPanel.SetActive(true);
@@ -118,6 +128,7 @@ public class GameManager : Singleton<GameManager>
                 PlayerDied?.Invoke();
 
                 // UI -----------------------------------
+                ShowCursor();
                 HideAllUI();
                 gameOverPanel.SetActive(true);
 
@@ -127,6 +138,7 @@ public class GameManager : Singleton<GameManager>
                 Time.timeScale = 0;
 
                 // UI -----------------------------------
+                ShowCursor();
                 HideAllUI();
 
                 break;
@@ -135,6 +147,7 @@ public class GameManager : Singleton<GameManager>
                 Time.timeScale = 1;
 
                 // UI -----------------------------------
+                HideCursor();
                 HideAllUI();
 
                 // Audio --------------------------------
@@ -175,6 +188,18 @@ public class GameManager : Singleton<GameManager>
         statsLockPanel.SetActive(false);
     }
 
+    private void ShowCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void ReloadCurrentLevel()
     {
         var activeScene = SceneManager.GetActiveScene();
@@ -204,7 +229,8 @@ public class GameManager : Singleton<GameManager>
     public enum GameState
     {
         None,
-        MenuAndTutorial,
+        Menu,
+        Tutorial,
         Play,
         GameOver,
         PauseMenu,

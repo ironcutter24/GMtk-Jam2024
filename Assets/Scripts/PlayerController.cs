@@ -108,7 +108,8 @@ public class PlayerController : MonoBehaviour
         get
         {
             return GameManager.Instance.State == GameManager.GameState.Play
-                || GameManager.Instance.State == GameManager.GameState.MenuAndTutorial;
+                || GameManager.Instance.State == GameManager.GameState.Tutorial
+                || GameManager.Instance.State == GameManager.GameState.Menu;
         }
     }
 
