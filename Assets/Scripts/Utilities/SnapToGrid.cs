@@ -11,7 +11,10 @@ public class SnapToGrid : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        transform.position = transform.position.SnapToGrid(gridSize);
+        if (!Application.isPlaying)
+        {
+            transform.position = transform.position.SnapToGrid(gridSize);
+        }
     }
 #endif
 }

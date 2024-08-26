@@ -91,8 +91,18 @@ public class PlayerController : MonoBehaviour
     [Space]
     [SerializeField] LayerMask pushableMask;
 
+
+    private Vector2 GroundCircPos => rb.position + Vector2.up * (GroundCircRadius - CONTACT_CHECK_DEPTH * .5f);
+    private float GroundCircRadius => bounds.x * .46f;
+
+    private Vector2 GroundBoxPos => rb.position;
+    private Vector2 CeilingBoxPos => rb.position + bounds.WithX(0f);
+    private Vector2 WallLeftBoxPos => rb.position + bounds.WithX(-bounds.x) * .5f;
+    private Vector2 WallRightBoxPos => rb.position + bounds * .5f;
+
     private Vector2 GroundBoxSize => new Vector2(bounds.x - CONTACT_CHECK_OFFSET, CONTACT_CHECK_DEPTH);
-    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - CONTACT_CHECK_OFFSET);
+    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - bounds.x + bounds.x * .5f);
+
 
     private float MoveSpeed => keyValuePairs["Speed"][PlayerStats.Instance.MoveSpeed].value;
     private float JumpSpeed => keyValuePairs["Jump"][PlayerStats.Instance.JumpSpeed].value;
@@ -194,6 +204,7 @@ public class PlayerController : MonoBehaviour
             {
                 TryMovePushable(-velocity.x);
                 velocity.x = 0f;
+                isMoving = false;
             }
         }
 
@@ -321,12 +332,7 @@ public class PlayerController : MonoBehaviour
 
     #region Physics checks
 
-    private Vector2 GroundBoxPos => rb.position;
-    private Vector2 CeilingBoxPos => rb.position + new Vector2(0f, bounds.y);
-    private Vector2 WallLeftBoxPos => rb.position + new Vector2(-bounds.x * .5f, bounds.y * .5f);
-    private Vector2 WallRightBoxPos => rb.position + new Vector2(bounds.x * .5f, bounds.y * .5f);
-
-    private Collider2D IsOnGround() => GroundCheck(GroundBoxPos, GroundBoxSize, groundMask);
+    private Collider2D IsOnGround() => GroundCheck(GroundCircPos, GroundCircRadius, groundMask); // GroundCheck(GroundBoxPos, GroundBoxSize, groundMask);
     private Collider2D IsOnCeiling() => GroundCheck(CeilingBoxPos, GroundBoxSize, ceilingMask);
     private Collider2D IsOnWallLeft() => GroundCheck(WallLeftBoxPos, WallBoxSize, wallMask);
     private Collider2D IsOnWallRight() => GroundCheck(WallRightBoxPos, WallBoxSize, wallMask);
@@ -344,6 +350,17 @@ public class PlayerController : MonoBehaviour
         return null;
     }
 
+    private Collider2D GroundCheck(Vector2 pos, float radius, LayerMask layerMask)
+    {
+        var hits = Physics2D.OverlapCircleAll(pos, radius, layerMask);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (!hits[i].isTrigger)
+                return hits[i];
+        }
+        return null;
+    }
+
     #endregion
 
     private void OnDrawGizmos()
@@ -352,10 +369,12 @@ public class PlayerController : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(GroundBoxPos, GroundBoxSize);
+        //Gizmos.DrawWireCube(GroundBoxPos, GroundBoxSize);
         Gizmos.DrawWireCube(CeilingBoxPos, GroundBoxSize);
         Gizmos.DrawWireCube(WallLeftBoxPos, WallBoxSize);
         Gizmos.DrawWireCube(WallRightBoxPos, WallBoxSize);
+
+        Gizmos.DrawWireSphere(GroundCircPos, GroundCircRadius);
     }
 
 }
