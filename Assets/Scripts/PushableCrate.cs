@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util;
 
 public class PushableCrate : GeneralObject
 {
@@ -31,6 +32,11 @@ public class PushableCrate : GeneralObject
         base.OnDestroy();
 
         PlayerStats.StrengthChanged -= OnStrengthChanged;
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = rb.velocity.WithY(Mathf.Min(rb.velocity.y, 0f));
     }
 
     protected override void ResetState()
