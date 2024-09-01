@@ -11,26 +11,22 @@ PrefabInstance:
     - target: {fileID: 3133613366732102114, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2002922753, guid: fa349ed5234e9e34c9391576ed4f2059, type: 3}
+      objectReference: {fileID: 147464654, guid: 77f448ae4d254e941916e80b126c436b, type: 3}
     - target: {fileID: 3231740797265949042, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3231740797265949042, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3231740797265949042, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3231740797265949042, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.095
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3231740797265949042, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 5697796072918945691, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_Name

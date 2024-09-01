@@ -15,22 +15,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Prod/Videos/VideoIntro.unity
     guid: 33f9abe8a6864fa42b974511a6fdfdb0
   - enabled: 1
-    path: Assets/Scenes/Level_Tutorial_01.unity
+    path: Assets/Scenes/Prod/Level_Tutorial_01.unity
     guid: 42230df1e7ebce14da611ac6721248d2
   - enabled: 1
-    path: Assets/Scenes/Level_Tutorial_02.unity
+    path: Assets/Scenes/Prod/Level_Tutorial_02.unity
     guid: cd5c7e4eac2d7ed4593fd59f7764a3c2
   - enabled: 1
-    path: Assets/Scenes/Prod/Level_01_Luca.unity
+    path: Assets/Scenes/Prod/Level_01.unity
     guid: a38336c6f724dfd4394af2c6d14ee162
   - enabled: 1
-    path: Assets/Scenes/Prod/Level_02_Luca.unity
+    path: Assets/Scenes/Prod/Level_02.unity
     guid: e1fddcbcf5db8bf4ca79da2b4695895b
   - enabled: 1
-    path: Assets/Scenes/Prod/Level_03_Luca.unity
+    path: Assets/Scenes/Prod/Level_03.unity
     guid: 0789b89a2136f6b4fa79ad62f118b502
   - enabled: 1
-    path: Assets/Scenes/Prod/Level_04_Luca.unity
+    path: Assets/Scenes/Prod/Level_04.unity
     guid: ac4a7c85917af4b4d878ea426f09e5fe
   - enabled: 1
     path: Assets/Scenes/Prod/Videos/VideoEnding.unity

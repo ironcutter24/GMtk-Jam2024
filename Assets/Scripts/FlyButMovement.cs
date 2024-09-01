@@ -5,19 +5,34 @@ using UnityEngine;
 
 public class FlyButMovement : MonoBehaviour
 {
+    [SerializeField] GameObject butterfly;
+    [SerializeField] float moveSpeed = 4.5f;
+    [SerializeField] bool despawnOnReach = true;
+
     [Header("Path points")]
     [SerializeField] Transform pointA;
-    private void StartMovingBlade()
-    {
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOMove(pointA.position, 6f).SetUpdate(UpdateType.Fixed));
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            {
-                StartMovingBlade();
-            }
+        {
+            MoveToDestination();
+        }
+    }
+
+    private void MoveToDestination()
+    {
+        transform.DOMove(pointA.position, moveSpeed)
+            .SetSpeedBased()
+            .OnComplete(OnTweenComplete);
+    }
+
+    private void OnTweenComplete()
+    {
+        if (despawnOnReach)
+        {
+            butterfly.SetActive(false);
+        }
     }
 }

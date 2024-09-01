@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2fea15e10081084419058943aa2ac0c8
+guid: 77f448ae4d254e941916e80b126c436b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ASSET_dungeon_spostabili_rotti_0
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 748
+        width: 225
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24d33e2f23b2484d9c9c3b6004dde9a
+      internalID: 1386272333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ASSET_dungeon_spostabili_rotti_1
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 597
+        width: 185
+        height: 184
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7606b6680c28b94e988f1242b27c219
+      internalID: 147464654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ASSET_dungeon_spostabili_rotti_2
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 600
+        width: 294
+        height: 294
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19421c3e06cd1674196af28840529348
+      internalID: -1019640596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ASSET_dungeon_spostabili_rotti_4
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 611
+        width: 227
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91102ebd7964622469ab79cbaac35ee1
+      internalID: 1393645862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ASSET_dungeon_spostabili_rotti_0: 1386272333
+      ASSET_dungeon_spostabili_rotti_1: 147464654
+      ASSET_dungeon_spostabili_rotti_2: -1019640596
+      ASSET_dungeon_spostabili_rotti_3: 680582880
+      ASSET_dungeon_spostabili_rotti_4: 1393645862
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
