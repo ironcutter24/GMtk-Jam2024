@@ -12190,7 +12190,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 4.826619
+      m_AnimationSpeed: 1.0013547
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -2, y: -9, z: 0}
@@ -12199,7 +12199,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 4.104751
+      m_AnimationSpeed: 1.8837023
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 15, y: -7, z: 0}
@@ -12208,7 +12208,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 2.6500337
+      m_AnimationSpeed: 4.5317206
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 19, y: -7, z: 0}
@@ -12217,7 +12217,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 1.2350802
+      m_AnimationSpeed: 3.24485
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: 6, z: 0}
@@ -12226,7 +12226,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 1.0416727
+      m_AnimationSpeed: 4.0557914
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 9, y: 6, z: 0}
@@ -12235,7 +12235,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -39553217, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
       - {fileID: -952855922, guid: 3ade1396b41fc924b97ec1e921caae71, type: 3}
-      m_AnimationSpeed: 4.323823
+      m_AnimationSpeed: 1.5918713
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -12937,6 +12937,10 @@ PrefabInstance:
       propertyPath: targetDoor
       value: 
       objectReference: {fileID: 579411885}
+    - target: {fileID: 4469561503549170096, guid: 527c616561309bd4cbb71e0904070c21, type: 3}
+      propertyPath: stayPressed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8695132244109708201, guid: 527c616561309bd4cbb71e0904070c21, type: 3}
       propertyPath: m_Name
       value: PressurePlate

@@ -10,6 +10,7 @@ public class PressurePlate : MonoBehaviour
     [SerializeField] float startHeight = .375f;
     [SerializeField] float endHeight = .01f;
     [SerializeField] float speed = 5f;
+    [SerializeField] bool stayPressed = false;
     [Space]
     [SerializeField] PressurePlate_Door targetDoor;
 
@@ -21,16 +22,16 @@ public class PressurePlate : MonoBehaviour
         if (CanPressPlate(collision.gameObject))
         {
             IsTriggered = true;
-            targetDoor.OpenDoor();
+            targetDoor?.OpenDoor();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (CanPressPlate(collision.gameObject))
+        if (CanPressPlate(collision.gameObject) && !stayPressed)
         {
             IsTriggered = false;
-            targetDoor.CloseDoor();
+            targetDoor?.CloseDoor();
         }
     }
 
