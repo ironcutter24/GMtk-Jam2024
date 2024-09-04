@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrateMedium Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6479092170422147107, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.125
+      objectReference: {fileID: 0}
     - target: {fileID: 7477175113736964536, guid: 200a5c4f71e76514db00dcca5f0c469f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.973
