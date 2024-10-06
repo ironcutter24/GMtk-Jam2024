@@ -230,8 +230,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayDeathAudio(DeathType deathType)
     {
-        AudioManager.Instance.PlayGameOver();
-
         switch (deathType)
         {
             case DeathType.Blade:
@@ -244,6 +242,10 @@ public class PlayerController : MonoBehaviour
 
             case DeathType.Knight:
                 AudioManager.Instance.PlayPlayerDeathKnight();
+                break;
+
+            default:
+                AudioManager.Instance.PlayGameOver();
                 break;
         }
     }

@@ -14,6 +14,9 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("Game Events")]
     [SerializeField] FMODUnity.EventReference gameOverEvent;
+    [SerializeField] FMODUnity.EventReference cratePushEvent;
+    [SerializeField] FMODUnity.EventReference platePressEvent;
+    [SerializeField] FMODUnity.EventReference plateReleaseEvent;
 
     [Header("Player Events")]
     [SerializeField] FMODUnity.EventReference playerStepEvent;
@@ -31,6 +34,9 @@ public class AudioManager : Singleton<AudioManager>
     public void PlayUIGameStarted() => PlayOneShot(uiGameStartEvent);
 
     public void PlayGameOver() => PlayOneShot(gameOverEvent);
+    public void PlayCratePush() => PlayOneShot(cratePushEvent);
+    public void PlayPlatePress() => PlayOneShot(platePressEvent);
+    public void PlayPlateRelease() => PlayOneShot(plateReleaseEvent);
 
     public void PlayPlayerStep() => PlayOneShot(playerStepEvent);
     public void PlayPlayerJump() => PlayOneShot(playerJumpEvent);

@@ -124,7 +124,6 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case GameState.GameOver:
-                AudioManager.Instance.PlayGameOver();
                 PlayerDied?.Invoke();
 
                 // UI -----------------------------------

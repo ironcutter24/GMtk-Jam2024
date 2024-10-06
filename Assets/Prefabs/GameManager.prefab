@@ -1982,6 +1982,27 @@ MonoBehaviour:
       Data3: 1377780132
       Data4: -1523775987
     Path: event:/Death/GameOver
+  cratePushEvent:
+    Guid:
+      Data1: -507632103
+      Data2: 1227958275
+      Data3: -1171445832
+      Data4: 1375430403
+    Path: event:/Objects/CrateNormal
+  platePressEvent:
+    Guid:
+      Data1: -513189468
+      Data2: 1323769121
+      Data3: 786576284
+      Data4: 818459953
+    Path: event:/Objects/PlatePress
+  plateReleaseEvent:
+    Guid:
+      Data1: 727155006
+      Data2: 1134224726
+      Data3: 377720477
+      Data4: -1239650060
+    Path: event:/Objects/PlateRelease
   playerStepEvent:
     Guid:
       Data1: 1118626919

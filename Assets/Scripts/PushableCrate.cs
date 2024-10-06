@@ -8,6 +8,8 @@ public class PushableCrate : GeneralObject
     private int editorLayer;
     private Rigidbody2D rb;
 
+    private float oldXVelocity = 0f;
+
     [SerializeField, Range(0, 2)] int minPushStrength = 2;
 
     private bool IsPushable => PlayerStats.Instance.Strength >= minPushStrength;
@@ -37,6 +39,12 @@ public class PushableCrate : GeneralObject
     private void FixedUpdate()
     {
         rb.velocity = rb.velocity.WithY(Mathf.Min(rb.velocity.y, 0f));
+
+        if (!Mathf.Approximately(rb.velocity.x, 0f) && Mathf.Approximately(oldXVelocity, 0f))
+        {
+            AudioManager.Instance.PlayCratePush();
+        }
+        oldXVelocity = rb.velocity.x;
     }
 
     protected override void ResetState()
@@ -64,7 +72,7 @@ public class PushableCrate : GeneralObject
 
         gameObject.layer = layer;
 
-        foreach(Transform t in transform)
+        foreach (Transform t in transform)
         {
             t.gameObject.layer = layer;
         }

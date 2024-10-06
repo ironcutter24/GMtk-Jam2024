@@ -21,6 +21,11 @@ public class PressurePlate : MonoBehaviour
     {
         if (CanPressPlate(collision.gameObject))
         {
+            if (!IsTriggered)
+            {
+                AudioManager.Instance.PlayPlatePress();
+            }
+
             IsTriggered = true;
             targetDoor?.OpenDoor();
         }
@@ -30,6 +35,11 @@ public class PressurePlate : MonoBehaviour
     {
         if (CanPressPlate(collision.gameObject) && !stayPressed)
         {
+            if (IsTriggered)
+            {
+                AudioManager.Instance.PlayPlatePress();
+            }
+
             IsTriggered = false;
             targetDoor?.CloseDoor();
         }

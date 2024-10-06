@@ -63,6 +63,6 @@ public class ChallengerKnight : MonoBehaviour
         else
         {
             StopCoroutine(GloveAttack(collision));
-        } 
+        }
     }
 }
