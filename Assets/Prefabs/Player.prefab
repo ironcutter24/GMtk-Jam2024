@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d20072b7b09b049baa190f8eea1aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsSheet: {fileID: 11400000, guid: 3a673f0feec1eb744bd9fceef6cadc87, type: 2}
   graphics: {fileID: 7363097439476485827}
   bounds: {x: 0.5, y: 1.5}
   gravityScaleUp: 2

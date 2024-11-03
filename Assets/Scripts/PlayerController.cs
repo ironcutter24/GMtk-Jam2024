@@ -13,60 +13,6 @@ public class PlayerController : MonoBehaviour
     const string ANIM_MOVING_ID = "IsMoving";
     const string ANIM_VERTICAL_SPEED_ID = "VerticalSpeed";
 
-    #region Stats Data
-
-    private readonly Vector2 defaultSize = new Vector2(.8f, 1.8f);
-
-    private readonly Dictionary<string, ParamValue[]> keyValuePairs = new Dictionary<string, ParamValue[]>()
-    {
-        {
-            "Speed", new ParamValue[]
-            {
-                new ParamValue(5f, Vector2.zero),
-                new ParamValue(10f, new Vector2(0f, 1f)),
-                new ParamValue(15f, new Vector2(0f, 2f))
-            }
-        },
-        {
-            "Jump", new ParamValue[]
-            {
-                new ParamValue(5f, Vector2.zero),
-                new ParamValue(9f, Vector2.zero),
-                new ParamValue(14f, Vector2.zero)
-            }
-        },
-        {
-            "Weight", new ParamValue[]
-            {
-                new ParamValue(0f, Vector2.zero),
-                new ParamValue(1f, Vector2.zero),
-                new ParamValue(2f, new Vector2(.5f, 0f))
-            }
-        },
-        {
-            "Strength", new ParamValue[]
-            {
-                new ParamValue(0f, Vector2.zero),
-                new ParamValue(1f, Vector2.zero),
-                new ParamValue(2f, new Vector2(.5f, 1f))
-            }
-        },
-    };
-
-    private struct ParamValue
-    {
-        public float value;
-        public Vector2 sizeDelta;
-
-        public ParamValue(float value, Vector2 sizeDelta)
-        {
-            this.value = value;
-            this.sizeDelta = sizeDelta;
-        }
-    }
-
-    #endregion
-
     private float move;
     private bool isFlipped = false;
     private float gravityScale;
@@ -77,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private CapsuleCollider2D bodyCollider;
     private Rigidbody2D rb;
 
+    [SerializeField] StatsSheet_SO statsSheet;
     [SerializeField] Transform graphics;
     [SerializeField, HideInInspector] Vector2 bounds;
 
@@ -100,18 +47,16 @@ public class PlayerController : MonoBehaviour
     private float GroundCircRadius => bounds.x * .46f;
     private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - bounds.x + bounds.x * .5f);
 
-    private float MoveSpeed => keyValuePairs["Speed"][PlayerStats.Instance.MoveSpeed].value;
-    private float JumpSpeed => keyValuePairs["Jump"][PlayerStats.Instance.JumpSpeed].value;
+    private float MoveSpeed => statsSheet.Speed.GetParamAt(PlayerStats.Instance.MoveSpeed).value;
+    private float JumpSpeed => statsSheet.Jump.GetParamAt(PlayerStats.Instance.JumpSpeed).value;
 
-    private bool CanPlay
+    private bool CanPlay => GameManager.Instance.State switch
     {
-        get
-        {
-            return GameManager.Instance.State == GameManager.GameState.Play
-                || GameManager.Instance.State == GameManager.GameState.Tutorial
-                || GameManager.Instance.State == GameManager.GameState.Menu;
-        }
-    }
+        GameManager.GameState.Tutorial => true,
+        GameManager.GameState.Play => true,
+        GameManager.GameState.Menu => true,
+        _ => false
+    };
 
 
     private void Awake()
@@ -132,11 +77,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerStats.AnyChanged += RefreshBounds;
 
-        InputManager.Actions.Player.Move.performed += PlayerMove_performed;
-        InputManager.Actions.Player.Move.canceled += PlayerMove_performed;
-        InputManager.Actions.Player.Jump.performed += PlayerJump_performed;
-        InputManager.Actions.Player.Interact.performed += PlayerInteract_performed;
-        InputManager.Actions.Player.ReloadLevel.performed += PlayerReloadLevel_performed;
+        RegisterInputs();
 
         InputManager.SwitchActionMapToPlayer();
     }
@@ -147,11 +88,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerStats.AnyChanged -= RefreshBounds;
 
-        InputManager.Actions.Player.Move.performed -= PlayerMove_performed;
-        InputManager.Actions.Player.Move.canceled -= PlayerMove_performed;
-        InputManager.Actions.Player.Jump.performed -= PlayerJump_performed;
-        InputManager.Actions.Player.Interact.performed -= PlayerInteract_performed;
-        InputManager.Actions.Player.ReloadLevel.performed -= PlayerReloadLevel_performed;
+        UnregisterInputs();
     }
 
     private void FixedUpdate()
@@ -222,33 +159,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Death(DeathType deathType)
+    #region Input Registration
+
+    private void RegisterInputs()
     {
-        PlayDeathAudio(deathType);
-        GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
+        InputManager.Actions.Player.Move.performed += PlayerMove_performed;
+        InputManager.Actions.Player.Move.canceled += PlayerMove_performed;
+        InputManager.Actions.Player.Jump.performed += PlayerJump_performed;
+        InputManager.Actions.Player.Interact.performed += PlayerInteract_performed;
+        InputManager.Actions.Player.ReloadLevel.performed += PlayerReloadLevel_performed;
     }
 
-    private void PlayDeathAudio(DeathType deathType)
+    private void UnregisterInputs()
     {
-        switch (deathType)
-        {
-            case DeathType.Blade:
-                AudioManager.Instance.PlayPlayerDeathBlade();
-                break;
-
-            case DeathType.Drown:
-                AudioManager.Instance.PlayPlayerDeathDrown();
-                break;
-
-            case DeathType.Knight:
-                AudioManager.Instance.PlayPlayerDeathKnight();
-                break;
-
-            default:
-                AudioManager.Instance.PlayGameOver();
-                break;
-        }
+        InputManager.Actions.Player.Move.performed -= PlayerMove_performed;
+        InputManager.Actions.Player.Move.canceled -= PlayerMove_performed;
+        InputManager.Actions.Player.Jump.performed -= PlayerJump_performed;
+        InputManager.Actions.Player.Interact.performed -= PlayerInteract_performed;
+        InputManager.Actions.Player.ReloadLevel.performed -= PlayerReloadLevel_performed;
     }
+
+    #endregion
+
+    #region Input Implementation
 
     private void PlayerMove_performed(InputAction.CallbackContext context)
     {
@@ -273,51 +206,63 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.ReloadCurrentLevel();
     }
 
-    public void RefreshBounds()
+    #endregion
+
+    #region Physics Bounds
+
+    private void RefreshBounds()
     {
         // Set bounds size
+        var size = GetCharacterSize();
+        SetCharacterBounds(size);
 
+        // Set animation controller
+        var ctrl = GetRequiredAnimController();
+        SetAnimController(ctrl);
+    }
+
+    private Vector2 GetCharacterSize()
+    {
         var stats = PlayerStats.Instance;
 
-        Vector2 totalSize = defaultSize;
-        totalSize += keyValuePairs["Speed"][stats.MoveSpeed].sizeDelta;
-        totalSize += keyValuePairs["Jump"][stats.JumpSpeed].sizeDelta;
+        Vector2 totalSize = statsSheet.DefaultSize;
+        totalSize += statsSheet.Speed.GetParamAt(stats.MoveSpeed).sizeDelta;
+        totalSize += statsSheet.Jump.GetParamAt(stats.JumpSpeed).sizeDelta;
 
         if (stats.Strength >= stats.Weight)
         {
-            totalSize += keyValuePairs["Strength"][stats.Strength].sizeDelta;
+            totalSize += statsSheet.Strength.GetParamAt(stats.Strength).sizeDelta;
         }
         else
         {
-            totalSize += keyValuePairs["Weight"][stats.Weight].sizeDelta;
+            totalSize += statsSheet.Weight.GetParamAt(stats.Weight).sizeDelta;
         }
 
-        SetCharacterBounds(totalSize);
+        return totalSize;
+    }
 
-
-        // Set animation controller
-
+    private RuntimeAnimatorController GetRequiredAnimController()
+    {
         var controllers = GameManager.Instance.AnimControllers;
+
+        var stats = PlayerStats.Instance;
         int speedIndex = stats.MoveSpeed;
 
-        RuntimeAnimatorController ctrl;
         if (stats.Strength >= 2)
         {
-            ctrl = controllers.GetStrengthControllerAt(speedIndex);
+            return controllers.GetStrengthControllerAt(speedIndex);
         }
         else if (stats.Weight >= 2)
         {
-            ctrl = controllers.GetWeightControllerAt(speedIndex);
+            return controllers.GetWeightControllerAt(speedIndex);
         }
         else
         {
-            ctrl = controllers.GetNormalControllerAt(speedIndex);
+            return controllers.GetNormalControllerAt(speedIndex);
         }
-
-        SetAnimationController(ctrl);
     }
 
-    private void SetAnimationController(RuntimeAnimatorController ctrl)
+    private void SetAnimController(RuntimeAnimatorController ctrl)
     {
         anim.runtimeAnimatorController = ctrl;
     }
@@ -329,7 +274,9 @@ public class PlayerController : MonoBehaviour
         bodyCollider.offset = Vector2.up * size.y * .5f;
     }
 
-    #region Physics checks
+    #endregion
+
+    #region Physics Checks
 
     private Collider2D IsOnPushable() => GroundCheck(GroundCircPos, GroundCircRadius, pushableMask);
     private Collider2D IsOnGround() => GroundCheck(GroundCircPos, GroundCircRadius, groundMask);
@@ -358,6 +305,38 @@ public class PlayerController : MonoBehaviour
                 return hits[i];
         }
         return null;
+    }
+
+    #endregion
+
+    #region Death
+
+    public void Death(DeathType deathType)
+    {
+        PlayDeathAudio(deathType);
+        GameManager.Instance.SetGameState(GameManager.GameState.GameOver);
+    }
+
+    private void PlayDeathAudio(DeathType deathType)
+    {
+        switch (deathType)
+        {
+            case DeathType.Blade:
+                AudioManager.Instance.PlayPlayerDeathBlade();
+                break;
+
+            case DeathType.Drown:
+                AudioManager.Instance.PlayPlayerDeathDrown();
+                break;
+
+            case DeathType.Knight:
+                AudioManager.Instance.PlayPlayerDeathKnight();
+                break;
+
+            default:
+                AudioManager.Instance.PlayGameOver();
+                break;
+        }
     }
 
     #endregion
