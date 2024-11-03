@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerStatsSheet", menuName = "ScriptableObjects/PlayerStatsSheet", order = 1)]
 public class StatsSheet_SO : ScriptableObject
 {
-    [SerializeField] Vector2 _defaultSize = new Vector2(.8f, 1.8f);
+    [SerializeField, Min(0f)]
+    Vector2 _defaultSize = new Vector2(.8f, 1.8f);
 
     [Header("Stats sheet")]
     [SerializeField]
@@ -79,7 +80,10 @@ public struct ParamSlider
 [System.Serializable]
 public struct ParamValue
 {
+    [SerializeField, Min(0f)]
     public float value;
+
+    [SerializeField, Min(0f)]
     public Vector2 sizeDelta;
 
     public ParamValue(float value, Vector2 sizeDelta)

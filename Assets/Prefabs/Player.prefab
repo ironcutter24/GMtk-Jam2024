@@ -337,8 +337,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.75}
-  m_Size: {x: 0.5, y: 1.5}
+  m_Offset: {x: 0, y: 0.45}
+  m_Size: {x: 0.4, y: 0.9}
   m_Direction: 0
 --- !u!50 &7534241013698966441
 Rigidbody2D:
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9061f74ce47c74d4ba36e8f3ce28a2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: 1
+  gridSize: 0.5
 --- !u!114 &9146687759778632787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statsSheet: {fileID: 11400000, guid: 3a673f0feec1eb744bd9fceef6cadc87, type: 2}
   graphics: {fileID: 7363097439476485827}
-  bounds: {x: 0.5, y: 1.5}
   gravityScaleUp: 2
   gravityScaleDown: 3.5
   groundMask:

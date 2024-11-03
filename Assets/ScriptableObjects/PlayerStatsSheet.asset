@@ -12,4 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d266018609592d940866d630a6eeacb1, type: 3}
   m_Name: PlayerStatsSheet
   m_EditorClassIdentifier: 
-  _defaultSize: {x: 0.8, y: 1.8}
+  _defaultSize: {x: 0.4, y: 0.8}
+  _speed:
+    _zero:
+      value: 2.5
+      sizeDelta: {x: 0, y: 0}
+    _one:
+      value: 5
+      sizeDelta: {x: 0, y: 0.6}
+    _two:
+      value: 7.5
+      sizeDelta: {x: 0, y: 1.2}
+  _jump:
+    _zero:
+      value: 7
+      sizeDelta: {x: 0, y: 0}
+    _one:
+      value: 9.5
+      sizeDelta: {x: 0, y: 0}
+    _two:
+      value: 11.8
+      sizeDelta: {x: 0, y: 0}
+  _weight:
+    _zero:
+      value: 0
+      sizeDelta: {x: 0, y: 0}
+    _one:
+      value: 1
+      sizeDelta: {x: 0, y: 0}
+    _two:
+      value: 2
+      sizeDelta: {x: 0.25, y: 0}
+  _strength:
+    _zero:
+      value: 0
+      sizeDelta: {x: 0, y: 0}
+    _one:
+      value: 1
+      sizeDelta: {x: 0, y: 0}
+    _two:
+      value: 2
+      sizeDelta: {x: 0.25, y: 0.5}

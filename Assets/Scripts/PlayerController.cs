@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] StatsSheet_SO statsSheet;
     [SerializeField] Transform graphics;
-    [SerializeField, HideInInspector] Vector2 bounds;
+    public Vector2 Bounds { get; private set; }
 
     [Header("Jump")]
     [SerializeField, Min(0f)] float gravityScaleUp = 1f;
@@ -40,12 +40,12 @@ public class PlayerController : MonoBehaviour
 
 
     private Vector2 GroundCircPos => rb.position + Vector2.up * (GroundCircRadius - CONTACT_CHECK_DEPTH * .5f);
-    private Vector2 CeilingCircPos => rb.position + Vector2.up * (bounds.y - GroundCircRadius + CONTACT_CHECK_DEPTH * .5f);
-    private Vector2 WallLeftBoxPos => rb.position + bounds.WithX(-bounds.x) * .5f;
-    private Vector2 WallRightBoxPos => rb.position + bounds * .5f;
+    private Vector2 CeilingCircPos => rb.position + Vector2.up * (Bounds.y - GroundCircRadius + CONTACT_CHECK_DEPTH * .5f);
+    private Vector2 WallLeftBoxPos => rb.position + Bounds.WithX(-Bounds.x) * .5f;
+    private Vector2 WallRightBoxPos => rb.position + Bounds * .5f;
 
-    private float GroundCircRadius => bounds.x * .46f;
-    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, bounds.y - bounds.x + bounds.x * .5f);
+    private float GroundCircRadius => Bounds.x * .46f;
+    private Vector2 WallBoxSize => new Vector2(CONTACT_CHECK_DEPTH, Bounds.y - Bounds.x + Bounds.x * .5f);
 
     private float MoveSpeed => statsSheet.Speed.GetParamAt(PlayerStats.Instance.MoveSpeed).value;
     private float JumpSpeed => statsSheet.Jump.GetParamAt(PlayerStats.Instance.JumpSpeed).value;
@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetCharacterBounds(Vector2 size)
     {
-        bounds = size;
+        Bounds = size;
         bodyCollider.size = size;
         bodyCollider.offset = Vector2.up * size.y * .5f;
     }
