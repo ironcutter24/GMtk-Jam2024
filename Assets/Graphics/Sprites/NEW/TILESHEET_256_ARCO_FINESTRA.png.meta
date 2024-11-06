@@ -1,0 +1,207 @@
+fileFormatVersion: 2
+guid: ade670697dea7484489b20cde882e396
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TILESHEET_256_ARCO_FINESTRA_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 768
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f48a0a50834cea47ae9634aad375017
+      internalID: -583603192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TILESHEET_256_ARCO_FINESTRA_7
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 0
+        width: 512
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e98b5b9d4011444fb0d4b3b3896df0f
+      internalID: -2113840050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TILESHEET_256_ARCO_FINESTRA_0: -583603192
+      TILESHEET_256_ARCO_FINESTRA_1: -486081903
+      TILESHEET_256_ARCO_FINESTRA_10: 550892677
+      TILESHEET_256_ARCO_FINESTRA_11: -895466682
+      TILESHEET_256_ARCO_FINESTRA_12: -578834614
+      TILESHEET_256_ARCO_FINESTRA_13: 1968440048
+      TILESHEET_256_ARCO_FINESTRA_14: 198580693
+      TILESHEET_256_ARCO_FINESTRA_15: -898271987
+      TILESHEET_256_ARCO_FINESTRA_16: -1090919913
+      TILESHEET_256_ARCO_FINESTRA_17: -1800271873
+      TILESHEET_256_ARCO_FINESTRA_18: 596589168
+      TILESHEET_256_ARCO_FINESTRA_19: 2067942483
+      TILESHEET_256_ARCO_FINESTRA_2: 1504280079
+      TILESHEET_256_ARCO_FINESTRA_20: -1452237324
+      TILESHEET_256_ARCO_FINESTRA_21: -625126204
+      TILESHEET_256_ARCO_FINESTRA_22: -2122452146
+      TILESHEET_256_ARCO_FINESTRA_23: -1781973342
+      TILESHEET_256_ARCO_FINESTRA_24: 1289290647
+      TILESHEET_256_ARCO_FINESTRA_25: 1078868990
+      TILESHEET_256_ARCO_FINESTRA_26: 183862040
+      TILESHEET_256_ARCO_FINESTRA_27: 2143942785
+      TILESHEET_256_ARCO_FINESTRA_28: 617776929
+      TILESHEET_256_ARCO_FINESTRA_29: -1442914438
+      TILESHEET_256_ARCO_FINESTRA_3: 673498304
+      TILESHEET_256_ARCO_FINESTRA_30: 1826549461
+      TILESHEET_256_ARCO_FINESTRA_31: -1400202338
+      TILESHEET_256_ARCO_FINESTRA_32: 557170053
+      TILESHEET_256_ARCO_FINESTRA_33: -1520493399
+      TILESHEET_256_ARCO_FINESTRA_34: 679077239
+      TILESHEET_256_ARCO_FINESTRA_35: -878933577
+      TILESHEET_256_ARCO_FINESTRA_36: 1302961093
+      TILESHEET_256_ARCO_FINESTRA_37: 1920258578
+      TILESHEET_256_ARCO_FINESTRA_4: 1179368806
+      TILESHEET_256_ARCO_FINESTRA_5: -960102680
+      TILESHEET_256_ARCO_FINESTRA_6: -2034009681
+      TILESHEET_256_ARCO_FINESTRA_7: -2113840050
+      TILESHEET_256_ARCO_FINESTRA_8: 1340734430
+      TILESHEET_256_ARCO_FINESTRA_9: -223684163
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
